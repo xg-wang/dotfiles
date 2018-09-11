@@ -1,0 +1,20 @@
+[user]
+  name = Thomas Wang
+  email = wangxgwxg@gmail.com
+  gpgsign = false
+
+[include]
+  path = ~/.gitconfig.d/gitalias.txt
+
+[alias]
+  dlast = diff HEAD~1..HEAD
+  last = log -1 HEAD
+  ca = commit --amend
+  can = commit --amend --no-edit
+  count = log --author="Thomas Wang" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+
+[push]
+  default = simple
+
+[includeIf "gitdir:~/Workspace/linkedin/"]
+  path = ~/.gitconfig.d/.gitconfig-linkedin
