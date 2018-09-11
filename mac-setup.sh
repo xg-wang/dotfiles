@@ -68,8 +68,10 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 cat zshrc > ~/.zshrc
 source ~/.zshrc
 
+echo 'export EDITOR="vim"' >> ~/.zshrc
+
 # customize prezto
-cat custom_zshrc >> ~/.zshrc
+cp custom_zpreztorc ~/.zpreztorc
 source ~/.zshrc
 
 # Set Zsh as default shell
