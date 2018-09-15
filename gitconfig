@@ -17,4 +17,4 @@
   default = simple
 
 [includeIf "gitdir:~/Workspace/linkedin/"]
-  path = ~/.gitconfig.d/.gitconfig-linkedin
+  path = ~/.gitconfig.d/gitconfig-linkedin
