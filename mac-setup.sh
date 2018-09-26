@@ -86,7 +86,7 @@ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 # customize
-cat my_configs.vim > ~/.vim_runtime/my_configs.vim
+cat my_configs.vim >> ~/.vim_runtime/my_configs.vim
 
 
 ##
@@ -95,9 +95,10 @@ cat my_configs.vim > ~/.vim_runtime/my_configs.vim
 curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
 
 mkdir ~/.gitconfig.d
-mv gitconfig-linkedin.txt gitalias.txt .gitconfig.d/
+cp gitconfig-linkedin.txt ~/.gitconfig.d/
+mv gitalias.txt ~/.gitconfig.d/
 
-cp gitconfig ~/.gitconfig
+cp gitconfig.txt ~/.gitconfig
 
 # https://github.com/tj/git-extras
 brew install git-extras

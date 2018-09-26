@@ -5,6 +5,7 @@
 
 [include]
   path = ~/.gitconfig.d/gitalias.txt
+  path = ~/.gitconfig.d/diff-so-fancy-config.txt
 
 [alias]
   dlast = diff HEAD~1..HEAD
@@ -17,4 +18,4 @@
   default = simple
 
 [includeIf "gitdir:~/Workspace/linkedin/"]
-  path = ~/.gitconfig.d/gitconfig-linkedin
+  path = ~/.gitconfig.d/gitconfig-linkedin.txt
