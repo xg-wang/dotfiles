@@ -19,3 +19,6 @@
 
 [includeIf "gitdir:~/Workspace/linkedin/"]
   path = ~/.gitconfig.d/gitconfig-linkedin.txt
+
+[core]
+  excludesfile = /Users/xwang5/.gitignore_global

@@ -91,6 +91,8 @@ cat my_configs.vim >> ~/.vim_runtime/my_configs.vim
 
 ##
 # Git
+cp gitignore ~/.gitignore_global
+
 # https://github.com/GitAlias/gitalias
 curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
 
