@@ -1,6 +1,7 @@
 ## System Preference
 - Accessibility -> Mouse & Trackpad -> Trackpad Options -> Enable Dragging
 - Desktop & Screen Saver -> Screen Saver := Fliqlo
+- Keyboard -> Shortcuts := All controls
 
 ## Iterm
 
