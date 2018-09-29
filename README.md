@@ -1,5 +1,6 @@
 ## System Preference
-Accessibility -> Mouse & Trackpad -> Trackpad Options -> Enable Dragging
+- Accessibility -> Mouse & Trackpad -> Trackpad Options -> Enable Dragging
+- Desktop & Screen Saver -> Screen Saver := Fliqlo
 
 ## Iterm
 
@@ -14,3 +15,4 @@ Accessibility -> Mouse & Trackpad -> Trackpad Options -> Enable Dragging
 
 ## Visual Studio Code
 Use [code-settings-sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+
