@@ -11,7 +11,11 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 cat assets/zshrc > ~/.zshrc
 source ~/.zshrc
 
-echo 'export EDITOR="vim"' >> ~/.zshrc
+echo 'export EDITOR="vim"
+export VISUAL=vim
+export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_EXIT_CODE_SHOW=true
+' >> ~/.zshrc
 
 # customize prezto
 cp assets/custom_zpreztorc ~/.zpreztorc
