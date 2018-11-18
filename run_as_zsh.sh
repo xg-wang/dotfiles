@@ -24,18 +24,6 @@ source ~/.zshrc
 # Set Zsh as default shell
 chsh -s /bin/zsh
 
-
-##
-# vim
-# https://github.com/amix/vimrc
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-
-sh ~/.vim_runtime/install_awesome_vimrc.sh
-
-# customize
-cat assets/my_configs.vim >> ~/.vim_runtime/my_configs.vim
-
-
 ##
 # Git
 cp assets/gitignore ~/.gitignore_global

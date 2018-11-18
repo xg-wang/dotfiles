@@ -54,4 +54,10 @@ brew install wget git hub tree ack vim zsh node yarn
 
 brew cask install alfred appcleaner spectacle flux dash iterm2 visual-studio-code fliqlo
 
+##
+# VIM
+git clone https://github.com/L0stSoul/vim-config
+patch -p1 -d vim-config < assets/vim-config.patch
+cp vim-config/.vimrc ~/.vimrc
+
 zsh -c run_as_zsh.sh
