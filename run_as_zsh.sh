@@ -55,3 +55,10 @@ source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 # https://github.com/Fakerr/git-recall
 yarn global add git-recall
+
+# Enable Zprezto contrib modules
+cd $ZPREZTODIR
+git clone https://github.com/belak/prezto-contrib contrib
+cd contrib
+git submodule init
+git submodule update
