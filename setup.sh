@@ -56,8 +56,6 @@ brew cask install alfred appcleaner spectacle flux dash iterm2 visual-studio-cod
 
 ##
 # VIM
-git clone https://github.com/L0stSoul/vim-config
-patch -p1 -d vim-config < assets/vim-config.patch
 cp vim-config/.vimrc ~/.vimrc
 
 zsh -c run_as_zsh.sh
