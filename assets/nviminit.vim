@@ -32,10 +32,18 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Dracula Theme
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Theme
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
+
+" Nord Theme
+set cursorline
+let g:nord_cursor_line_number_background = 1
+let g:nord_italic = 1
+" let g:nord_italic_comments = 1
+let g:nord_underline = 1
+colorscheme nord
 
 " NERDTree
 " Open NERDTree and move the cursor to the file editing area
@@ -66,8 +74,6 @@ let g:nvim_typescript#javascript_support = 1
 " Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
 
-" Dracula Theme
-color dracula
 
 " fzf
 nnoremap <C-p> :Files<CR>
