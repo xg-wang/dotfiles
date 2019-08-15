@@ -11,24 +11,31 @@ call plug#begin()
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " For async completion
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " For Denite features
 Plug 'Shougo/denite.nvim'
 " File Explorer Nerdtree
 Plug 'scrooloose/nerdtree'
+" fzf installed using Homebrew
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 " JavaScript Syntax & Indent
 Plug 'pangloss/vim-javascript'
+" Emmet
+Plug 'mattn/emmet-vim'
 " Display indent lines
 Plug 'Yggdroot/indentLine'
+" Status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Dracula Theme
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
-
-" Enable deoplete at startup
-let g:deoplete#enable_at_startup = 1
 
 " NERDTree
 " Open NERDTree and move the cursor to the file editing area
@@ -53,4 +60,15 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
+" nvim-typescript
+let g:nvim_typescript#javascript_support = 1
+
+" Enable deoplete at startup
+let g:deoplete#enable_at_startup = 1
+
+" Dracula Theme
+color dracula
+
+" fzf
+nnoremap <C-p> :Files<CR>
 

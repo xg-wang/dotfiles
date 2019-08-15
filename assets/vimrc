@@ -2,14 +2,36 @@ set number relativenumber
 let mapleader = ','
 set clipboard+=unnamedplus
 
+" Highlight problematic whitespace
+set list listchars=tab:›\ ,trail:·,extends:◣,precedes:◢,nbsp:␣
+match errorMsg /\s\+$/
+
+" Tab
+set tabstop     =2
+set softtabstop =2
+set shiftwidth  =2
+set expandtab
+filetype plugin indent on
+"
+" Don't use arrowkeys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+
 " Copy relative path (src/foo.txt)
 nnoremap <leader>cp :let @+=expand("%")<CR>
-
 " Copy absolute path (/something/src/foo.txt)
 nnoremap <leader>cP :let @+=expand("%:p")<CR>
-
 " Copy filename (foo.txt)
 nnoremap <leader>ct :let @+=expand("%:t")<CR>
-
 " Copy directory name (/something/src)
 nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
+
+" Replace current word
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
