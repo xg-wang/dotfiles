@@ -1,0 +1,62 @@
+export PATH="/usr/local/bin:$PATH"
+
+# neovim
+alias vim="nvim"
+alias n="nvim"
+
+VISUAL=nvim
+EDITOR=nvim
+
+# iterm
+source ~/.iterm2_shell_integration.zsh
+
+# spaceship prompt
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_HG_SHOW=false
+SPACESHIP_RUBY_SHOW=false
+SPACESHIP_ELM_SHOW=false
+SPACESHIP_ELIXIR_SHOW=false
+SPACESHIP_XCODE_SHOW_LOCAL=false
+SPACESHIP_XCODE_SHOW_GLOBAL=false
+SPACESHIP_SWIFT_SHOW_LOCAL=false
+SPACESHIP_SWIFT_SHOW_GLOBAL=false
+SPACESHIP_PHP_SHOW=false
+SPACESHIP_RUST_SHOW=false
+SPACESHIP_HASKELL_SHOW=false
+SPACESHIP_JULIA_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_VENV_SHOW=false
+SPACESHIP_CONDA_SHOW=false
+SPACESHIP_PYENV_SHOW=false
+SPACESHIP_DOTNET_SHOW=false
+SPACESHIP_KUBECONTEXT_SHOW=false
+SPACESHIP_TERRAFORM_SHOW=false
+SPACESHIP_GOLANG_SHOW=false
+SPACESHIP_EXIT_CODE_SHOW=true
+
+# node
+export NODE_OPTIONS="--max-old-space-size=8192"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# volta
+export VOLTA_HOME="$HOME/.volta"
+[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# auto npx
+source <(npx --shell-auto-fallback zsh)
+
+# homebrew ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Get IP address
+alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"

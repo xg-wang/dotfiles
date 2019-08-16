@@ -116,6 +116,9 @@ let g:airline_powerline_fonts = 1
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+set signcolumn=yes
+" Update signs when saving file
+autocmd BufWritePost * GitGutter
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Theme
@@ -124,3 +127,4 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 colorscheme nord
+

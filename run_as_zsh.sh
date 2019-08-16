@@ -16,42 +16,11 @@ done
 ` > ~/.zshrc
 source ~/.zshrc
 
+ln -s ${HOME}/dotfiles/zshrc.mine ${HOME}/.zshrc.mine
+
 echo '
-export PATH="/usr/local/bin:$PATH"
-
-# neovim
-alias vim="nvim"
-alias n="nvim"
-
-VISUAL=nvim
-EDITOR=nvim
-
-# iterm
-source ~/.iterm2_shell_integration.zsh
-
-# spaceship prompt
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_EXIT_CODE_SHOW=true
-
-# node
-export NODE_OPTIONS="--max-old-space-size=8192"
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# volta
-export VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
-
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# auto npx
-source <(npx --shell-auto-fallback zsh)
-
-# homebrew ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+source $HOME/.zshrc.mine
+source $HOME/.zshrc.secrets
 ' >> ~/.zshrc
 
 # customize prezto
