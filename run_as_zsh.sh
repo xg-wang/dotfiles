@@ -58,27 +58,6 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 cp assets/custom_zpreztorc ~/.zpreztorc
 source ~/.zshrc
 
-# Set Zsh as default shell
-chsh -s /bin/zsh
-
-
-##
-# Git
-ln -s ${HOME}/dotfiles/assets/gitignore ${HOME}/.gitignore_global
-
-# https://github.com/GitAlias/gitalias
-curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
-
-mkdir ~/.gitconfig.d
-mv ${HOME}/dotfiles/assets/gitalias.txt ${HOME}/.gitconfig.d/
-ln -s ${HOME}/dotfiles/assets/gitconfig-linkedin.txt ${HOME}/.gitconfig.d/
-
-ln -s ${HOME}/dotfiles/assets/gitconfig.txt ${HOME}/.gitconfig
-
-# https://github.com/tj/git-extras
-brew install git-extras
-source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
-
 # Enable Zprezto contrib modules
 cd $ZPREZTODIR
 git clone https://github.com/belak/prezto-contrib contrib
@@ -86,13 +65,6 @@ cd contrib
 git submodule init
 git submodule update
 
-
-##
-# nvim
-brew install neovim
-gem install neovim
-yarn global add neovim typescript
-ln -s ${HOME}/dotfiles/assets/vimrc ${HOME}/.vimrc
-mkdir -p ~/.config/nvim/
-ls -s ${HOME}/dotfiles/assets/nviminit.vim ${HOME}/.config/nvim/init.vim
+# Set Zsh as default shell
+chsh -s /bin/zsh
 

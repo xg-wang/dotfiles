@@ -25,6 +25,29 @@ brew install wget hub tree ack the_silver_searcher fzf
 # Install things with zsh
 zsh -c run_as_zsh.sh
 
+# Git
+ln -s ${HOME}/dotfiles/assets/gitignore ${HOME}/.gitignore_global
+
+# https://github.com/GitAlias/gitalias
+curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
+
+mkdir ~/.gitconfig.d
+mv ${HOME}/dotfiles/assets/gitalias.txt ${HOME}/.gitconfig.d/
+ln -s ${HOME}/dotfiles/assets/gitconfig-linkedin.txt ${HOME}/.gitconfig.d/
+
+ln -s ${HOME}/dotfiles/assets/gitconfig.txt ${HOME}/.gitconfig
+
+# https://github.com/tj/git-extras
+brew install git-extras
+source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
+# nvim
+brew install neovim
+gem install neovim
+yarn global add neovim typescript
+mkdir -p ~/.config/nvim/
+ls -s ${HOME}/dotfiles/assets/init.vim ${HOME}/.config/nvim/init.vim
+
 # Install font
 brew tap homebrew/cask-fonts
 brew cask install font-hack
