@@ -48,7 +48,9 @@ Plug 'scrooloose/nerdtree'
 " Open NERDTree and move the cursor to the file editing area
 autocmd VimEnter * NERDTree | wincmd p
 " Open NERDTree with `Ctrl+n`
-map <C-n> :NERDTreeToggle<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+" Reveal file with `Ctrol+m`
+nmap <C-m> :NERDTreeFind<CR>
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1 " This also ignores .gitignore
@@ -95,7 +97,7 @@ let g:nvim_typescript#javascript_support = 1
 " Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
 
-" ALE (Asynchronous Lint Engine)
+" Asynchronous Lint Engine
 Plug 'w0rp/ale'
 let g:ale_linters = {'javascript': ['eslint']}
 let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
@@ -176,9 +178,14 @@ autocmd BufWritePost * GitGutter
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Theme
-Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
 
 call plug#end()
 
-colorscheme nord
-
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+colorscheme one
+let g:one_allow_italics = 1
+set background=dark " for the dark version
+" set background=light " for the light version
+let g:airline_theme='one'
