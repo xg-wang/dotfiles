@@ -51,6 +51,10 @@ autocmd VimEnter * NERDTree | wincmd p
 map <C-n> :NERDTreeToggle<CR>
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1 " This also ignores .gitignore
+let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'dist', 'tmp', 'node_modules', 'bower_components', '.pnp']
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
 " nerdtree-git-plugin
 " let g:NERDTreeIndicatorMapCustom = {
 "     \ "Modified"  : "✹",
@@ -74,6 +78,8 @@ nnoremap <C-p> :Files<CR>
 Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_jsdoc = 1
 
+Plug 'joukevandermaas/vim-ember-hbs'
+
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
@@ -89,6 +95,13 @@ let g:nvim_typescript#javascript_support = 1
 " Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
 
+" ALE (Asynchronous Lint Engine)
+Plug 'w0rp/ale'
+let g:ale_linters = {'javascript': ['eslint']}
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+" let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+
 " neo-format
 Plug 'sbdchd/neoformat'
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5
@@ -99,6 +112,47 @@ let g:neoformat_basic_format_align = 1
 let g:neoformat_basic_format_retab = 1
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+
+" coc.vim
+Plug 'nullvoxpopuli/coc-ember', {'do': 'yarn install --frozen-lockfile'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-css',
+  \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-vimlsp',
+  \ 'coc-highlight',
+  \ 'coc-ember'
+  \ ]
+" Hot Keys
+nnoremap <silent> <space>c :<C-u>CocList commands<cr>
+inoremap <silent><expr> <c-space> coc#refresh()
+" Remap keys for gotos
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+" Remap for code action
+nmap <leader>ga <Plug>(coc-codeaction)
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+" Suggestion UX
+" https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
+" Navigation
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" NOTE: using tab for this makes TAB not work as normal tab insersion...
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"" Use enter to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"" Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Emmet
 Plug 'mattn/emmet-vim'
