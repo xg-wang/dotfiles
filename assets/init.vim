@@ -66,6 +66,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rakr/vim-one'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 "" File Explorer Nerdtree {{
