@@ -49,9 +49,6 @@ export VOLTA_HOME="$HOME/.volta"
 
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# auto npx
-source <(npx --shell-auto-fallback zsh)
-
 # homebrew ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 

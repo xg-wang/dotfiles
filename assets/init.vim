@@ -1,4 +1,7 @@
 set number relativenumber
+set colorcolumn=80,120
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+set scrolloff=10
 set lazyredraw
 let mapleader = ','
 set clipboard+=unnamedplus
@@ -22,10 +25,10 @@ set expandtab
 filetype plugin indent on
 
 " Don't use arrowkeys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+noremap  <Up>    <NOP>
+noremap  <Down>  <NOP>
+noremap  <Left>  <NOP>
+noremap  <Right> <NOP>
 inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
 inoremap <Left>  <NOP>
@@ -43,13 +46,15 @@ nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
 " Replace current word
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
+" Auto Closing brackets
+inoremap {<CR> {<CR>}<ESC>O
 
 "" Vim-Plug
 call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'sbdchd/neoformat'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -57,7 +62,6 @@ Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'nullvoxpopuli/coc-ember', {'do': 'yarn install --frozen-lockfile'}
 Plug 'mattn/emmet-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
@@ -102,16 +106,17 @@ let NERDTreeMinimalUI = 1
 nnoremap <C-p> :Files<CR>
 "" }}
 
-"" ale {{
-" Asynchronous Lint Engine
-let g:ale_linters = {'javascript': ['eslint']}
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
-" let g:ale_sign_column_always = 1
-let g:airline#extensions#ale#enabled = 1
-"" }}
+""" ale {{
+"" Asynchronous Lint Engine
+"let g:ale_linters = {'javascript': ['eslint']}
+"let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+"" let g:ale_sign_column_always = 1
+"let g:airline#extensions#ale#enabled = 1
+""" }}
 
 "" neo-format {{
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5
+autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5
 let g:neoformat_try_formatprg = 1
 " Enable alignment
 let g:neoformat_basic_format_align = 1
@@ -140,7 +145,7 @@ nmap <leader>ga <Plug>(coc-codeaction)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 " Suggestion UX
 " https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
@@ -160,17 +165,16 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " Allow for named template literals to be highlighted
 " in a different syntax than the main buffer.
 " https://github.com/Quramy/vim-js-pretty-template
-function EnableTemplateLiteralColors()
-  " list of named template literal tags and their syntax here
-  call jspretmpl#register_tag('hbs', 'handlebars')
-
-  autocmd FileType javascript JsPreTmpl
-  autocmd FileType typescript JsPreTmpl
-
-  " compat with leafgarland/typescript-vim
-  autocmd FileType typescript syn clear foldBraces
-endfunction
-call EnableTemplateLiteralColors()
+"
+"function EnableTemplateLiteralColors()
+" list of named template literal tags and their syntax here
+call jspretmpl#register_tag('hbs', 'handlebars')
+autocmd FileType javascript JsPreTmpl
+autocmd FileType typescript JsPreTmpl
+" compat with leafgarland/typescript-vim
+autocmd FileType typescript syn clear foldBraces
+"endfunction
+"call EnableTemplateLiteralColors()
 "" }}
 
 "" indentLine {{
