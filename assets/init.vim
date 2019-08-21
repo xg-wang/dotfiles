@@ -57,18 +57,18 @@ Plug 'junegunn/fzf.vim'
 "Plug 'w0rp/ale'
 Plug 'sbdchd/neoformat'
 Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'Yggdroot/indentLine'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'wakatime/vim-wakatime'
 call plug#end()
@@ -171,8 +171,6 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 call jspretmpl#register_tag('hbs', 'handlebars')
 autocmd FileType javascript JsPreTmpl
 autocmd FileType typescript JsPreTmpl
-" compat with leafgarland/typescript-vim
-autocmd FileType typescript syn clear foldBraces
 "endfunction
 "call EnableTemplateLiteralColors()
 "" }}
@@ -189,14 +187,25 @@ set signcolumn=yes
 autocmd BufWritePost * GitGutter
 "" }}
 
-" Theme
 " Status bar
-let g:airline_powerline_fonts = 1
+" mode is handled by lightline
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head'
+  \ },
+  \ }
+
+" Theme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-colorscheme one
+colorscheme gruvbox
+"colorscheme one
+set background=dark
 let g:one_allow_italics = 1
-set background=dark " for the dark version
-" set background=light " for the light version
-let g:airline_theme='one'
 
