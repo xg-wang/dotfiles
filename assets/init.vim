@@ -116,7 +116,7 @@ nnoremap <C-p> :Files<CR>
 
 "" neo-format {{
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5
-autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5
+let g:neoformat_enabled_typescript = ['prettier', 'tslint']
 let g:neoformat_try_formatprg = 1
 " Enable alignment
 let g:neoformat_basic_format_align = 1
@@ -132,6 +132,17 @@ let g:javascript_plugin_jsdoc = 1
 "" }}
 
 "" coc.vim {{
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+" Better display for messages
+set cmdheight=2
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 " Hot Keys
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -161,18 +172,31 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-"
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+"" }}
+
+"" vim-js-pretty-template {{
 " Allow for named template literals to be highlighted
 " in a different syntax than the main buffer.
 " https://github.com/Quramy/vim-js-pretty-template
 "
-"function EnableTemplateLiteralColors()
-" list of named template literal tags and their syntax here
-call jspretmpl#register_tag('hbs', 'handlebars')
-autocmd FileType javascript JsPreTmpl
-autocmd FileType typescript JsPreTmpl
-"endfunction
-"call EnableTemplateLiteralColors()
+function! EnableTemplateLiteralColors()
+  " list of named template literal tags and their syntax here
+  call jspretmpl#register_tag('hbs', 'handlebars')
+  autocmd FileType javascript JsPreTmpl
+  autocmd FileType typescript JsPreTmpl
+endfunction
+call EnableTemplateLiteralColors()
 "" }}
 
 "" indentLine {{
@@ -207,5 +231,8 @@ set termguicolors
 colorscheme gruvbox
 "colorscheme one
 set background=dark
-let g:one_allow_italics = 1
+"let g:one_allow_italics = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_improved_strings = 1
+let g:gruvbox_improved_warnings = 1
 
