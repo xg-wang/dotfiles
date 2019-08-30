@@ -8,6 +8,7 @@
   path = ~/.gitconfig.d/diff-so-fancy-config.txt
 
 [alias]
+  rawdiff = !git --no-pager diff --no-color
   dlast = diff HEAD~1..HEAD
   last = log -1 HEAD
   ca = commit --amend
