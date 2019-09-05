@@ -1,13 +1,10 @@
-# First setup system preferences: http://sourabhbajaj.com/mac-setup/SystemPreferences/
+mkdir ~/Workspace
 
-
+if [[ `uname` == "Darwin" ]]; then
 ##
 # Mac
-echo "xcode"
-
+# First setup system preferences: http://sourabhbajaj.com/mac-setup/SystemPreferences/
 xcode-select --install
-
-mkdir ~/Workspace
 
 # homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -20,7 +17,36 @@ brew update
 
 # Install things with homebrew
 brew install git zsh node yarn ruby
-brew install wget hub tree ack the_silver_searcher fzf
+brew install wget hub tree ack ripgrep fzf
+brew install git-extras
+brew install diff-so-fancy
+brew install neovim
+else
+##
+# Linux
+
+# nodejs
+curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+sudo yum install -y nodejs
+sudo yum install -y gcc-c++ make
+# yarn
+curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo yum install -y yarn
+# other stuff
+sudo yum install -y git zsh ruby wget
+# rg
+sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+sudo yum install -y ripgrep
+# git-extras
+sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum install -y git-extras
+# diff-so-fancy
+yarn global add diff-so-fancy
+# neovim
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+fi
 
 # Install things with zsh
 zsh -c run_as_zsh.sh
@@ -38,10 +64,8 @@ ln -s ${HOME}/dotfiles/assets/gitconfig-linkedin.txt ${HOME}/.gitconfig.d/
 ln -s ${HOME}/dotfiles/assets/gitconfig.txt ${HOME}/.gitconfig
 
 # https://github.com/tj/git-extras
-brew install git-extras
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 # https://github.com/so-fancy/diff-so-fancy
-brew install diff-so-fancy
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global color.ui true
 git config --global color.diff-highlight.oldNormal    "red bold"
@@ -56,16 +80,16 @@ git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
 # nvim
-brew install neovim
 gem install neovim
 yarn global add neovim typescript
 mkdir -p ~/.config/nvim/
 ls -s ${HOME}/dotfiles/assets/init.vim ${HOME}/.config/nvim/init.vim
 
+if [[ `uname` == "Darwin" ]]; then
 # Install font
 brew tap homebrew/cask-fonts
 brew cask install font-hack
 
 # Install Apps
 brew cask install alfred appcleaner spectacle flux dash iterm2 visual-studio-code fliqlo
-
+fi
