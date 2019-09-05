@@ -24,7 +24,7 @@ brew install neovim
 else
 ##
 # Linux
-
+sudo yum update
 # nodejs
 curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
 sudo yum install -y nodejs
@@ -33,7 +33,13 @@ sudo yum install -y gcc-c++ make
 curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 sudo yum install -y yarn
 # other stuff
-sudo yum install -y git zsh ruby wget
+sudo yum install -y git zsh wget
+# ruby
+# rvm.io
+gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable
+source ${HOME}/.rvm/scripts/rvm
+rvm install ruby --latest
 # rg
 sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
 sudo yum install -y ripgrep
@@ -41,7 +47,7 @@ sudo yum install -y ripgrep
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum install -y git-extras
 # diff-so-fancy
-yarn global add diff-so-fancy
+sudo yarn global add diff-so-fancy
 # neovim
 wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
@@ -81,9 +87,9 @@ git config --global color.diff.whitespace "red reverse"
 
 # nvim
 gem install neovim
-yarn global add neovim typescript
+sudo yarn global add neovim typescript
 mkdir -p ~/.config/nvim/
-ls -s ${HOME}/dotfiles/assets/init.vim ${HOME}/.config/nvim/init.vim
+ln -s ${HOME}/dotfiles/assets/init.vim ${HOME}/.config/nvim/init.vim
 
 if [[ `uname` == "Darwin" ]]; then
 # Install font
