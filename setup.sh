@@ -1,4 +1,4 @@
-mkdir ~/Workspace
+mkdir $HOME/Workspace
 
 if [[ `uname` == "Darwin" ]]; then
 ##
@@ -38,7 +38,7 @@ sudo yum install -y git zsh wget
 # rvm.io
 gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://get.rvm.io | bash -s stable
-source ${HOME}/.rvm/scripts/rvm
+source $HOME/.rvm/scripts/rvm
 rvm install ruby --latest
 # rg
 sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
@@ -57,15 +57,18 @@ fi
 # Install things with zsh
 zsh -c run_as_zsh.sh
 
+ASSETS_DIR=$HOME/dotfiles/assets
 # Git
-ln -s ${HOME}/dotfiles/assets/gitignore ${HOME}/.gitignore_global
+ln -s $ASSETS_DIR/gitignore $HOME/.gitignore_global
 
-mkdir ~/.gitconfig.d
+GITCONFIG_DIR=$HOME/.gitconfig.d
+mkdir $GITCONFIG_DIR
 # https://github.com/GitAlias/gitalias
 # curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
-ln -s ${HOME}/dotfiles/assets/gitalias.txt ${HOME}/.gitconfig.d/
-ln -s ${HOME}/dotfiles/assets/gitconfig-linkedin.txt ${HOME}/.gitconfig.d/
-ln -s ${HOME}/dotfiles/assets/gitconfig.txt ${HOME}/.gitconfig
+ln -s $ASSETS_DIR/gitalias.txt $GITCONFIG_DIR
+GITCONFIG_LINKEDIN=$ASSETS_DIR/gitconfig-linkedin.txt
+[ -f "$GITCONFIG_LINKEDIN" ] && ln -s "$GITCONFIG_LINKEDIN" $GITCONFIG_DIR
+ln -s $ASSETS_DIR/gitconfig.txt $HOME/.gitconfig
 
 # https://github.com/tj/git-extras
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
@@ -87,7 +90,7 @@ git config --global color.diff.whitespace "red reverse"
 gem install neovim
 sudo yarn global add neovim typescript
 mkdir -p ~/.config/nvim/
-ln -s ${HOME}/dotfiles/assets/init.vim ${HOME}/.config/nvim/init.vim
+ln -s $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
 
 if [[ `uname` == "Darwin" ]]; then
 # Install font
