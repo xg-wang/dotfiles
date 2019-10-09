@@ -1,8 +1,0 @@
-[user]
-  name = Thomas Wang
-  email = xwang5@linkedin.com
-
-[alias]
-  rc = review create --no-prompt --open
-  ru = review update
-  rd = review dcommit
