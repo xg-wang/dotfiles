@@ -73,7 +73,6 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
-Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -207,12 +206,6 @@ function! EnableTemplateLiteralColors()
   autocmd FileType typescript JsPreTmpl
 endfunction
 call EnableTemplateLiteralColors()
-"" }}
-
-"" indentLine {{
-" Display indent lines
-" IndentLine will disable quotes in JSON file
-autocmd Filetype json let g:indentLine_enabled = 0
 "" }}
 
 "" vim-gitgutter {{

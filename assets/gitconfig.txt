@@ -14,6 +14,9 @@
   ca = commit --amend
   can = commit --amend --no-edit
   count = log --author="Thomas Wang" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+  ### change cn » an, prefer author over commiter
+  ll = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%an]%Creset %Cblue%G?%Creset'
+  lll = log --graph --topo-order --date=iso8601-strict --no-abbrev-commit --abbrev=40 --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%an <%ae>]%Creset %Cblue%G?%Creset'
 
 [push]
   default = simple

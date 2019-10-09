@@ -60,13 +60,11 @@ zsh -c run_as_zsh.sh
 # Git
 ln -s ${HOME}/dotfiles/assets/gitignore ${HOME}/.gitignore_global
 
-# https://github.com/GitAlias/gitalias
-curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
-
 mkdir ~/.gitconfig.d
-mv ${HOME}/dotfiles/assets/gitalias.txt ${HOME}/.gitconfig.d/
+# https://github.com/GitAlias/gitalias
+# curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
+ln -s ${HOME}/dotfiles/assets/gitalias.txt ${HOME}/.gitconfig.d/
 ln -s ${HOME}/dotfiles/assets/gitconfig-linkedin.txt ${HOME}/.gitconfig.d/
-
 ln -s ${HOME}/dotfiles/assets/gitconfig.txt ${HOME}/.gitconfig
 
 # https://github.com/tj/git-extras
