@@ -20,8 +20,8 @@ ASSETS_DIR=$HOME/dotfiles/assets
 ln -s $ASSETS_DIR/zshrc.mine $HOME/.zshrc.mine
 
 echo '
-source $HOME/.zshrc.mine
-source $HOME/.zshrc.secrets
+[ -s $HOME/.zshrc.mine ] && source $HOME/.zshrc.mine
+[ -s $HOME/.zshrc.secrets ] && source $HOME/.zshrc.secrets
 ' >> ~/.zshrc
 
 # customize prezto
