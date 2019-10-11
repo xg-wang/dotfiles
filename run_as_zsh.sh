@@ -34,6 +34,8 @@ cd contrib
 git submodule init
 git submodule update
 
+if [[ `uname` == "Darwin" ]]; then
 # Set Zsh as default shell
 chsh -s /bin/zsh
+fi
 

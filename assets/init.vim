@@ -79,7 +79,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
-Plug 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
 "" File Explorer Nerdtree {{

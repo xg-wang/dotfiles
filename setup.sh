@@ -24,7 +24,7 @@ brew install neovim
 else
 ##
 # Linux
-sudo yum update
+sudo yum update -y
 # nodejs
 curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
 sudo yum install -y nodejs
@@ -46,16 +46,22 @@ sudo yum install -y ripgrep
 # git-extras
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum install -y git-extras
-# diff-so-fancy
-sudo yarn global add diff-so-fancy
 # neovim
 wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 fi
 
+# Install [Volta](https://volta.sh/)
+curl https://get.volta.sh | bash
+# install Node
+volta install node yarn
+
+# diff-so-fancy
+volta install diff-so-fancy
+
 # Install things with zsh
-zsh -c run_as_zsh.sh
+zsh ./run_as_zsh.sh
 
 ASSETS_DIR=$HOME/dotfiles/assets
 # Git
@@ -70,8 +76,6 @@ GITCONFIG_LINKEDIN=$ASSETS_DIR/gitconfig-linkedin.txt
 [ -f "$GITCONFIG_LINKEDIN" ] && ln -s "$GITCONFIG_LINKEDIN" $GITCONFIG_DIR
 ln -s $ASSETS_DIR/gitconfig.txt $HOME/.gitconfig
 
-# https://github.com/tj/git-extras
-source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 # https://github.com/so-fancy/diff-so-fancy
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global color.ui true
@@ -88,7 +92,10 @@ git config --global color.diff.whitespace "red reverse"
 
 # nvim
 gem install neovim
-sudo yarn global add neovim typescript
+volta install neovim typescript
+# https://github.com/junegunn/vim-plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.config/nvim/
 ln -s $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
 
