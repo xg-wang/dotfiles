@@ -8,7 +8,7 @@ VISUAL=nvim
 EDITOR=nvim
 
 # iterm
-source ~/.iterm2_shell_integration.zsh
+[ -s ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
 
 # spaceship prompt
 SPACESHIP_TIME_SHOW=true
@@ -61,4 +61,5 @@ export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 
 # git-extras
-source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+GIT_EXTRAS=/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+[ -s $GIT_EXTRAS ] && source $GIT_EXTRAS

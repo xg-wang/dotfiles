@@ -16,7 +16,8 @@ done
 ` > ~/.zshrc
 source ~/.zshrc
 
-ln -s ${HOME}/dotfiles/zshrc.mine ${HOME}/.zshrc.mine
+ASSETS_DIR=$HOME/dotfiles/assets
+ln -s $ASSETS_DIR/zshrc.mine $HOME/.zshrc.mine
 
 echo '
 source $HOME/.zshrc.mine
@@ -24,7 +25,7 @@ source $HOME/.zshrc.secrets
 ' >> ~/.zshrc
 
 # customize prezto
-cp assets/custom_zpreztorc ~/.zpreztorc
+cp $ASSETS_DIR/custom_zpreztorc ~/.zpreztorc
 source ~/.zshrc
 
 # Enable Zprezto contrib modules
