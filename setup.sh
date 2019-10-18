@@ -17,7 +17,7 @@ if [[ `uname` == "Darwin" ]]; then
 
   # Install things with homebrew
   brew install git zsh node yarn ruby
-  brew install wget hub tree ack ripgrep fzf
+  brew install wget hub tree ack ripgrep
   brew install git-extras
   brew install diff-so-fancy
   brew install neovim

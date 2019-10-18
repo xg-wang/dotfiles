@@ -88,7 +88,8 @@ call plug#begin()
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
-Plug '/usr/local/opt/fzf'
+" I don't use fzf outside vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "Plug 'w0rp/ale'
 Plug 'sbdchd/neoformat'
