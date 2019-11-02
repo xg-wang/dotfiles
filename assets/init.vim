@@ -34,6 +34,9 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+" Terminal
+autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
 " Don't use arrowkeys
 noremap  <Up>    <NOP>
 noremap  <Down>  <NOP>
