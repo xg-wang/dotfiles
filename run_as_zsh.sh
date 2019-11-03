@@ -6,7 +6,11 @@
 # zsh
 
 # install prezto
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+if [[ `uname` == "Darwin" ]]; then
+  git clone --recursive -b my-mac git@github.com:xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+else
+  git clone --recursive -b my-linux git@github.com:xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+fi
 
 echo `
 setopt EXTENDED_GLOB
