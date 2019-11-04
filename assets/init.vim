@@ -52,6 +52,10 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" Window
+set splitbelow
+set splitright
+
 " Don't use arrowkeys
 noremap  <Up>    <NOP>
 noremap  <Down>  <NOP>
