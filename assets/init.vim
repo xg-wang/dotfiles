@@ -1,7 +1,7 @@
 set number relativenumber
 set colorcolumn=80,120
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-set scrolloff=10
+set scrolloff=0
 set lazyredraw
 let mapleader = ','
 set clipboard+=unnamedplus
@@ -35,9 +35,11 @@ autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " Terminal
-" autocmd TermOpen * startinsert
+command! -nargs=* T belowright split | terminal <args>
+command! -nargs=* VT vsplit | terminal <args>
+nnoremap <C-t> :T<cr>:resize20<cr>
 " To map <Esc> to exit terminal-mode:
-tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -53,7 +55,6 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " Window
-set splitbelow
 set splitright
 
 " Don't use arrowkeys
@@ -79,10 +80,12 @@ nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Auto Closing brackets
-inoremap {<CR> {<CR>}<ESC>O
+" Not needed if auto-pairs is enabled
+"inoremap {<CR> {<CR>}<ESC>O
 
 "" Vim-Plug
 call plug#begin()
+Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
