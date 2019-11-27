@@ -38,8 +38,8 @@ autocmd FileChangedShellPost *
 command! -nargs=* T belowright split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
 nnoremap <C-t> :T<cr>:resize20<cr>
-" To map <Esc> to exit terminal-mode:
-"tnoremap <Esc> <C-\><C-n>
+" To map <Esc> to exit terminal-mode, disable prezto key-binding first
+tnoremap <Esc> <C-\><C-n>
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -77,7 +77,7 @@ nnoremap <leader>ct :let @+=expand("%:t")<CR>
 nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
 
 " Replace current word
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 
 " Auto Closing brackets
 " Not needed if auto-pairs is enabled
