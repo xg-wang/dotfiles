@@ -71,7 +71,7 @@ GITCONFIG_DIR=$HOME/.gitconfig.d
 mkdir $GITCONFIG_DIR
 # https://github.com/GitAlias/gitalias
 # curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
-ln -s $ASSETS_DIR/gitalias.txt $GITCONFIG_DIR
+ln -s $ASSETS_DIR/gitalias/gitalias.txt $GITCONFIG_DIR
 GITCONFIG_LINKEDIN=$ASSETS_DIR/gitconfig-linkedin.txt
 [ -f "$GITCONFIG_LINKEDIN" ] && ln -s "$GITCONFIG_LINKEDIN" $GITCONFIG_DIR
 ln -s $ASSETS_DIR/gitconfig.txt $HOME/.gitconfig
