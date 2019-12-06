@@ -85,6 +85,7 @@ nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 
 "" Vim-Plug
 call plug#begin()
+Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
@@ -102,14 +103,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
 "" File Explorer Nerdtree {{
 " Open NERDTree and move the cursor to the file editing area
-autocmd VimEnter * NERDTree | wincmd p
+"autocmd VimEnter * NERDTree | wincmd p
 " Open NERDTree with `Ctrl+n`
 nmap <C-n> :NERDTreeToggle<CR>
 " Reveal file with `Ctrol+m`
@@ -243,7 +243,7 @@ autocmd BufWritePost * GitGutter
 " mode is handled by lightline
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'one',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -256,11 +256,6 @@ let g:lightline = {
 " Theme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-colorscheme gruvbox
-"colorscheme one
-set background=dark
-"let g:one_allow_italics = 1
-let g:gruvbox_italic = 1
-let g:gruvbox_improved_strings = 1
-let g:gruvbox_improved_warnings = 1
+colorscheme one
+let g:one_allow_italics = 1
 
