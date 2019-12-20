@@ -1,7 +1,7 @@
 export PATH="/usr/local/bin:$PATH"
 
 # neovim
-alias vim="nvim"
+#alias vim="nvim"
 alias n="nvim"
 
 VISUAL=nvim
@@ -12,17 +12,6 @@ EDITOR=nvim
 
 # node
 export NODE_OPTIONS="--max-old-space-size=8192"
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# volta
-export VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
-
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # homebrew ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -38,3 +27,14 @@ alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-
 # git-extras
 GIT_EXTRAS=/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 [ -s $GIT_EXTRAS ] && source $GIT_EXTRAS
+
+# Git
+alias g='git'
+alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'
+alias gls='git log --topo-order --stat --pretty=format:"${_git_log_medium_format}"'
+alias gld='git log --topo-order --stat --patch --full-diff --pretty=format:"${_git_log_medium_format}"'
+alias glo='git log --topo-order --pretty=format:"${_git_log_oneline_format}"'
+alias glg='git log --topo-order --all --graph --pretty=format:"${_git_log_oneline_format}"'
+alias glb='git log --topo-order --pretty=format:"${_git_log_brief_format}"'
+alias glc='git shortlog --summary --numbered'
+alias glS='git log --show-signature'

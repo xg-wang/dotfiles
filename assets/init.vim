@@ -1,7 +1,4 @@
 set number relativenumber
-set colorcolumn=80,120
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-set scrolloff=0
 set lazyredraw
 let mapleader = ','
 set clipboard+=unnamedplus
@@ -79,9 +76,25 @@ nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
 " Replace current word
 nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 
-" Auto Closing brackets
-" Not needed if auto-pairs is enabled
-"inoremap {<CR> {<CR>}<ESC>O
+"" vim-javascript {{
+" Languages Syntax
+let g:javascript_plugin_jsdoc = 1
+"" }}
+let g:polyglot_disabled = ['jsx']
+
+" Status bar
+" mode is handled by lightline
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head'
+  \ },
+  \ }
 
 "" Vim-Plug
 call plug#begin()
@@ -91,12 +104,9 @@ Plug 'scrooloose/nerdtree'
 " I don't use fzf outside vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'w0rp/ale'
-Plug 'sbdchd/neoformat'
-Plug 'pangloss/vim-javascript'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'joukevandermaas/vim-ember-hbs'
-Plug 'Quramy/vim-js-pretty-template'
+"Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
@@ -104,7 +114,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
@@ -141,31 +151,6 @@ let NERDTreeMinimalUI = 1
 nnoremap <C-p> :Files<CR>
 "" }}
 
-""" ale {{
-"" Asynchronous Lint Engine
-"let g:ale_linters = {'javascript': ['eslint']}
-"let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
-"" let g:ale_sign_column_always = 1
-"let g:airline#extensions#ale#enabled = 1
-""" }}
-
-"" neo-format {{
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5
-let g:neoformat_enabled_typescript = ['prettier', 'tslint']
-let g:neoformat_try_formatprg = 1
-" Enable alignment
-let g:neoformat_basic_format_align = 1
-" Enable tab to spaces conversion
-let g:neoformat_basic_format_retab = 1
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
-"" }}
-
-"" vim-javascript {{
-" Languages Syntax
-let g:javascript_plugin_jsdoc = 1
-"" }}
-
 "" coc.vim {{
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -173,7 +158,7 @@ set hidden
 set nobackup
 set nowritebackup
 " Better display for messages
-set cmdheight=2
+"set cmdheight=2
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 " don't give |ins-completion-menu| messages.
@@ -225,13 +210,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " in a different syntax than the main buffer.
 " https://github.com/Quramy/vim-js-pretty-template
 "
-function! EnableTemplateLiteralColors()
-  " list of named template literal tags and their syntax here
-  call jspretmpl#register_tag('hbs', 'handlebars')
-  autocmd FileType javascript JsPreTmpl
-  autocmd FileType typescript JsPreTmpl
-endfunction
-call EnableTemplateLiteralColors()
+" function! EnableTemplateLiteralColors()
+"   " list of named template literal tags and their syntax here
+"   call jspretmpl#register_tag('hbs', 'handlebars')
+"   autocmd FileType javascript JsPreTmpl
+"   autocmd FileType typescript JsPreTmpl
+" endfunction
+"call EnableTemplateLiteralColors()
 "" }}
 
 "" vim-gitgutter {{
@@ -240,23 +225,8 @@ set signcolumn=yes
 autocmd BufWritePost * GitGutter
 "" }}
 
-" Status bar
-" mode is handled by lightline
-set noshowmode
-let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'fugitive#head'
-  \ },
-  \ }
-
 " Theme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-colorscheme one
-let g:one_allow_italics = 1
-
+set background=dark
+colorscheme onedark
