@@ -7,9 +7,6 @@ alias n="nvim"
 VISUAL=nvim
 EDITOR=nvim
 
-# iterm
-[ -s ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
-
 # node
 export NODE_OPTIONS="--max-old-space-size=8192"
 
@@ -17,7 +14,6 @@ export NODE_OPTIONS="--max-old-space-size=8192"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_EXCLUDE=".git,node_modules,tmp,dist,build,bin,concat-stats-for"
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF_EXCLUDE}/*\" 2> /dev/null"
 
