@@ -26,11 +26,15 @@ GIT_EXTRAS=/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 # Git
 alias g='git'
+# Branch (b)
+alias gba='git branch --all --verbose'
+alias gbd='git branch --delete'
+alias gbD='git branch --delete --force'
+alias gbl='git branch --verbose'
+alias gbL='git branch --all --verbose'
+# Log (l)
 alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'
 alias gls='git log --topo-order --stat --pretty=format:"${_git_log_medium_format}"'
 alias gld='git log --topo-order --stat --patch --full-diff --pretty=format:"${_git_log_medium_format}"'
-alias glo='git log --topo-order --pretty=format:"${_git_log_oneline_format}"'
 alias glg='git log --topo-order --all --graph --pretty=format:"${_git_log_oneline_format}"'
-alias glb='git log --topo-order --pretty=format:"${_git_log_brief_format}"'
 alias glc='git shortlog --summary --numbered'
-alias glS='git log --show-signature'
