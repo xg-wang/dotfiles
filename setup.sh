@@ -65,16 +65,16 @@ zsh ./run_as_zsh.sh
 
 ASSETS_DIR=$HOME/dotfiles/assets
 # Git
-ln -s $ASSETS_DIR/gitignore $HOME/.gitignore_global
+ln -sf $ASSETS_DIR/gitignore $HOME/.gitignore_global
 
 GITCONFIG_DIR=$HOME/.gitconfig.d
 mkdir $GITCONFIG_DIR
 # https://github.com/GitAlias/gitalias
 # curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
-ln -s $ASSETS_DIR/gitalias/gitalias.txt $GITCONFIG_DIR
+ln -sf $ASSETS_DIR/gitalias/gitalias.txt $GITCONFIG_DIR
 GITCONFIG_LINKEDIN=$ASSETS_DIR/gitconfig-linkedin.txt
-[ -f "$GITCONFIG_LINKEDIN" ] && ln -s "$GITCONFIG_LINKEDIN" $GITCONFIG_DIR
-ln -s $ASSETS_DIR/gitconfig.txt $HOME/.gitconfig
+[ -f "$GITCONFIG_LINKEDIN" ] && ln -sf "$GITCONFIG_LINKEDIN" $GITCONFIG_DIR
+ln -sf $ASSETS_DIR/gitconfig.txt $HOME/.gitconfig
 
 # https://github.com/so-fancy/diff-so-fancy
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
@@ -97,13 +97,5 @@ volta install neovim typescript
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.config/nvim/
-ln -s $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
+ln -sf $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
 
-if [[ `uname` == "Darwin" ]]; then
-# Install font
-brew tap homebrew/cask-fonts
-brew cask install font-hack
-
-# Install Apps
-brew cask install alfred appcleaner spectacle flux dash iterm2 visual-studio-code fliqlo
-fi
