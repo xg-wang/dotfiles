@@ -55,7 +55,7 @@ else
 fi
 
 # diff-so-fancy
-yarn add -g diff-so-fancy
+yarn global add diff-so-fancy
 
 # Install things with zsh
 zsh ./run_as_zsh.sh
@@ -90,7 +90,7 @@ git config --global color.diff.whitespace "red reverse"
 # nvim
 # use brew ruby
 /usr/local/opt/ruby/bin/gem install neovim
-yarn add -g neovim typescript
+yarn global add neovim typescript
 # https://github.com/junegunn/vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
