@@ -12,8 +12,6 @@ if [[ `uname` == "Darwin" ]]; then
 
   sudo chown -R $(whoami) /usr/local/Cellar
 
-  echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
-
   brew update
 
   # Install things with homebrew
