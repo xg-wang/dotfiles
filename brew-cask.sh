@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [[ `uname` == "Darwin" ]]; then
 # Install font
 brew tap homebrew/cask-fonts

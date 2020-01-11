@@ -1,8 +1,9 @@
+#!/usr/bin/env bash
+
 mkdir $HOME/Workspace
 
 if [[ `uname` == "Darwin" ]]; then
-  ##
-  # Mac
+  ## Mac
   # First setup system preferences: http://sourabhbajaj.com/mac-setup/SystemPreferences/
   xcode-select --install
 
