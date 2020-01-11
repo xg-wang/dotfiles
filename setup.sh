@@ -51,13 +51,8 @@ else
   sudo mv nvim.appimage /usr/local/bin/nvim
 fi
 
-# Install [Volta](https://volta.sh/)
-curl https://get.volta.sh | bash
-# install Node
-volta install node yarn
-
 # diff-so-fancy
-volta install diff-so-fancy
+yarn add -g diff-so-fancy
 
 # Install things with zsh
 zsh ./run_as_zsh.sh
@@ -90,8 +85,9 @@ git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
 # nvim
-gem install neovim
-volta install neovim typescript
+# use brew ruby
+/usr/local/opt/ruby/bin/gem install neovim
+yarn add -g neovim typescript
 # https://github.com/junegunn/vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -103,3 +99,6 @@ ln -sf $ASSETS_DIR/p10k.zsh $HOME/.p10k.zsh
 
 #tmux
 ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
+
+# Install [Volta](https://volta.sh/)
+curl https://get.volta.sh | bash
