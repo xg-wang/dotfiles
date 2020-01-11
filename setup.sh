@@ -20,6 +20,9 @@ if [[ `uname` == "Darwin" ]]; then
   brew install git-extras
   brew install diff-so-fancy
   brew install neovim
+
+  # https://github.com/romkatv/powerlevel10k#fonts
+  cp asseets/fonts/* ~/Library/Fonts/
 else
   ##
   # Linux
@@ -99,6 +102,10 @@ ln -sf $ASSETS_DIR/p10k.zsh $HOME/.p10k.zsh
 
 #tmux
 ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
+
+#alacritty
+mkdir -p ~/.config/alacritty
+ln -sf $ASSETS_DIR/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 # Install [Volta](https://volta.sh/)
 curl https://get.volta.sh | bash
