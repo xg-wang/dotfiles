@@ -9,9 +9,9 @@
 
 # install prezto
 if [[ `uname` == "Darwin" ]]; then
-  git clone --recursive -b my-mac git@github.com:xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+  git clone --recursive -b my-mac https://github.com/xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 else
-  git clone --recursive -b my-linux git@github.com:xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+  git clone --recursive -b my-linux https://github.com/xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
 
 setopt EXTENDED_GLOB
