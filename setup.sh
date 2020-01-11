@@ -71,7 +71,7 @@ mkdir $GITCONFIG_DIR
 ln -sf $ASSETS_DIR/gitalias/gitalias.txt $GITCONFIG_DIR
 GITCONFIG_LINKEDIN=$ASSETS_DIR/gitconfig-linkedin.txt
 [ -f "$GITCONFIG_LINKEDIN" ] && ln -sf "$GITCONFIG_LINKEDIN" $GITCONFIG_DIR
-ln -sf $ASSETS_DIR/gitconfig.txt $HOME/.gitconfig
+ln -sf $ASSETS_DIR/gitconfig $HOME/.gitconfig
 
 # https://github.com/so-fancy/diff-so-fancy
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
