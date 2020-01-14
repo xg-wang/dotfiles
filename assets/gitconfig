@@ -5,6 +5,7 @@
 
 [include]
   path = ~/.gitconfig.d/gitalias.txt
+  path = ~/.gitconfig.d/gitconfig-linkedin.txt
   path = ~/.gitconfig.d/diff-so-fancy-config.txt
 
 [alias]
@@ -19,9 +20,6 @@
 
 [push]
   default = simple
-
-[includeIf "gitdir:~/Workspace/linkedin/"]
-  path = ~/.gitconfig.d/gitconfig-linkedin.txt
 
 [core]
   excludesfile = /Users/xwang5/.gitignore_global

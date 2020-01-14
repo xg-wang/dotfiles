@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir $HOME/Workspace
+mkdir $HOME/Code
 
 if [[ `uname` == "Darwin" ]]; then
   ## Mac
