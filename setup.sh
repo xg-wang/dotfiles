@@ -103,9 +103,13 @@ ln -sf $ASSETS_DIR/p10k.zsh $HOME/.p10k.zsh
 #tmux
 ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
 
-#alacritty
+# alacritty
 mkdir -p ~/.config/alacritty
 ln -sf $ASSETS_DIR/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+
+# Kitty
+mkdir -p ~/.config/kitty
+ln -sf $ASSETS_DIR/kitty.conf $HOME/.config/kitty/kitty.conf
 
 # Install [Volta](https://volta.sh/)
 curl https://get.volta.sh | bash
