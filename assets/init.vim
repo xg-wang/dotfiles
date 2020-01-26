@@ -98,6 +98,7 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
@@ -231,5 +232,6 @@ if exists('+termguicolors')
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+let g:onedark_terminal_italics = 1
 syntax on
 colorscheme onedark
