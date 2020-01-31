@@ -97,9 +97,6 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 mkdir -p ~/.config/nvim/
 ln -sf $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
 
-# p10k
-ln -sf $ASSETS_DIR/p10k.zsh $HOME/.p10k.zsh
-
 #tmux
 ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
 
