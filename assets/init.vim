@@ -86,7 +86,7 @@ let g:polyglot_disabled = ['jsx']
 " mode is handled by lightline
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'onedark',
+  \ 'colorscheme': 'nightfly',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -115,7 +115,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'joshdick/onedark.vim'
+Plug 'bluz71/vim-nightfly-guicolors'
+"Plug 'joshdick/onedark.vim'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
@@ -232,6 +233,11 @@ if exists('+termguicolors')
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-let g:onedark_terminal_italics = 1
 syntax on
-colorscheme onedark
+"let g:onedark_terminal_italics = 1
+"colorscheme onedark
+
+let g:nightflyCursorColor = 1
+let g:nightflyUnderlineMatchParen = 1
+let g:nightflyFloatingFZF = 1
+colorscheme nightfly
