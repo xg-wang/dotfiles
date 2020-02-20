@@ -1,6 +1,6 @@
 [user]
-  name = Thomas Wang
-  email = wangxgwxg@gmail.com
+	name = Thomas Wang
+	email = wangxgwxg@gmail.com
   gpgsign = false
 
 [include]
