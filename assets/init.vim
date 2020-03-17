@@ -116,7 +116,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'bluz71/vim-nightfly-guicolors'
-"Plug 'joshdick/onedark.vim'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
@@ -227,33 +226,25 @@ set signcolumn=yes
 autocmd BufWritePost * GitGutter
 "" }}
 
+"" Markdown
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
 " Theme
+" https://github.com/alacritty/alacritty/issues/109
+" https://github.com/kovidgoyal/kitty/issues/160
+" Terminal.app on macOS and xterm on Unix do not support true colors
 if exists('+termguicolors')
+  " Needed for Vim but not Neovim inside tmux
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 syntax on
-"let g:onedark_terminal_italics = 1
-"colorscheme onedark
 
 let g:nightflyCursorColor = 1
+" let g:nightflyTerminalColors = 0
 let g:nightflyUnderlineMatchParen = 1
-let g:nightflyFloatingFZF = 1
-if has('nvim')
-    function! FloatingFZF()
-        let width = float2nr(&columns * 0.85)
-        let height = float2nr(&lines * 0.70)
-        let opts = { 'relative': 'editor',
-                    \ 'row': (&lines - height) / 2,
-                    \ 'col': (&columns - width) / 2,
-                    \ 'width': width,
-                    \ 'height': height,
-                    \ 'style': 'minimal'}
-
-        let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    endfunction
-
-    let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-endif
+" let g:nightflyUndercurls = 0
+" let g:nightflyItalics = 0
 colorscheme nightfly
