@@ -15,14 +15,7 @@ if [[ `uname` == "Darwin" ]]; then
   brew update
 
   # Install things with homebrew
-  brew install git zsh node yarn ruby
-  brew install wget hub tree ack ripgrep
-  brew install git-extras
-  brew install diff-so-fancy
-  brew install neovim
-
-  # https://github.com/romkatv/powerlevel10k#fonts
-  cp asseets/fonts/* ~/Library/Fonts/
+  brew bundle
 else
   ##
   # Linux
