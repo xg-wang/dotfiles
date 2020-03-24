@@ -93,10 +93,6 @@ ln -sf $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
 #tmux
 ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
 
-# alacritty
-mkdir -p ~/.config/alacritty
-ln -sf $ASSETS_DIR/alacritty.yml $HOME/.config/alacritty/alacritty.yml
-
 # Kitty
 mkdir -p ~/.config/kitty
 ln -sf $ASSETS_DIR/kitty.conf $HOME/.config/kitty/kitty.conf
