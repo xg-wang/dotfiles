@@ -35,11 +35,10 @@ GIT_EXTRAS=/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 # Git
 alias g='git'
 # Branch (b)
-alias gba='git branch --all --verbose'
+alias gba='git branch --all -vv' # If given twice, print the path of the linked worktree (if any) and the name of the upstream branch, as well
 alias gbd='git branch --delete'
 alias gbD='git branch --delete --force'
-alias gbl='git branch --verbose'
-alias gbL='git branch --all --verbose'
+alias gbl='git branch -vv'
 # Log (l)
 alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'
 alias gls='git log --topo-order --stat --pretty=format:"${_git_log_medium_format}"'
