@@ -106,6 +106,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'motus/pig.vim'
 Plug 'joukevandermaas/vim-ember-hbs'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
@@ -242,6 +243,7 @@ if exists('+termguicolors')
 endif
 syntax on
 
+let g:indentLine_setColors = 0
 let g:nightflyCursorColor = 1
 " let g:nightflyTerminalColors = 0
 let g:nightflyUnderlineMatchParen = 1
