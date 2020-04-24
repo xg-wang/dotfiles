@@ -22,16 +22,24 @@ set expandtab
 filetype plugin indent on
 
 " AutoReload
-" Triger `autoread` when files changes on disk
-" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-" Notification after file change
-" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+"
+augroup AutoReloadStuff
+  au!
+  " Triger `autoread` when files changes on disk
+  " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+  " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+  " Notification after file change
+  " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+  autocmd FileChangedShellPost *
+    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+augroup END
 
 " Terminal
+augroup TerminalStuff
+  au!
+  au TermOpen * setlocal nonumber norelativenumber
+augroup END
 command! -nargs=* T belowright split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
 nnoremap <C-t> :T<cr>:resize20<cr>
@@ -121,14 +129,17 @@ Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
 "" File Explorer Nerdtree {{
-" Open NERDTree and move the cursor to the file editing area
-"autocmd VimEnter * NERDTree | wincmd p
+augroup NerdtreeStuff
+  au!
+  " Open NERDTree and move the cursor to the file editing area
+  "autocmd VimEnter * NERDTree | wincmd p
+  " Close vim if the only window left open is a NERDTree
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 " Open NERDTree with `Ctrl+n`
 nmap <C-n> :NERDTreeToggle<CR>
 " Reveal file with `Ctrol+m`
 nmap <C-m> :NERDTreeFind<CR>
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1 " This also ignores .gitignore
 let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'tmp', '.pnp']
 let NERDTreeAutoDeleteBuffer = 1
@@ -192,8 +203,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " Use enter to confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -203,8 +212,13 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup CocStuff
+  au!
+  " Close preview window when completion is done.
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 "" }}
 
 "" vim-js-pretty-template {{
@@ -223,8 +237,11 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "" vim-gitgutter {{
 set signcolumn=yes
-" Update signs when saving file
-autocmd BufWritePost * GitGutter
+augroup VimGitgutterStuff
+  au!
+  " Update signs when saving file
+  autocmd BufWritePost * GitGutter
+augroup END
 "" }}
 
 "" Markdown
