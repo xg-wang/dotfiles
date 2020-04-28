@@ -6,7 +6,6 @@
 [include]
   path = ~/.gitconfig.d/gitalias.txt
   path = ~/.gitconfig.d/gitconfig-linkedin.txt
-  path = ~/.gitconfig.d/diff-so-fancy-config.txt
 
 [alias]
   rawdiff = !git --no-pager diff --no-color
@@ -23,20 +22,10 @@
 
 [core]
   excludesfile = /Users/xwang5/.gitignore_global
-	pager = diff-so-fancy | less --tabs=4 -RFX
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-[color]
-	ui = true
+  pager = delta --plus-color="#012800" --minus-color="#340001"
+
+[interactive]
+  diffFilter = delta --color-only
+
 [url "git@github.com:"]
 	insteadOf = https://github.com/
