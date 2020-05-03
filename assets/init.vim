@@ -98,7 +98,7 @@ let g:lightline = {
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-  \             [ 'cocstatus', 'readonly', 'filename', 'modified' ]
+  \             [ 'cocstatus', 'readonly' ]
   \           ]
   \ },
   \ 'component_function': {
@@ -165,6 +165,7 @@ let NERDTreeMinimalUI = 1
 "" fzf {{
 " fzf installed using Homebrew
 nnoremap <C-p> :Files<CR>
+let g:fzf_preview_window = 'right:60%'
 "" }}
 
 "" coc.vim {{
@@ -242,7 +243,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format)
 
 augroup CocStuff
   au!
@@ -275,11 +276,11 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-" Use <TAB> for selections ranges.
+" Use <leader>d for selections ranges. <TAB> conflicts neovim jump-motions
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+nmap <leader>d <Plug>(coc-range-select)
+xmap <leader>d <Plug>(coc-range-select)
 
 " Mappings using CoCList:
 " Show all diagnostics.
