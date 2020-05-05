@@ -44,7 +44,8 @@ command! -nargs=* T belowright split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
 nnoremap <C-t> :T<cr>:resize20<cr>
 " To map <Esc> to exit terminal-mode, disable prezto key-binding first
-tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>
+
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
