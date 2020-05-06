@@ -5,6 +5,9 @@ set clipboard+=unnamedplus
 if has('mouse')
   set mouse=a
 endif
+" Shows the effects of a command incrementally, as you type.
+" Also shows partial off-screen results in a preview window.
+set inccommand=split
 
 " set the title of the window to the filename
 set title
