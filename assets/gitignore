@@ -1,5 +1,7 @@
-# MacOS
 .vscode/
+.git-blame-ignore-revs
+
+# MacOS
 
 # General
 .DS_Store
