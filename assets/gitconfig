@@ -29,6 +29,5 @@
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-
-[blame]
-	ignoreRevsFile = .git-blame-ignore-revs
+[pull]
+	ff = only

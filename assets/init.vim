@@ -25,7 +25,6 @@ set expandtab
 filetype plugin indent on
 
 " AutoReload
-"
 augroup AutoReloadStuff
   au!
   " Triger `autoread` when files changes on disk
@@ -93,6 +92,13 @@ nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 let g:javascript_plugin_jsdoc = 1
 "" }}
 let g:polyglot_disabled = ['jsx']
+
+"" set filetypes
+augroup SetFileTypes
+  au!
+  autocmd BufRead,BufNewFile *.avsc filetype=json
+augroup END
+
 
 " Status bar
 " mode is handled by lightline
@@ -167,8 +173,7 @@ let NERDTreeMinimalUI = 1
 "" }}
 
 "" fzf {{
-" fzf installed using Homebrew
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 let g:fzf_preview_window = 'right:60%'
 "" }}
 
