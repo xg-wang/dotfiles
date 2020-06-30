@@ -92,6 +92,7 @@ ln -sf $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
 
 #tmux
 ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Kitty
 mkdir -p ~/.config/kitty

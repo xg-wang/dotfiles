@@ -104,7 +104,7 @@ augroup END
 " mode is handled by lightline
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'nightfly',
+  \ 'colorscheme': 'nord',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
@@ -136,7 +136,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'arcticicestudio/nord-vim'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
@@ -348,10 +348,12 @@ if exists('+termguicolors')
 endif
 syntax on
 
-let g:indentLine_setColors = 0
-let g:nightflyCursorColor = 1
-" let g:nightflyTerminalColors = 0
-let g:nightflyUnderlineMatchParen = 1
-" let g:nightflyUndercurls = 0
-" let g:nightflyItalics = 0
-colorscheme nightfly
+let g:indentLine_color_term = 0
+let g:indentLine_bgcolor_term = "NONE"
+let g:indentLine_color_gui = '#3b4252'
+let g:indentLine_bgcolor_gui = 'NONE'
+
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+colorscheme nord
