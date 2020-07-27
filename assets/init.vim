@@ -173,13 +173,8 @@ let NERDTreeMinimalUI = 1
 
 "" fzf {{
 nnoremap <C-p> :GFiles<CR>
-let g:fzf_preview_window = 'right:60%'
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-" Border color
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' } }
-" Border style (rounded / sharp / horizontal)
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
 "" }}
 
 "" coc.vim {{
