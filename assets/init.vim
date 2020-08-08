@@ -104,7 +104,7 @@ augroup END
 " mode is handled by lightline
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'nord',
+  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
@@ -136,7 +136,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'arcticicestudio/nord-vim', {'branch': 'develop'}
+Plug 'gruvbox-community/gruvbox'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 call plug#end()
 
@@ -349,12 +349,10 @@ if exists('+termguicolors')
 endif
 syntax on
 
-let g:indentLine_color_term = 0
-let g:indentLine_bgcolor_term = "NONE"
-let g:indentLine_color_gui = '#3b4252'
-let g:indentLine_bgcolor_gui = 'NONE'
+" let g:indentLine_color_term = 0
+" let g:indentLine_bgcolor_term = "NONE"
+" let g:indentLine_color_gui = '#3b4252'
+" let g:indentLine_bgcolor_gui = 'NONE'
 
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
-colorscheme nord
+let g:gruvbox_italic = 1
+colorscheme gruvbox
