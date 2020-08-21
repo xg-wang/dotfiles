@@ -5,6 +5,7 @@
 
 [include]
   path = ~/.gitconfig.d/gitalias.txt
+[includeIf "gitdir:~/Code/linkedin/"]
   path = ~/.gitconfig.d/gitconfig-linkedin.txt
 
 [alias]
