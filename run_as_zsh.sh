@@ -8,11 +8,7 @@
 # zsh
 
 # install prezto
-if [[ `uname` == "Darwin" ]]; then
-  git clone --recursive -b my-mac https://github.com/xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-else
-  git clone --recursive -b my-linux https://github.com/xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-fi
+git clone --recursive -b my-mac https://github.com/xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
