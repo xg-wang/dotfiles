@@ -174,7 +174,7 @@ let NERDTreeMinimalUI = 1
 "" fzf {{
 nnoremap <C-p> :GFiles<CR>
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 "" }}
 
 "" coc.vim {{
