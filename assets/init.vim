@@ -142,6 +142,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'gruvbox-community/gruvbox'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
+Plug 'dpelle/vim-LanguageTool'
 call plug#end()
 
 "" File Explorer Nerdtree {{
@@ -349,6 +350,10 @@ augroup END
 "" Markdown
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+
+"" LanguageTool
+let g:languagetool_jar = '/usr/local/opt/languagetool/libexec/languagetool-commandline.jar'
+let g:languagetool_lang = 'en-US'
 
 " Theme
 " https://github.com/alacritty/alacritty/issues/109
