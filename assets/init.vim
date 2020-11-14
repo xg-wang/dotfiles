@@ -143,7 +143,16 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'gruvbox-community/gruvbox'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'dpelle/vim-LanguageTool'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 call plug#end()
+
+"" Goyo + Limelight {{
+augroup GoyoIntegrateLimelight
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
+augroup END
+"" }}
 
 "" File Explorer Nerdtree {{
 augroup NerdtreeStuff
