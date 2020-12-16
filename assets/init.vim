@@ -24,10 +24,23 @@ set shiftwidth  =2
 set expandtab
 filetype plugin indent on
 
+" Spell
+set spelllang=en_us
+set spell
+autocmd FileType gitcommit setlocal spell
+autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
+syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
+syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+
+" https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " AutoReload
 augroup AutoReloadStuff
   au!
-  " Triger `autoread` when files changes on disk
+  " Trigger `autoread` when files changes on disk
   " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
   " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
   autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
@@ -41,6 +54,7 @@ augroup END
 augroup TerminalStuff
   au!
   au TermOpen * setlocal nonumber norelativenumber
+  au TermOpen * setlocal nospell
 augroup END
 command! -nargs=* T belowright split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
@@ -62,14 +76,13 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" h/t to Raghu Rao
 nnoremap <Space> :
 xnoremap <Space> :
 
 " Window
 set splitright
 
-" Don't use arrowkeys
+" Don't use arrow keys
 noremap  <Up>    <NOP>
 noremap  <Down>  <NOP>
 noremap  <Left>  <NOP>
@@ -91,13 +104,13 @@ nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
 " Replace current word
 nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 
-"" vim-javascript {{
+"" Vim-JavaScript {{
 " Languages Syntax
 let g:javascript_plugin_jsdoc = 1
 "" }}
 let g:polyglot_disabled = ['jsx']
 
-"" set filetypes
+"" set file types
 augroup SetFileTypes
   au!
   autocmd BufRead,BufNewFile *.avsc filetype=json
@@ -144,15 +157,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'dpelle/vim-LanguageTool'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 call plug#end()
-
-"" Goyo + Limelight {{
-augroup GoyoIntegrateLimelight
-  autocmd! User GoyoEnter Limelight
-  autocmd! User GoyoLeave Limelight!
-augroup END
-"" }}
 
 "" Git {{
 nmap <leader>gj :diffget //3<CR>
@@ -388,4 +393,8 @@ syntax on
 " let g:indentLine_bgcolor_gui = 'NONE'
 
 let g:gruvbox_italic = 1
+" Handle SpellBad
+" https://github.com/morhetz/gruvbox/issues/175#issuecomment-390428621
+" https://github.com/morhetz/gruvbox/pull/50
+let g:gruvbox_guisp_fallback = "fg"
 colorscheme gruvbox
