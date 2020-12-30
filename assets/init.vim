@@ -27,6 +27,7 @@ filetype plugin indent on
 " Spell
 set spelllang=en_us
 set spell
+set spelloptions=camel
 autocmd FileType gitcommit setlocal spell
 autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
 syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
