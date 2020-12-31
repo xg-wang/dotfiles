@@ -223,7 +223,12 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=yes
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Suggestion UX
 " https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
@@ -290,7 +295,7 @@ augroup CocStuff
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  " Use auocmd to force lightline update.
+  " Use autocmd to force lightline update.
   autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 augroup END
 
