@@ -1,3 +1,4 @@
 {
-  "tsserver.implicitProjectConfig.experimentalDecorators": true
+  "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "css.lint.unknownAtRules": "ignore"
 }
