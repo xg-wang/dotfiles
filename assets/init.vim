@@ -109,7 +109,7 @@ nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 " Languages Syntax
 let g:javascript_plugin_jsdoc = 1
 "" }}
-let g:polyglot_disabled = ['jsx']
+let g:polyglot_disabled = ['jsx', 'handlebars']
 
 "" set file types
 augroup SetFileTypes
