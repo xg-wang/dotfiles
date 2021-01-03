@@ -1,4 +1,5 @@
 {
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.suggestionActions.enabled": false,
   "css.lint.unknownAtRules": "ignore"
 }
