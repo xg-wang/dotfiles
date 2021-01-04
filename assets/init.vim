@@ -1,7 +1,14 @@
 set number relativenumber
 set lazyredraw
 let mapleader = ','
+set laststatus=2 " Always display the status line
+set autowrite " Automatically :write before running commands
+" set showcmd
+set noshowcmd " Show (partial) command in the last line of the screen. Set
+              " this option off if your terminal is slow.
 set clipboard+=unnamedplus
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
 if has('mouse')
   set mouse=a
 endif
@@ -26,8 +33,11 @@ filetype plugin indent on
 
 " Spell
 set spelllang=en_us
+set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
 set spell
-set spelloptions=camel
+if has("patch-8.2.1678")
+  set spelloptions=camel
+endif
 autocmd FileType gitcommit setlocal spell
 autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
 syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
