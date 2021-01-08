@@ -9,11 +9,8 @@ fi
 export PATH="/usr/local/bin:$PATH"
 
 # neovim
-#alias vim="nvim"
+# alias vim="nvim"
 alias n="nvim"
-
-VISUAL=nvim
-EDITOR=nvim
 
 # node
 export NODE_OPTIONS="--max-old-space-size=8192"

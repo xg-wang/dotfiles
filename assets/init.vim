@@ -147,6 +147,7 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
