@@ -35,7 +35,8 @@ filetype plugin indent on
 set spelllang=en_us
 set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
 set spell
-if has("patch-8.2.1678")
+" https://github.com/neovim/neovim/pull/12955
+if has("patch-8.2.0953")
   set spelloptions=camel
 endif
 autocmd FileType gitcommit setlocal spell
