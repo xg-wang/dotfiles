@@ -37,13 +37,13 @@ set spelllang=en_us
 set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
 set spell
 " https://github.com/neovim/neovim/pull/12955
-if has("patch-8.2.0953")
+if exists('&spelloptions')
   set spelloptions=camel
 endif
 autocmd FileType gitcommit setlocal spell
 autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
-syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
-syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+" syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
+" syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
 
 " https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -121,7 +121,7 @@ nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 " Languages Syntax
 let g:javascript_plugin_jsdoc = 1
 "" }}
-let g:polyglot_disabled = ['jsx', 'handlebars']
+let g:polyglot_disabled = ['jsx']
 
 "" set file types
 augroup SetFileTypes
@@ -158,7 +158,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'motus/pig.vim'
-Plug 'joukevandermaas/vim-ember-hbs'
+"Plug 'joukevandermaas/vim-ember-hbs'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
