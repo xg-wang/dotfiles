@@ -149,6 +149,7 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-commentary'
@@ -389,6 +390,10 @@ augroup END
 "" Markdown
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+" https://github.com/iamcco/markdown-preview.nvim
+" nmap <leader>mp <Plug>MarkdownPreview
+" nmap <leader>mps <Plug>MarkdownPreviewStop
+nmap <leader>mp <Plug>MarkdownPreviewToggle
 
 " Theme
 " https://github.com/alacritty/alacritty/issues/109
