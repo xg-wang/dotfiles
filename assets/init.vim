@@ -412,7 +412,7 @@ syntax on
 " let g:indentLine_color_gui = '#3b4252'
 " let g:indentLine_bgcolor_gui = 'NONE'
 
-let g:gruvbox_italic = 1
+let g:gruvbox_italic = 0
 " Handle SpellBad
 " https://github.com/morhetz/gruvbox/issues/175#issuecomment-390428621
 " https://github.com/morhetz/gruvbox/pull/50
