@@ -7,7 +7,7 @@ mkdir $HOME/Code
 xcode-select --install
 
 # homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 sudo chown -R $(whoami) /usr/local/Cellar
 
@@ -16,8 +16,8 @@ brew update
 # Install things with homebrew
 brew bundle
 
-# diff-so-fancy
-yarn global add diff-so-fancy
+# Install nightly built neovim
+brew install --HEAD luajit neovim
 
 # Install things with zsh
 zsh ./run_as_zsh.sh
