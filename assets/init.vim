@@ -218,6 +218,11 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 "" }}
 
 "" coc.vim {{
+
+" Extensions
+" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver']
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
