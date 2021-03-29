@@ -22,6 +22,9 @@ export FZF_EXCLUDE=".git,node_modules,tmp,dist,build,bin,concat-stats-for"
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF_EXCLUDE}/*\" 2> /dev/null"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
+# Goto icloud address
+alias ICLOUDPATH="~/Library/Mobile Documents/com~apple~CloudDocs"
+
 # Get IP address
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
 
