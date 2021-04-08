@@ -117,12 +117,6 @@ nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
 " Replace current word
 nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 
-"" Vim-JavaScript {{
-" Languages Syntax
-let g:javascript_plugin_jsdoc = 1
-"" }}
-let g:polyglot_disabled = ['jsx']
-
 "" set file types
 augroup SetFileTypes
   au!
@@ -134,7 +128,7 @@ augroup END
 " mode is handled by lightline
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  "\ 'colorscheme': 'nightfly',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'filename', 'modified', 'gitbranch', 'readonly' ],
@@ -149,6 +143,11 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'romgrk/nvim-treesitter-context'
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
+"Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'Yggdroot/indentLine'
@@ -157,8 +156,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'motus/pig.vim'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'motus/pig.vim'
+"Plug 'kevinoid/vim-jsonc'
 "Plug 'joukevandermaas/vim-ember-hbs'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
@@ -168,11 +168,26 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'gruvbox-community/gruvbox'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'junegunn/goyo.vim'
-Plug 'kevinoid/vim-jsonc'
 call plug#end()
+
+"" Tree-Sitter {{
+" https://github.com/nvim-treesitter/nvim-treesitter#available-modules
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  indent = {
+    enable = true
+  },
+  highlight = {
+    enable = true
+  }
+}
+EOF
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+"" "}}
 
 "" Git {{
 nmap <leader>gj :diffget //3<CR>
@@ -301,7 +316,7 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format)
 
 augroup CocStuff
@@ -417,9 +432,9 @@ syntax on
 " let g:indentLine_color_gui = '#3b4252'
 " let g:indentLine_bgcolor_gui = 'NONE'
 
-let g:gruvbox_italic = 0
+"let g:gruvbox_italic = 0
 " Handle SpellBad
 " https://github.com/morhetz/gruvbox/issues/175#issuecomment-390428621
 " https://github.com/morhetz/gruvbox/pull/50
-let g:gruvbox_guisp_fallback = "fg"
+" let g:gruvbox_guisp_fallback = "fg"
 colorscheme gruvbox

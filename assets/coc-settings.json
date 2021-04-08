@@ -1,5 +1,6 @@
 {
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
+  "tsserver.npm": "~/.volta/bin/npm",
   "javascript.suggestionActions.enabled": false,
   "css.lint.unknownAtRules": "ignore"
 }
