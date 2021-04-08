@@ -156,6 +156,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+" https://github.com/nvim-telescope/telescope.nvim
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 "Plug 'sheerun/vim-polyglot'
 "Plug 'motus/pig.vim'
 "Plug 'kevinoid/vim-jsonc'
@@ -230,6 +234,14 @@ let NERDTreeMinimalUI = 1
 nnoremap <C-p> :GFiles<CR>
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+"" }}
+
+"" Telescope {{
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" More pickers: https://github.com/nvim-telescope/telescope.nvim#pickers
 "" }}
 
 "" coc.vim {{
