@@ -35,6 +35,7 @@ filetype plugin indent on
 " Spell
 set spelllang=en_us
 set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
+set spellcapcheck=
 set spell
 " https://github.com/neovim/neovim/pull/12955
 if exists('&spelloptions')
