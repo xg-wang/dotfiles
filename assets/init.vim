@@ -177,6 +177,7 @@ Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'junegunn/goyo.vim'
 call plug#end()
 
+au BufNewFile,BufRead *.hbs set filetype=glimmer
 "" Tree-Sitter {{
 " https://github.com/nvim-treesitter/nvim-treesitter#available-modules
 lua <<EOF
@@ -192,6 +193,7 @@ require'nvim-treesitter.configs'.setup {
 EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 "" "}}
 
 "" Git {{
