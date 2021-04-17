@@ -12,7 +12,7 @@ export PATH="/usr/local/bin:$PATH"
 alias n="nvim"
 
 # node
-export NODE_OPTIONS="--max-old-space-size=8192"
+#export NODE_OPTIONS="--max-old-space-size=8192"
 
 # homebrew ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"

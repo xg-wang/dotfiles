@@ -171,11 +171,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'junegunn/goyo.vim'
 call plug#end()
+
+let g:user_emmet_leader_key='<C-Z>'
 
 au BufNewFile,BufRead *.hbs set filetype=glimmer
 "" Tree-Sitter {{
@@ -397,6 +398,10 @@ nnoremap <silent><nowait> <leader><space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <leader><space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
+
+" coc-git
+nmap ]c <Plug>(coc-git-nextchunk)
+nmap [c <Plug>(coc-git-prevchunk)
 "" }}
 
 "" vim-js-pretty-template {{
@@ -411,15 +416,6 @@ nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
 "   autocmd FileType typescript JsPreTmpl
 " endfunction
 "call EnableTemplateLiteralColors()
-"" }}
-
-"" vim-gitgutter {{
-set signcolumn=yes
-augroup VimGitgutterStuff
-  au!
-  " Update signs when saving file
-  autocmd BufWritePost * GitGutter
-augroup END
 "" }}
 
 "" Markdown
