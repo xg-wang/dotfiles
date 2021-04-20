@@ -1,3 +1,5 @@
+if !exists('g:vscode')
+
 set number relativenumber
 set lazyredraw
 let mapleader = ','
@@ -43,8 +45,8 @@ if exists('&spelloptions')
 endif
 autocmd FileType gitcommit setlocal spell
 autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
-" syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
-" syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
+syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
 
 " https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -145,7 +147,7 @@ let g:lightline = {
 "" Vim-Plug
 call plug#begin()
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'romgrk/nvim-treesitter-context'
+"Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
 Plug 'npxbr/gruvbox.nvim'
 "Plug 'gruvbox-community/gruvbox'
@@ -449,3 +451,5 @@ syntax on
 " https://github.com/morhetz/gruvbox/pull/50
 " let g:gruvbox_guisp_fallback = "fg"
 colorscheme gruvbox
+
+endif
