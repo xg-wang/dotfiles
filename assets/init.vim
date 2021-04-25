@@ -197,6 +197,7 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+set foldlevelstart=1
 "" "}}
 
 "" Git {{
@@ -239,7 +240,7 @@ let NERDTreeMinimalUI = 1
 "" fzf {{
 nnoremap <C-p> :GFiles<CR>
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 "" }}
 
 "" Telescope {{

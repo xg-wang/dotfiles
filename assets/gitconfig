@@ -26,7 +26,7 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [interactive]
-  diffFilter = delta --color-only
+  diffFilter = diff-so-fancy --patch
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
