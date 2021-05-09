@@ -2,6 +2,7 @@ if !exists('g:vscode')
 
 set number relativenumber
 set lazyredraw
+set autowriteall
 let mapleader = ','
 set laststatus=2 " Always display the status line
 set autowrite " Automatically :write before running commands
@@ -11,6 +12,7 @@ set noshowcmd " Show (partial) command in the last line of the screen. Set
 set clipboard+=unnamedplus
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
+set conceallevel=0
 if has('mouse')
   set mouse=a
 endif
@@ -48,10 +50,10 @@ autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
 syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
 syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
 
-" https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" " https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+" map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+" \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+" \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " AutoReload
 augroup AutoReloadStuff
@@ -131,7 +133,7 @@ augroup END
 " mode is handled by lightline
 set noshowmode
 let g:lightline = {
-  "\ 'colorscheme': 'nightfly',
+  \ 'colorscheme': 'nightfly',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'filename', 'modified', 'gitbranch', 'readonly' ],
@@ -149,7 +151,8 @@ call plug#begin()
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 "Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
-Plug 'npxbr/gruvbox.nvim'
+Plug 'bluz71/vim-nightfly-guicolors'
+"Plug 'npxbr/gruvbox.nvim'
 "Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
@@ -176,7 +179,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'junegunn/goyo.vim'
+" On-demand lazy load
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
+
+nnoremap <silent> <leader> :WhichKey ','<CR>
 
 let g:user_emmet_leader_key='<C-Z>'
 
@@ -187,7 +194,7 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   indent = {
-    enable = true
+    enable = false
   },
   highlight = {
     enable = true
@@ -199,6 +206,10 @@ set foldexpr=nvim_treesitter#foldexpr()
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 set foldlevelstart=1
 "" "}}
+
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
 
 "" Git {{
 nmap <leader>gj :diffget //3<CR>
@@ -435,8 +446,8 @@ nmap <leader>mp <Plug>MarkdownPreviewToggle
 " Terminal.app on macOS and xterm on Unix do not support true colors
 if exists('+termguicolors')
   " Needed for Vim but not Neovim inside tmux
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  " let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  " let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 syntax on
@@ -451,6 +462,7 @@ syntax on
 " https://github.com/morhetz/gruvbox/issues/175#issuecomment-390428621
 " https://github.com/morhetz/gruvbox/pull/50
 " let g:gruvbox_guisp_fallback = "fg"
-colorscheme gruvbox
+let g:nightflyCursorColor = 1
+colorscheme nightfly
 
 endif
