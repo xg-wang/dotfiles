@@ -148,6 +148,7 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'vimwiki/vimwiki'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 "Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
@@ -185,6 +186,10 @@ call plug#end()
 
 nnoremap <silent> <leader> :WhichKey ','<CR>
 
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian', 'path_html': '~/.vimwiki/public_html/'}]
+
 let g:user_emmet_leader_key='<C-Z>'
 
 au BufNewFile,BufRead *.hbs set filetype=glimmer
@@ -204,7 +209,7 @@ EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-set foldlevelstart=1
+set foldlevelstart=10
 "" "}}
 
 nnoremap <leader>d "_d
@@ -266,7 +271,18 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Extensions
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = [
+      \ 'coc-json',
+      \ 'coc-git',
+      \ 'coc-tsserver',
+      \ ]
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
 " TextEdit might fail if hidden is not set.
 set hidden

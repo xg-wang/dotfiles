@@ -2,5 +2,7 @@
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "tsserver.npm": "~/.volta/bin/npm",
   "javascript.suggestionActions.enabled": false,
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "prettier.disableSuccessMessage": true,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
 }
