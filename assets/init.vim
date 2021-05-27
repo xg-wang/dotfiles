@@ -434,7 +434,7 @@ nmap ]c <Plug>(coc-git-nextchunk)
 nmap [c <Plug>(coc-git-prevchunk)
 
 " https://github.com/neoclide/coc.nvim/wiki/Multiple-cursors-support
-nmap <expr> <silent> <C-d> <SID>select_current_word()
+nmap <expr> <silent> <A-d> <SID>select_current_word()
 function! s:select_current_word()
   if !get(b:, 'coc_cursors_activated', 0)
     return "\<Plug>(coc-cursors-word)"
