@@ -20,7 +20,7 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 # fzf
 export FZF_EXCLUDE=".git,node_modules,tmp,dist,build,bin,concat-stats-for"
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF_EXCLUDE}/*\" 2> /dev/null"
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+export FZF_DEFAULT_OPTS="--inline-info"
 
 # Goto icloud address
 alias ICLOUDPATH="~/Library/Mobile Documents/com~apple~CloudDocs"
@@ -48,3 +48,8 @@ alias glc='git shortlog --summary --numbered'
 
 # bat
 export BAT_THEME=gruvbox-dark
+
+# Python
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

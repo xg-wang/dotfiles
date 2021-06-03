@@ -3,7 +3,7 @@ if !exists('g:vscode')
 set number relativenumber
 set lazyredraw
 set autowriteall
-let mapleader = ','
+"let mapleader = ','
 set laststatus=2 " Always display the status line
 set autowrite " Automatically :write before running commands
 " set showcmd
@@ -120,7 +120,7 @@ nnoremap <leader>ct :let @+=expand("%:t")<CR>
 nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
 
 " Replace current word
-nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
+nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
 
 "" set file types
 augroup SetFileTypes
@@ -148,6 +148,7 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 "Plug 'romgrk/nvim-treesitter-context'
@@ -184,7 +185,19 @@ Plug 'junegunn/goyo.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
 
-nnoremap <silent> <leader> :WhichKey ','<CR>
+"" Goyo {{
+function! s:goyo_enter()
+  set number relativenumber
+endfunction
+
+function! s:goyo_leave()
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+"" }}
+
+nnoremap <silent> <leader> :WhichKey '\'<CR>
 
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
@@ -275,6 +288,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-git',
       \ 'coc-tsserver',
+      \ 'coc-tailwindcss',
       \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
@@ -362,8 +376,8 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format)
+vmap <leader>fm <Plug>(coc-format-selected)
+nmap <leader>fm <Plug>(coc-format)
 
 augroup CocStuff
   au!
