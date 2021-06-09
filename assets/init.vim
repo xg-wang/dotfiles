@@ -230,9 +230,10 @@ xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
 
 "" Git {{
-nmap <leader>gj :diffget //3<CR>
-nmap <leader>gf :diffget //2<CR>
-nmap <leader>gs :G<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
+set diffopt=filler,vertical
 "" }}
 
 "" File Explorer Nerdtree {{
