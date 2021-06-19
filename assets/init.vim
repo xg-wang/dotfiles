@@ -164,10 +164,15 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+
+" Telescope
 " https://github.com/nvim-telescope/telescope.nvim
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+" Telescope extensions
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 "Plug 'sheerun/vim-polyglot'
 "Plug 'motus/pig.vim'
 "Plug 'kevinoid/vim-jsonc'
@@ -279,7 +284,22 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " More pickers: https://github.com/nvim-telescope/telescope.nvim#pickers
-"" }}
+
+lua <<EOF
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+require('telescope').load_extension('fzf')
+EOF
+" }}
 
 "" coc.vim {{
 
