@@ -162,6 +162,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Telescope
 " https://github.com/nvim-telescope/telescope.nvim
@@ -270,8 +272,13 @@ let NERDTreeMinimalUI = 1
 "     \ }
 "" }}
 
+"" fzf {{
+nnoremap <C-p> :GFiles<CR>
+" https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+"" }}
+
 "" Telescope {{
-nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
