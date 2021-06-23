@@ -236,8 +236,8 @@ xnoremap <leader>p "_dP
 
 "" Git {{
 nnoremap <leader>gd :Gvdiff<CR>
-nnoremap gdh :diffget //2<CR>
-nnoremap gdl :diffget //3<CR>
+nnoremap <leader>gdh :diffget //2<CR>
+nnoremap <leader>gdl :diffget //3<CR>
 set diffopt=filler,vertical
 "" }}
 
@@ -273,12 +273,12 @@ let NERDTreeMinimalUI = 1
 "" }}
 
 "" fzf {{
-nnoremap <C-p> :GFiles<CR>
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 "" }}
 
 "" Telescope {{
+nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
