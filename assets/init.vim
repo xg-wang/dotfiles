@@ -547,6 +547,7 @@ syntax on
 " let g:indentLine_bgcolor_term = "NONE"
 " let g:indentLine_color_gui = '#3b4252'
 " let g:indentLine_bgcolor_gui = 'NONE'
+let g:vim_json_conceal = 0
 
 "let g:gruvbox_italic = 0
 " Handle SpellBad
