@@ -23,10 +23,23 @@
 
 [core]
   excludesfile = /Users/xwang5/.gitignore_global
-	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+
+[delta]
+  plus-style = "syntax #012800"
+  minus-style = "syntax #340001"
+  syntax-theme = Coldark Dark
+  navigate = true
+  line-numbers = true
+  side-by-side = true
 
 [interactive]
-  diffFilter = diff-so-fancy --patch
+  diffFilter = /usr/local/bin/delta --color-only
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
@@ -41,17 +54,6 @@
 	tool = nvimdiff3
 [color]
 	ui = true
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+
 [init]
 	defaultBranch = main
