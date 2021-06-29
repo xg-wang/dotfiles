@@ -149,7 +149,7 @@ let g:lightline = {
 "" Vim-Plug
 call plug#begin()
 Plug 'mhinz/vim-startify'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 "Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
@@ -205,9 +205,9 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 nnoremap <silent> <leader> :WhichKey '\'<CR>
 
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_list = [{'path': '~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian', 'path_html': '~/.vimwiki/public_html/'}]
+" let g:vimwiki_list = [{'path': '~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian',
+"                      \ 'path_html': '~/.vimwiki/public_html/',
+"                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:user_emmet_leader_key='<C-Z>'
 

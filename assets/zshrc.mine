@@ -77,3 +77,6 @@ eval "$(pyenv init --path)"
 # Load pyenv into the shell by adding
 # the following to ~/.zshrc:
 eval "$(pyenv init -)"
+
+# Wiki
+alias wiki='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian && nvim .'
