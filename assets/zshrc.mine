@@ -26,6 +26,11 @@ fi
 
 export PATH="/usr/local/bin:$PATH"
 
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-g -i -M -R -S -w -z-4'
+
 # neovim
 # alias vim="nvim"
 alias n="nvim"
@@ -71,12 +76,10 @@ alias git-delta='/usr/local/bin/delta'
 export BAT_THEME=Coldark-Dark
 
 # Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+# https://github.com/pyenv/pyenv#installation
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
-# Load pyenv into the shell by adding
-# the following to ~/.zshrc:
-eval "$(pyenv init -)"
 
 # Wiki
 alias wiki='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian && nvim .'

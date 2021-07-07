@@ -176,7 +176,7 @@ Plug 'fannheyward/telescope-coc.nvim'
 
 "Plug 'sheerun/vim-polyglot'
 "Plug 'motus/pig.vim'
-"Plug 'kevinoid/vim-jsonc'
+Plug 'kevinoid/vim-jsonc'
 "Plug 'joukevandermaas/vim-ember-hbs'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
