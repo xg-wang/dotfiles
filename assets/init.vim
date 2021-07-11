@@ -177,6 +177,7 @@ Plug 'fannheyward/telescope-coc.nvim'
 "Plug 'sheerun/vim-polyglot'
 "Plug 'motus/pig.vim'
 Plug 'kevinoid/vim-jsonc'
+Plug 'pantharshit00/vim-prisma'
 "Plug 'joukevandermaas/vim-ember-hbs'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
@@ -311,6 +312,7 @@ let g:coc_global_extensions = [
       \ 'coc-git',
       \ 'coc-tsserver',
       \ 'coc-tailwindcss',
+      \ 'coc-prisma',
       \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
