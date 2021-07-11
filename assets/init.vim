@@ -282,6 +282,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 "" Telescope {{
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fq <cmd>Telescope quickfix<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
