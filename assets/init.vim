@@ -206,7 +206,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 nnoremap <silent> <leader> :WhichKey '\'<CR>
 
-" let g:vimwiki_list = [{'path': '~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian',
+" let g:vimwiki_list = [{'path': '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian',
 "                      \ 'path_html': '~/.vimwiki/public_html/',
 "                      \ 'syntax': 'markdown', 'ext': '.md'}]
 

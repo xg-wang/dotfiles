@@ -82,4 +82,4 @@ export BAT_THEME=Coldark-Dark
 eval "$(pyenv init --path)"
 
 # Wiki
-alias wiki='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian && nvim .'
+alias wiki='cd ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian && nvim .'
