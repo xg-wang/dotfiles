@@ -126,6 +126,10 @@ nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
 augroup SetFileTypes
   au!
   autocmd BufRead,BufNewFile *.avsc filetype=json
+  autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
+  autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
+  autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
+  autocmd BufRead,BufNewFile *.json,*.json5 setfiletype jsonc
 augroup END
 
 
@@ -148,9 +152,10 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
 " Plug 'vimwiki/vimwiki'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
 "Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
 Plug 'bluz71/vim-nightfly-guicolors'
@@ -178,7 +183,7 @@ Plug 'fannheyward/telescope-coc.nvim'
 "Plug 'motus/pig.vim'
 Plug 'kevinoid/vim-jsonc'
 Plug 'pantharshit00/vim-prisma'
-"Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'joukevandermaas/vim-ember-hbs'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -238,8 +243,8 @@ xnoremap <leader>p "_dP
 
 "" Git {{
 nnoremap <leader>gd :Gvdiff<CR>
-nnoremap <leader>gdh :diffget //2<CR>
-nnoremap <leader>gdl :diffget //3<CR>
+nnoremap <leader>gh :diffget //2<CR>
+nnoremap <leader>gl :diffget //3<CR>
 set diffopt=filler,vertical
 "" }}
 
@@ -314,6 +319,7 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-tailwindcss',
       \ 'coc-prisma',
+      \ 'coc-ember',
       \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
@@ -367,15 +373,16 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -396,8 +403,10 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -411,7 +420,7 @@ nmap <leader>fm <Plug>(coc-format)
 augroup CocStuff
   au!
   " Close preview window when completion is done.
-  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  " autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   " Highlight symbol under cursor on CursorHold
   autocmd CursorHold * silent call CocActionAsync('highlight')
   " Setup formatexpr specified filetype(s).
@@ -444,10 +453,14 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
-inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
