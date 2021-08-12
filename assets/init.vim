@@ -181,6 +181,7 @@ Plug 'fannheyward/telescope-coc.nvim'
 
 "Plug 'sheerun/vim-polyglot'
 "Plug 'motus/pig.vim'
+Plug 'GEverding/vim-hocon'
 Plug 'kevinoid/vim-jsonc'
 Plug 'pantharshit00/vim-prisma'
 Plug 'joukevandermaas/vim-ember-hbs'
