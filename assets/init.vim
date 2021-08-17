@@ -180,7 +180,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'fannheyward/telescope-coc.nvim'
 
 "Plug 'sheerun/vim-polyglot'
-"Plug 'motus/pig.vim'
+Plug 'motus/pig.vim'
 Plug 'GEverding/vim-hocon'
 Plug 'kevinoid/vim-jsonc'
 Plug 'pantharshit00/vim-prisma'
