@@ -23,6 +23,7 @@
 
 [core]
   excludesfile = /Users/xwang5/.gitignore_global
+	autocrlf = false
 
 [pager]
   diff = delta

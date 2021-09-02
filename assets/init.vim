@@ -238,8 +238,11 @@ set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 set foldlevelstart=10
 "" "}}
 
+nnoremap <leader>x "_x
+xnoremap <leader>x "_x
 nnoremap <leader>d "_d
 xnoremap <leader>d "_d
+nnoremap <leader>p "_dP
 xnoremap <leader>p "_dP
 
 "" Git {{
@@ -321,6 +324,7 @@ let g:coc_global_extensions = [
       \ 'coc-tailwindcss',
       \ 'coc-prisma',
       \ 'coc-ember',
+      \ 'coc-sql',
       \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
