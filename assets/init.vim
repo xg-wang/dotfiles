@@ -163,7 +163,7 @@ Plug 'bluz71/vim-nightfly-guicolors'
 "Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
@@ -230,6 +230,11 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true
   }
+}
+require("indent_blankline").setup {
+  buftype_exclude = {"terminal"},
+  space_char_blankline = " ",
+  show_current_context = true,
 }
 EOF
 set foldmethod=expr
