@@ -47,7 +47,7 @@ export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF
 export FZF_DEFAULT_OPTS="--inline-info"
 
 # Goto icloud address
-alias ICLOUDPATH="~/Library/Mobile Documents/com~apple~CloudDocs"
+alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
 
 # Get IP address
 alias myip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
