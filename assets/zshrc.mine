@@ -15,7 +15,9 @@ autoload -Uz promptinit
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+if [[ ! "$PATH" == *"$HOME/$VOLTA_HOME/bin"* ]]; then
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
 
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
@@ -24,7 +26,9 @@ autoload -Uz compinit
   compinit
 fi
 
-export PATH="/usr/local/bin:$PATH"
+if [[ ! "$PATH" == *"/usr/local/bin"* ]]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
 
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
@@ -39,7 +43,9 @@ alias n="nvim"
 #export NODE_OPTIONS="--max-old-space-size=8192"
 
 # homebrew ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+if [[ ! "$PATH" == *"/usr/local/opt/ruby/bin"* ]]; then
+  export PATH="/usr/local/opt/ruby/bin:$PATH"
+fi
 
 # fzf
 export FZF_EXCLUDE=".git,node_modules,tmp,dist,build,bin,concat-stats-for"
@@ -80,6 +86,12 @@ export BAT_THEME=Coldark-Dark
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
+
+# Go
+export GOPATH=$(go env GOPATH)
+if [[ ! "$PATH" == *"$GOPATH"* ]]; then
+  export PATH=$PATH:$GOPATH
+fi
 
 # Wiki
 alias wiki='cd ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Obsidian && nvim'
