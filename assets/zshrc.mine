@@ -89,8 +89,8 @@ eval "$(pyenv init --path)"
 
 # Go
 export GOPATH=$(go env GOPATH)
-if [[ ! "$PATH" == *"$GOPATH"* ]]; then
-  export PATH=$PATH:$GOPATH
+if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
+  export PATH=$PATH:$GOPATH/bin
 fi
 
 # Wiki
