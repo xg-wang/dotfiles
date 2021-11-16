@@ -152,6 +152,7 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'rmagatti/auto-session'
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
 " Plug 'vimwiki/vimwiki'
@@ -178,6 +179,7 @@ Plug 'nvim-telescope/telescope.nvim'
 " Telescope extensions
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'fannheyward/telescope-coc.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 "Plug 'sheerun/vim-polyglot'
 Plug 'motus/pig.vim'
@@ -315,6 +317,7 @@ require('telescope').setup {
   }
 }
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('file_browser')
 EOF
 " }}
 
