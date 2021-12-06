@@ -1,3 +1,6 @@
+# -*- mode: gitconfig; -*-
+# vim: set filetype=gitconfig:
+
 [user]
 	name = Thomas Wang
 	email = hi@xgwang.me
