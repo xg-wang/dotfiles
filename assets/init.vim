@@ -152,7 +152,6 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
-Plug 'rmagatti/auto-session'
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
 " Plug 'vimwiki/vimwiki'
