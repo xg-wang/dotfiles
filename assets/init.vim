@@ -152,6 +152,7 @@ let g:lightline = {
 
 "" Vim-Plug
 call plug#begin()
+Plug 'github/copilot.vim'
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
 " Plug 'vimwiki/vimwiki'

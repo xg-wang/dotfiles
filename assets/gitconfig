@@ -21,6 +21,15 @@
   lll = log --graph --topo-order --date=iso8601-strict --no-abbrev-commit --abbrev=40 --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%an <%ae>]%Creset %Cblue%G?%Creset'
   branchauthors = "! for branch in `git branch -r | grep -v /HEAD`;do echo `git show --format=\"%ai %ar by %an\" $branch | head -n 1` \t$branch; done | sort -r"
 
+  # Delete all branches that have already been merged into the main branch.
+  cull-branches-master = !git cull-local-branches-master; git cull-remote-branches-master;
+
+  # Delete all local branches that have been merged into the local main branch.
+  cull-local-branches-master = "!git checkout master && git branch --merged | xargs -r git branch --delete"
+
+  # Delete all remote branches that have been merged into the remote main branch.
+  cull-remote-branches-master = !"git branch --remotes --merged origin/master | sed 's# *origin/##' | grep -v '^master$' | xargs -r -I% git push origin :% 2>&1 | grep --colour=never 'deleted'"
+
 [push]
   default = simple
 
