@@ -9,15 +9,15 @@
 #   promptinit
 #   prompt powerlevel10k
 
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-# export VOLTA_HOME="$HOME/.volta"
-# if [[ ! "$PATH" == *"$HOME/$VOLTA_HOME/bin"* ]]; then
-#   export PATH="$VOLTA_HOME/bin:$PATH"
-# fi
+if [[ ! "$PATH" == *"$HOME/$VOLTA_HOME/bin"* ]]; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
 
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
@@ -79,7 +79,7 @@ alias glc='git shortlog --summary --numbered'
 alias git-delta='/usr/local/bin/delta'
 
 # bat
-export BAT_THEME=Coldark-Dark
+export BAT_THEME=gruvbox-dark # Coldark-Dark
 
 # Python
 # https://github.com/pyenv/pyenv#installation

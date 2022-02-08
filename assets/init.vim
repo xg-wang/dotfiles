@@ -160,7 +160,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdat
 "Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
 Plug 'bluz71/vim-nightfly-guicolors'
-"Plug 'npxbr/gruvbox.nvim'
+Plug 'npxbr/gruvbox.nvim'
 "Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
@@ -578,12 +578,17 @@ syntax on
 " let g:indentLine_bgcolor_gui = 'NONE'
 let g:indentLine_setConceal = 0
 
-"let g:gruvbox_italic = 0
+" https://github.com/ellisonleao/gruvbox.nvim
+set background=dark " or light if you want light mode
+colorscheme gruvbox
+
+" let g:gruvbox_italic = 0
 " Handle SpellBad
 " https://github.com/morhetz/gruvbox/issues/175#issuecomment-390428621
 " https://github.com/morhetz/gruvbox/pull/50
 " let g:gruvbox_guisp_fallback = "fg"
-let g:nightflyCursorColor = 1
-colorscheme nightfly
+
+" let g:nightflyCursorColor = 1
+" colorscheme nightfly
 
 endif
