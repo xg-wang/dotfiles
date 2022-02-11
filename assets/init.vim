@@ -125,7 +125,7 @@ nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
 "" set file types
 augroup SetFileTypes
   au!
-  autocmd BufRead,BufNewFile *.avsc filetype=json
+  autocmd BufRead,BufNewFile *.avsc setfiletype json
   autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
   autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
   autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
@@ -167,7 +167,7 @@ Plug 'godlygeek/tabular'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
