@@ -167,7 +167,7 @@ Plug 'godlygeek/tabular'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -432,12 +432,11 @@ nmap <leader>fm <Plug>(coc-format)
 
 augroup CocStuff
   au!
-  " Close preview window when completion is done.
-  " autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   " Highlight symbol under cursor on CursorHold
   autocmd CursorHold * silent call CocActionAsync('highlight')
+  " Prefer using vim's built in formatter
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   " Use autocmd to force lightline update.
