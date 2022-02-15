@@ -18,11 +18,6 @@ done
 ASSETS_DIR=$HOME/dotfiles/assets
 ln -s $ASSETS_DIR/zshrc.mine $HOME/.zshrc.mine
 
-echo '
-[ -s $HOME/.zshrc.mine ] && source $HOME/.zshrc.mine
-[ -s $HOME/.zshrc.secrets ] && source $HOME/.zshrc.secrets
-' >> ~/.zshrc
-
 source ~/.zshrc
 
 # Enable Zprezto contrib modules
@@ -31,4 +26,7 @@ git clone https://github.com/belak/prezto-contrib contrib
 cd contrib
 git submodule init
 git submodule update
+
+# install starship if  we haven't already
+command -v starship &>/dev/null || sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
