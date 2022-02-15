@@ -97,6 +97,12 @@ nnoremap <A-l> <C-w>l
 nnoremap <Space> :
 xnoremap <Space> :
 
+" Use `Ctrl+{h,j,k,l}` to resize windows
+nmap <C-l> :vertical resize +10<CR>
+nmap <C-h> :vertical resize -10<CR>
+nmap <C-j> :resize +10<CR>
+nmap <C-k> :resize -10<CR>
+
 " Window
 set splitright
 
