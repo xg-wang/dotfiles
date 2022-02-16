@@ -36,7 +36,7 @@ set shiftround
 set expandtab
 filetype plugin indent on
 
-" Spell
+" Spell https://neovim.io/doc/user/spell.html
 set spelllang=en_us
 set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
 set spellcapcheck=
@@ -47,8 +47,10 @@ if exists('&spelloptions')
 endif
 autocmd FileType gitcommit setlocal spell
 autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
+" Does this actuallly work?
 syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
 syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+nnoremap <F11> :set spell!<cr>
 
 " " https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
 " map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
