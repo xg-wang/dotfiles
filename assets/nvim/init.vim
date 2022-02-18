@@ -302,7 +302,9 @@ let NERDTreeMinimalUI = 1
 "     \ "Ignored"   : "☒",
 "     \ "Unknown"   : "?"
 "     \ }
-"" }}
+" https://github.com/rmagatti/auto-session
+let g:auto_session_pre_save_cmds = ["tabdo NERDTreeClose"]
+" }}
 
 "" fzf {{
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
