@@ -1,1 +1,4 @@
 assets/gitconfig-linkedin.txt
+assets/nvim/plugged/
+assets/nvim/plugin/
+.DS_Store

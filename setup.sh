@@ -42,9 +42,8 @@ yarn global add neovim typescript
 # https://github.com/junegunn/vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-mkdir -p ~/.config/nvim/
-ln -sf $ASSETS_DIR/init.vim $HOME/.config/nvim/init.vim
-ln -sf $ASSETS_DIR/coc-settings.json $HOME/.config/nvim/coc-settings.json
+mkdir -p ~/.config/
+ln -sf $ASSETS_DIR/nvim $HOME/.config/nvim
 
 # tmux
 ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf

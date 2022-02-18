@@ -208,6 +208,12 @@ Plug 'junegunn/goyo.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
 
+lua require('plugins')
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup end
+
 "" Goyo {{
 function! s:goyo_enter()
   set number relativenumber
