@@ -45,9 +45,12 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 mkdir -p ~/.config/
 ln -sf $ASSETS_DIR/nvim $HOME/.config/nvim
 
-# tmux
-ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+# starship
+ln -sf $ASSETS_DIR/starship.toml $HOME/.config/starship.toml
+
+# # tmux
+# ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
+# git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Kitty
 mkdir -p ~/.config/kitty
