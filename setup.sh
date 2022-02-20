@@ -6,20 +6,20 @@ mkdir $HOME/Code
 # First setup system preferences: http://sourabhbajaj.com/mac-setup/SystemPreferences/
 xcode-select --install
 
-# homebrew
+# Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 sudo chown -R $(whoami) /usr/local/Cellar
 
 brew update
 
-# Install things with homebrew
+# Install things with Homebrew
 brew bundle
 
 # Install nightly built neovim
 brew install --HEAD luajit neovim
 
-# Install things with zsh
+# Install things with Zsh
 zsh ./run_as_zsh.sh
 
 ASSETS_DIR=$HOME/dotfiles/assets
@@ -38,7 +38,9 @@ ln -sf $ASSETS_DIR/gitconfig $HOME/.gitconfig
 # nvim
 # use brew ruby
 /usr/local/opt/ruby/bin/gem install neovim
-yarn global add neovim typescript
+# TODO: Use volta to install
+# yarn global add neovim typescript
+
 # https://github.com/junegunn/vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
