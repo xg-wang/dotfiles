@@ -8,7 +8,8 @@
 # zsh
 
 # install prezto
-git clone --recursive -b my-mac https://github.com/xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+# git clone --recursive -b my-mac https://github.com/xg-wang/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+ln -sf $HOME/dotfiles/.zprezto ${ZDOTDIR:-$HOME}/.zprezto
 
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
