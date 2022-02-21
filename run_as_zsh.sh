@@ -16,8 +16,7 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
-ASSETS_DIR=$HOME/dotfiles/assets
-ln -s $ASSETS_DIR/zshrc.mine $HOME/.zshrc.mine
+ln -s $HOME/dotfiles/assets/zshrc.mine $HOME/.zshrc.mine
 
 source ~/.zshrc
 

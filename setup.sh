@@ -22,18 +22,17 @@ brew install --HEAD luajit neovim
 # Install things with Zsh
 zsh ./run_as_zsh.sh
 
-ASSETS_DIR=$HOME/dotfiles/assets
 # Git
-ln -sf $ASSETS_DIR/gitignore $HOME/.gitignore_global
+ln -sf $HOME/dotfiles/assets/gitignore $HOME/.gitignore_global
 
 GITCONFIG_DIR=$HOME/.gitconfig.d
 mkdir $GITCONFIG_DIR
 # https://github.com/GitAlias/gitalias
 # curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
-ln -sf $ASSETS_DIR/gitalias/gitalias.txt $GITCONFIG_DIR
-GITCONFIG_LINKEDIN=$ASSETS_DIR/gitconfig-linkedin.txt
+ln -sf $HOME/dotfiles/assets/gitalias/gitalias.txt $GITCONFIG_DIR
+GITCONFIG_LINKEDIN=$HOME/dotfiles/assets/gitconfig-linkedin.txt
 [ -f "$GITCONFIG_LINKEDIN" ] && ln -sf "$GITCONFIG_LINKEDIN" $GITCONFIG_DIR
-ln -sf $ASSETS_DIR/gitconfig $HOME/.gitconfig
+ln -sf $HOME/dotfiles/assets/gitconfig $HOME/.gitconfig
 
 # nvim
 # use brew ruby
@@ -45,18 +44,17 @@ ln -sf $ASSETS_DIR/gitconfig $HOME/.gitconfig
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 mkdir -p ~/.config/
-ln -sf $ASSETS_DIR/nvim $HOME/.config/nvim
+ln -sf $HOME/dotfiles/.config/nvim $HOME/.config
 
 # starship
-ln -sf $ASSETS_DIR/starship.toml $HOME/.config/starship.toml
+ln -sf $HOME/dotfiles/.config/starship.toml $HOME/.config
 
 # # tmux
-# ln -sf $ASSETS_DIR/tmux.conf $HOME/.tmux.conf
+# ln -sf $HOME/dotfiles/assets/tmux.conf $HOME/.tmux.conf
 # git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 # Kitty
-mkdir -p ~/.config/kitty
-ln -sf $ASSETS_DIR/kitty.conf $HOME/.config/kitty/kitty.conf
+ln -sf $HOME/dotfiles/.config/kitty $HOME/.config/kitty
 
 # Install [Volta](https://volta.sh/)
 curl https://get.volta.sh | bash
