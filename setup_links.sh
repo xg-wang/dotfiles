@@ -4,7 +4,7 @@
 ln -sf $HOME/dotfiles/assets/gitignore $HOME/.gitignore_global
 
 GITCONFIG_DIR=$HOME/.gitconfig.d
-mkdir $GITCONFIG_DIR
+mkdir -p $GITCONFIG_DIR
 # https://github.com/GitAlias/gitalias
 # curl -O https://raw.githubusercontent.com/GitAlias/gitalias/master/gitalias.txt
 ln -sf $HOME/dotfiles/assets/gitalias/gitalias.txt $GITCONFIG_DIR
@@ -20,7 +20,7 @@ ln -sf $HOME/dotfiles/.config/nvim $HOME/.config
 ln -sf $HOME/dotfiles/.config/starship.toml $HOME/.config
 
 # Kitty
-ln -sf $HOME/dotfiles/.config/kitty $HOME/.config/kitty
+ln -sf $HOME/dotfiles/.config/kitty $HOME/.config
 
 # # tmux
 # ln -sf $HOME/dotfiles/assets/tmux.conf $HOME/.tmux.conf
