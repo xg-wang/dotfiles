@@ -4,5 +4,5 @@
   "javascript.suggestionActions.enabled": false,
   "css.lint.unknownAtRules": "ignore",
   "prettier.disableSuccessMessage": true,
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.packageManager": "yarn"
 }
