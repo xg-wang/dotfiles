@@ -84,8 +84,8 @@ alias wiki='cd ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Obsidi
 
 # https://github.com/ogham/exa
 if [[ -x $(which exa) ]]; then
-  alias l='exa --oneline --reverse --sort=size'
-  alias ll='l --long'
+  alias l='exa'
+  alias ll='exa --oneline --reverse --sort=size --long'
   alias la='ll --all'
   alias lh='la --header --git'
   alias lt='ll --long --tree -L'
