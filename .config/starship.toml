@@ -3,6 +3,11 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
+[directory]
+truncation_length = 8
+truncation_symbol = "…/"
+truncate_to_repo = false
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
