@@ -141,6 +141,22 @@ augroup SetFileTypes
   autocmd BufRead,BufNewFile *.json,*.json5 setfiletype jsonc
 augroup END
 
+"" nvim-tree.lua
+" https://github.com/kyazdani42/nvim-tree.lua
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
+let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+" nnoremap <leader>n :NvimTreeFindFile<CR>
+nnoremap <C-m> :NvimTreeFindFileToggle<CR>
+" NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+"
 
 " Status bar
 " mode is handled by lightline
@@ -176,7 +192,6 @@ Plug 'godlygeek/tabular'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -202,7 +217,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'junegunn/goyo.vim'
 " On-demand lazy load
@@ -273,39 +287,6 @@ nnoremap <leader>gh :diffget //2<CR>
 nnoremap <leader>gl :diffget //3<CR>
 set diffopt=filler,vertical
 "" }}
-
-"" File Explorer Nerdtree {{
-augroup NerdtreeStuff
-  au!
-  " Open NERDTree and move the cursor to the file editing area
-  "autocmd VimEnter * NERDTree | wincmd p
-  " Close vim if the only window left open is a NERDTree
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
-" Open NERDTree with `Ctrl+n`
-nmap <C-n> :NERDTreeToggle<CR>
-" Reveal file with `Ctrol+m`
-nmap <C-m> :NERDTreeFind<CR>
-let NERDTreeShowHidden=1 " This also ignores .gitignore
-let NERDTreeIgnore=['.git$[[dir]]', '.swp', 'tmp', '.pnp']
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-" nerdtree-git-plugin
-" let g:NERDTreeIndicatorMapCustom = {
-"     \ "Modified"  : "✹",
-"     \ "Staged"    : "✚",
-"     \ "Untracked" : "✭",
-"     \ "Renamed"   : "➜",
-"     \ "Unmerged"  : "═",
-"     \ "Deleted"   : "✖",
-"     \ "Dirty"     : "✗",
-"     \ "Clean"     : "✔︎",
-"     \ "Ignored"   : "☒",
-"     \ "Unknown"   : "?"
-"     \ }
-" https://github.com/rmagatti/auto-session
-let g:auto_session_pre_save_cmds = ["tabdo NERDTreeClose"]
-" }}
 
 "" fzf {{
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
