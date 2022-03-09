@@ -190,7 +190,6 @@ Plug 'npxbr/gruvbox.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'

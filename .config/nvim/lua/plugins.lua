@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- https://github.com/rmagatti/auto-session
   use {
     'rmagatti/auto-session',
     config = function()
@@ -24,12 +25,21 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- https://github.com/kyazdani42/nvim-tree.lua
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function() require'nvim-tree'.setup {} end
+  }
+
+  -- https://github.com/numToStr/Comment.nvim
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
