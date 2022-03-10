@@ -42,6 +42,10 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Speed up neovim startup time qa
+  -- https://github.com/nathom/filetype.nvim
+  use("nathom/filetype.nvim")
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
