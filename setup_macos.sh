@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+# Selected options in https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -149,7 +149,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Show the ~/Library folder
-chflags nohidden ~/Library
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library 2>/dev/null
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
