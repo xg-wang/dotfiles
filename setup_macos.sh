@@ -9,6 +9,14 @@ osascript -e 'tell application "System Preferences" to quit'
 # Keep-alive: update existing `sudo` time stamp until finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+###############################################################################
+# System                                                                      #
+###############################################################################
+
+# Inspecting Web Views in macOS
+# https://blog.jim-nielsen.com/2022/inspecting-web-views-in-macos/
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+defaults write -g WebKitDeveloperExtras -bool YES
 
 ###############################################################################
 # General UI/UX                                                               #
