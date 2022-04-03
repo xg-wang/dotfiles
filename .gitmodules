@@ -1,7 +1,7 @@
 [submodule "assets/gitalias"]
 	path = assets/gitalias
-	url = git@github.com:xg-wang/gitalias.git
+	url = https://github.com/xg-wang/gitalias.git
 [submodule ".zprezto"]
 	path = .zprezto
-	url = git@github.com:xg-wang/prezto.git
+	url = https://github.com/xg-wang/prezto.git
 	branch = my-mac
