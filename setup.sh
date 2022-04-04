@@ -9,7 +9,12 @@ xcode-select --install
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-sudo chown -R $(whoami) /usr/local/Cellar
+if [[ $(uname -m) == 'arm64' ]]; then
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  sudo chown -R $(whoami) /usr/local/Cellar
+fi
 
 # Install things with Homebrew
 brew update

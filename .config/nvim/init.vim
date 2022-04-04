@@ -191,7 +191,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'jiangmiao/auto-pairs'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Telescope
@@ -200,7 +200,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Telescope extensions
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'fannheyward/telescope-coc.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
@@ -313,7 +313,7 @@ require('telescope').setup {
     }
   }
 }
-require('telescope').load_extension('fzf')
+-- require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
 EOF
 " }}
