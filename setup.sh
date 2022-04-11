@@ -27,7 +27,6 @@ brew bundle
 # nvim
 # use brew ruby
 # /usr/local/opt/ruby/bin/gem install neovim
-# TODO: Use volta to install
 # yarn global add neovim typescript
 
 # https://github.com/junegunn/vim-plug
@@ -35,4 +34,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install [Volta](https://volta.sh/)
-curl https://get.volta.sh | bash
+# curl https://get.volta.sh | bash

@@ -8,8 +8,8 @@
 
 [include]
   path = ~/.gitconfig.d/gitalias.txt
-[includeIf "gitdir:~/Code/linkedin/"]
-  path = ~/.gitconfig.d/gitconfig-linkedin.txt
+[includeIf "gitdir:~/h/"]
+  path = ~/.gitconfig.d/gitconfig-airtable.txt
 
 [alias]
   rawdiff = !git --no-pager diff --no-color
@@ -34,7 +34,7 @@
   default = simple
 
 [core]
-  excludesfile = /Users/xwang5/.gitignore_global
+  excludesfile = ~/.gitignore_global
 	autocrlf = false
   quotepath = false
 
