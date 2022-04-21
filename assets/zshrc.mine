@@ -1,9 +1,9 @@
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-
-if [[ ! "$PATH" == *"$HOME/$VOLTA_HOME/bin"* ]]; then
-  export VOLTA_HOME="$HOME/.volta"
-  export PATH="$VOLTA_HOME/bin:$PATH"
-fi
+#
+# if [[ ! "$PATH" == *"$HOME/$VOLTA_HOME/bin"* ]]; then
+#   export VOLTA_HOME="$HOME/.volta"
+#   export PATH="$VOLTA_HOME/bin:$PATH"
+# fi
 
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
