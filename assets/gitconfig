@@ -53,7 +53,7 @@
   side-by-side = true
 
 [interactive]
-  diffFilter = /usr/local/bin/delta --color-only
+  diffFilter = delta --color-only
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
