@@ -32,6 +32,13 @@ return require('packer').startup(function(use)
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function() require'nvim-tree'.setup {
+      view = {
+        mappings = {
+          list = {
+            { key = "<C-e>", action = "" } -- disable <C-e> to use it as scrolling
+          }
+        }
+      },
       renderer = {
         indent_markers = {
           enable = true,
@@ -42,7 +49,7 @@ return require('packer').startup(function(use)
           },
         },
         icons = {
-          webdev_colors = false,
+          webdev_colors = true,
         },
       },
     } end
