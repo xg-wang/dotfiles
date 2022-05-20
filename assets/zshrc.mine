@@ -72,9 +72,11 @@ export BAT_THEME=gruvbox-dark # Coldark-Dark
 # eval "$(pyenv init --path)"
 
 # Go
-export GOPATH=$(go env GOPATH)
-if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
-  export PATH=$PATH:$GOPATH/bin
+if [[ -x "$(which go)" ]]; then
+  export GOPATH=$(go env GOPATH)
+  if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
+    export PATH=$PATH:$GOPATH/bin
+  fi
 fi
 
 # Wiki
