@@ -166,10 +166,10 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 " mode is handled by lightline
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'nightfly',
+  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'filename', 'modified', 'gitbranch', 'readonly' ],
+  \             [ 'relativepath', 'modified', 'gitbranch', 'readonly' ],
   \             [ 'cocstatus', 'readonly' ]
   \           ]
   \ },
@@ -188,7 +188,7 @@ Plug 'mhinz/vim-startify'
 Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
 "Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
-Plug 'bluz71/vim-nightfly-guicolors'
+" Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'npxbr/gruvbox.nvim'
 "Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
