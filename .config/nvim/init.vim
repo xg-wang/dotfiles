@@ -4,14 +4,13 @@ set number relativenumber
 set lazyredraw
 set autowriteall
 "let mapleader = ','
-set laststatus=2 " Always display the status line
+set laststatus=2
 set autowrite " Automatically :write before running commands
 " set showcmd
 set noshowcmd " Show (partial) command in the last line of the screen. Set
               " this option off if your terminal is slow.
 set clipboard+=unnamedplus
 set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
 set conceallevel=0
 if has('mouse')
   set mouse=a
@@ -335,6 +334,7 @@ let g:coc_global_extensions = [
       \ 'coc-ember',
       \ 'coc-sql',
       \ 'coc-pyright',
+      \ 'coc-sh',
       \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']

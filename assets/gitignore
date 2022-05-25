@@ -136,3 +136,6 @@ typings/
 
 # Serverless directories
 .serverless
+
+# Python
+.pytest_cache
