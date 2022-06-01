@@ -4,7 +4,10 @@ set number relativenumber
 set lazyredraw
 set autowriteall
 "let mapleader = ','
-set laststatus=2
+" Global status line with winbar showing modified & file path
+" https://youtu.be/LKW_SUucO-k?t=166
+set winbar=%=%m\ %f
+set laststatus=3
 set autowrite " Automatically :write before running commands
 " set showcmd
 set noshowcmd " Show (partial) command in the last line of the screen. Set
