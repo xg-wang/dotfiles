@@ -4,7 +4,8 @@ set number relativenumber
 set lazyredraw
 set autowriteall
 "let mapleader = ','
-set laststatus=2
+" Global status line with winbar showing modified & file path
+set laststatus=3
 set autowrite " Automatically :write before running commands
 " set showcmd
 set noshowcmd " Show (partial) command in the last line of the screen. Set
@@ -177,6 +178,16 @@ let g:lightline = {
   \   'cocstatus': 'coc#status'
   \ },
   \ }
+
+" Winbar
+augroup NicerWinBar
+  autocmd!
+  " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
+  autocmd TermOpen * setlocal winbar=
+  autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
+  autocmd WinEnter,BufEnter Coc* setlocal winbar=
+  autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
+augroup END
 
 "" Vim-Plug
 call plug#begin()
