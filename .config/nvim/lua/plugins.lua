@@ -51,6 +51,10 @@ return require('packer').startup(function(use)
         icons = {
           webdev_colors = true,
         },
+        highlight_git = true,
+        group_empty = true,
+        add_trailing = true,
+        special_files = { 'README.md', 'package.json', 'Makefile', 'Cargo.toml' },
       },
     } end
   }
