@@ -91,3 +91,5 @@ if [[ -x $(which exa) ]]; then
   alias lt='ll --long --tree -L'
 fi
 
+# https://sw.kovidgoyal.net/kitty/kittens/diff/
+alias d="kitty +kitten diff"
