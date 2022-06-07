@@ -173,10 +173,12 @@ let g:lightline = {
 augroup NicerWinBar
   autocmd!
   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
+  autocmd WinEnter,BufEnter * setlocal winbar=
+  autocmd WinEnter,BufEnter *.tsx,*.ts,*.js,*.py,*.json,*.yaml setlocal winbar=%=%m\ %f
   autocmd TermOpen * setlocal winbar=
-  autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
-  autocmd WinEnter,BufEnter Coc* setlocal winbar=
-  autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
+  " autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
+  " autocmd WinEnter,BufEnter Coc* setlocal winbar=
+  " autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
 augroup END
 
 "" Vim-Plug
