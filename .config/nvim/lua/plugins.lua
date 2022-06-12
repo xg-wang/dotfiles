@@ -71,6 +71,8 @@ return require('packer').startup(function(use)
   -- https://github.com/nathom/filetype.nvim
   use("nathom/filetype.nvim")
 
+  use('martinda/Jenkinsfile-vim-syntax')
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
