@@ -25,6 +25,28 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        -- " https://github.com/nvim-treesitter/nvim-treesitter#available-modules
+        ensure_installed = { "typescript", "javascript", "python", "bash", "lua", "rust" },
+        indent = {
+          enable = false
+        },
+        highlight = {
+          enable = true
+        }
+      }
+      require("indent_blankline").setup {
+        buftype_exclude = {"terminal"},
+        space_char_blankline = " ",
+        show_current_context = true,
+      }
+    end
+  }
+
   -- https://github.com/kyazdani42/nvim-tree.lua
   use {
     'kyazdani42/nvim-tree.lua',

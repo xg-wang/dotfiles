@@ -181,11 +181,10 @@ augroup END
 
 "" Vim-Plug
 call plug#begin()
-Plug 'github/copilot.vim'
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
 " Plug 'vimwiki/vimwiki'
-Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'romgrk/nvim-treesitter-context'
 Plug 'rktjmp/lush.nvim'
 " Plug 'bluz71/vim-nightfly-guicolors'
@@ -254,23 +253,6 @@ let g:user_emmet_leader_key='<C-Z>'
 
 au BufNewFile,BufRead *.hbs set filetype=glimmer
 "" Tree-Sitter {{
-" https://github.com/nvim-treesitter/nvim-treesitter#available-modules
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
-  indent = {
-    enable = false
-  },
-  highlight = {
-    enable = true
-  }
-}
-require("indent_blankline").setup {
-  buftype_exclude = {"terminal"},
-  space_char_blankline = " ",
-  show_current_context = true,
-}
-EOF
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
