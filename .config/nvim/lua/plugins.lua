@@ -73,6 +73,9 @@ return require('packer').startup(function(use)
 
   use('martinda/Jenkinsfile-vim-syntax')
 
+  -- https://github.com/tpope/vim-sleuth
+  use('tpope/vim-sleuth')
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
