@@ -40,7 +40,7 @@ filetype plugin indent on
 set spelllang=en_us
 set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
 set spellcapcheck=
-set spell
+set nospell
 " https://github.com/neovim/neovim/pull/12955
 if exists('&spelloptions')
   set spelloptions=camel
@@ -171,12 +171,12 @@ let g:lightline = {
 augroup NicerWinBar
   autocmd!
   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
-  autocmd WinEnter,BufEnter * setlocal winbar=
-  autocmd WinEnter,BufEnter *.tsx,*.ts,*.js,*.py,*.json,*.yaml,*.sh setlocal winbar=%=%m\ %f
+  " autocmd WinEnter,BufEnter * setlocal winbar=
+  autocmd WinEnter,BufEnter *.tsx,*.ts,*.js,*.py,*.json,*.yaml,*.sh,*.lua,*.jenkinsfile,*.dockerfile setlocal winbar=%=%m\ %f
   autocmd TermOpen * setlocal winbar=
-  " autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
-  " autocmd WinEnter,BufEnter Coc* setlocal winbar=
-  " autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
+  autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
+  autocmd WinEnter,BufEnter Coc* setlocal winbar=
+  autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
 augroup END
 
 "" Vim-Plug
