@@ -54,8 +54,8 @@ tags
 [._]*.un~
 
 # Diff
-*.patch
-*.diff
+# *.patch
+# *.diff
 
 # Dropbox settings and caches
 .dropbox

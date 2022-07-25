@@ -29,5 +29,5 @@ git submodule init
 git submodule update
 
 # install starship if  we haven't already
-command -v starship &>/dev/null || sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+# command -v starship &>/dev/null || sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
