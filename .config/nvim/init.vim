@@ -136,8 +136,8 @@ augroup SetFileTypes
   au!
   autocmd BufRead,BufNewFile *.avsc setfiletype json
   autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
-  autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
-  autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
+  " autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
+  " autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
   autocmd BufRead,BufNewFile *.json,*.json5 setfiletype jsonc
 augroup END
 
@@ -172,7 +172,7 @@ augroup NicerWinBar
   autocmd!
   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
   " autocmd WinEnter,BufEnter * setlocal winbar=
-  autocmd WinEnter,BufEnter *.tsx,*.ts,*.js,*.py,*.json,*.yaml,*.sh,*.lua,*.jenkinsfile,*.dockerfile setlocal winbar=%=%m\ %f
+  autocmd WinEnter,BufEnter *.{tsx,ts,js,py,json,yaml,sh,lua,jenkinsfile,dockerfile,tf,rb} setlocal winbar=%=%m\ %f
   autocmd TermOpen * setlocal winbar=
   autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
   autocmd WinEnter,BufEnter Coc* setlocal winbar=
