@@ -31,10 +31,19 @@ alias n="nvim"
 # node
 #export NODE_OPTIONS="--max-old-space-size=8192"
 
-# homebrew ruby
-if [[ ! "$PATH" == *"/usr/local/opt/ruby/bin"* ]]; then
-  export PATH="/usr/local/opt/ruby/bin:$PATH"
+if [[ $(uname -m) == 'arm64' ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  # homebrew ruby
+  if [[ ! "$PATH" == *"/opt/homebrew/opt/ruby/bin"* ]]; then
+    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+  fi
+else
+  # homebrew ruby
+  if [[ ! "$PATH" == *"/usr/local/opt/ruby/bin"* ]]; then
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
+  fi
 fi
+
 
 # fzf
 export FZF_EXCLUDE=".git,node_modules,tmp,dist,build,bin,concat-stats-for"
