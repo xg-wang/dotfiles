@@ -241,6 +241,7 @@ nnoremap <silent> <leader> :WhichKey '\'<CR>
 let g:user_emmet_leader_key='<C-Z>'
 
 au BufNewFile,BufRead *.hbs set filetype=glimmer
+au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
 "" Tree-Sitter {{
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
