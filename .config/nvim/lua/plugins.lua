@@ -31,7 +31,16 @@ return require('packer').startup(function(use)
     config = function()
       require('nvim-treesitter.configs').setup {
         -- " https://github.com/nvim-treesitter/nvim-treesitter#available-modules
-        ensure_installed = { "typescript", "javascript", "python", "bash", "lua", "rust" },
+        ensure_installed = {
+          "typescript",
+          "javascript",
+          "python",
+          "bash",
+          "lua",
+          "rust",
+          "markdown",
+          "rst",
+        },
         indent = {
           enable = false
         },
@@ -56,6 +65,8 @@ return require('packer').startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use {'nvim-telescope/telescope-file-browser.nvim'}
   use {'fannheyward/telescope-coc.nvim' }
+  use {'crispgm/telescope-heading.nvim'}
+  use { "LinArcX/telescope-env.nvim" }
 
   -- https://github.com/kyazdani42/nvim-tree.lua
   use {
