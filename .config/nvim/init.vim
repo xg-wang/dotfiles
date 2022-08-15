@@ -197,22 +197,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Telescope
-" https://github.com/nvim-telescope/telescope.nvim
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-" Telescope extensions
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'fannheyward/telescope-coc.nvim'
-Plug 'nvim-telescope/telescope-file-browser.nvim'
-
 "Plug 'sheerun/vim-polyglot'
-Plug 'motus/pig.vim'
 Plug 'GEverding/vim-hocon'
 Plug 'kevinoid/vim-jsonc'
 Plug 'pantharshit00/vim-prisma'
-Plug 'joukevandermaas/vim-ember-hbs'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -226,6 +214,7 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 call plug#end()
 
 lua require('plugins')
+lua require('telescope_config')
 augroup packer_user_config
   autocmd!
   autocmd BufWritePost plugins.lua source <afile> | PackerCompile
@@ -286,22 +275,6 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " More pickers: https://github.com/nvim-telescope/telescope.nvim#pickers
-
-lua <<EOF
-require('telescope').setup {
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    }
-  }
-}
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('file_browser')
-EOF
 " }}
 
 "" coc.vim {{
@@ -314,7 +287,6 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-tailwindcss',
       \ 'coc-prisma',
-      \ 'coc-ember',
       \ 'coc-sql',
       \ 'coc-pyright',
       \ 'coc-sh',
