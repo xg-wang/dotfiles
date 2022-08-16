@@ -134,11 +134,11 @@ nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
 "" set file types
 augroup SetFileTypes
   au!
-  autocmd BufRead,BufNewFile *.avsc setfiletype json
   autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
   " autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
   " autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
-  autocmd BufRead,BufNewFile *.json,*.json5 setfiletype jsonc
+  autocmd BufRead,BufNewFile *.{json,json5,avsc} setfiletype jsonc
+  autocmd BufRead,BufNewFile .babelrc setfiletype jsonc
 augroup END
 
 "" nvim-tree.lua
@@ -203,7 +203,6 @@ Plug 'junegunn/fzf.vim'
 
 "Plug 'sheerun/vim-polyglot'
 " Plug 'GEverding/vim-hocon'
-Plug 'kevinoid/vim-jsonc'
 " Plug 'pantharshit00/vim-prisma'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
