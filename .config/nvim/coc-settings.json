@@ -1,8 +1,15 @@
 {
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "javascript.suggestionActions.enabled": false,
-  "css.lint.unknownAtRules": "ignore",
-  "prettier.disableSuccessMessage": true,
   "eslint.packageManager": "yarn",
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
 }
