@@ -291,6 +291,7 @@ let g:coc_global_extensions = [
       \ 'coc-sql',
       \ 'coc-pyright',
       \ 'coc-sh',
+      \ 'coc-yaml',
       \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
