@@ -119,6 +119,9 @@ return require('packer').startup(function(use)
   -- https://github.com/tpope/vim-sleuth
   use('tpope/vim-sleuth')
 
+  -- https://github.com/ellisonleao/gruvbox.nvim
+  use { "ellisonleao/gruvbox.nvim" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

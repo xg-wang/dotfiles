@@ -181,14 +181,18 @@ augroup END
 
 "" Vim-Plug
 call plug#begin()
+
+" https://github.com/tpope/vim-rhubarb
+" Enables :GBrowse from fugitive.vim to open GitHub URLs. In commit messages,
+" GitHub issues, issue URLs, and collaborators can be omni-completed
+" (<C-X><C-O>, see :help compl-omni)
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
-" Plug 'vimwiki/vimwiki'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'romgrk/nvim-treesitter-context'
-Plug 'rktjmp/lush.nvim'
+" Plug 'rktjmp/lush.nvim'
 " Plug 'bluz71/vim-nightfly-guicolors'
-Plug 'npxbr/gruvbox.nvim'
+" Tree-Sitter support? https://github.com/gruvbox-community/gruvbox/issues/154
 "Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
@@ -198,9 +202,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 "Plug 'sheerun/vim-polyglot'
-Plug 'GEverding/vim-hocon'
+" Plug 'GEverding/vim-hocon'
 Plug 'kevinoid/vim-jsonc'
-Plug 'pantharshit00/vim-prisma'
+" Plug 'pantharshit00/vim-prisma'
 "Plug 'Quramy/vim-js-pretty-template'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -211,6 +215,7 @@ Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'junegunn/goyo.vim'
 " On-demand lazy load
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
 call plug#end()
 
 lua require('plugins')
@@ -515,6 +520,7 @@ let g:startify_lists = [
 "
 
 " Theme
+" TODO: Move to theme.lua
 " https://github.com/alacritty/alacritty/issues/109
 " https://github.com/kovidgoyal/kitty/issues/160
 " Terminal.app on macOS and xterm on Unix do not support true colors
@@ -533,8 +539,8 @@ syntax on
 let g:indentLine_setConceal = 0
 
 " https://github.com/ellisonleao/gruvbox.nvim
-set background=dark " or light if you want light mode
-colorscheme gruvbox
+" set background=dark " or light if you want light mode
+" colorscheme gruvbox
 
 " let g:gruvbox_italic = 0
 " Handle SpellBad
