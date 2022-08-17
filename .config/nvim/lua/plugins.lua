@@ -7,6 +7,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
+-- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
+vim.opt.termguicolors = true
+vim.cmd(string.format([[highlight IndentBlanklineIndent1 guibg=%s gui=nocombine]], require('gruvbox.palette').dark0_soft))
+vim.cmd(string.format([[highlight IndentBlanklineIndent2 guibg=%s gui=nocombine]], require('gruvbox.palette').dark0_hard))
+
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -21,6 +26,28 @@ return require('packer').startup(function(use)
       require('auto-session').setup {
         log_level = 'info',
         auto_session_suppress_dirs = {'~/Code'}
+      }
+    end
+  }
+
+  -- https://github.com/lukas-reineke/indent-blankline.nvim
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function ()
+      require('indent_blankline').setup {
+        space_char_blankline = " ",
+        show_current_context = true,
+        show_current_context_start = true,
+        char = "",
+        char_highlight_list = {
+            "IndentBlanklineIndent1",
+            "IndentBlanklineIndent2",
+        },
+        space_char_highlight_list = {
+            "IndentBlanklineIndent1",
+            "IndentBlanklineIndent2",
+        },
+        show_trailing_blankline_indent = false,
       }
     end
   }
@@ -47,11 +74,6 @@ return require('packer').startup(function(use)
         highlight = {
           enable = true
         }
-      }
-      require("indent_blankline").setup {
-        buftype_exclude = {"terminal"},
-        space_char_blankline = " ",
-        show_current_context = true,
       }
     end
   }

@@ -25,7 +25,7 @@ set title
 set titlestring=%f%(\ [%M]%)
 
 " Highlight problematic whitespace
-set list listchars=tab:›\ ,trail:·,extends:◣,precedes:◢,nbsp:␣
+set list listchars=tab:›\ ,trail:·,extends:◣,precedes:◢,nbsp:␣,eol:↴
 match errorMsg /\s\+$/
 
 " Tab
@@ -196,7 +196,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -516,36 +515,6 @@ let g:startify_lists = [
         \ ]
 "
 
-" Theme
-" TODO: Move to theme.lua
-" https://github.com/alacritty/alacritty/issues/109
-" https://github.com/kovidgoyal/kitty/issues/160
-" Terminal.app on macOS and xterm on Unix do not support true colors
-if exists('+termguicolors')
-  " Needed for Vim but not Neovim inside tmux
-  " let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  " let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
 syntax on
-
-" let g:indentLine_color_term = 0
-" let g:indentLine_bgcolor_term = "NONE"
-" let g:indentLine_color_gui = '#3b4252'
-" let g:indentLine_bgcolor_gui = 'NONE'
-let g:indentLine_setConceal = 0
-
-" https://github.com/ellisonleao/gruvbox.nvim
-" set background=dark " or light if you want light mode
-" colorscheme gruvbox
-
-" let g:gruvbox_italic = 0
-" Handle SpellBad
-" https://github.com/morhetz/gruvbox/issues/175#issuecomment-390428621
-" https://github.com/morhetz/gruvbox/pull/50
-" let g:gruvbox_guisp_fallback = "fg"
-
-" let g:nightflyCursorColor = 1
-" colorscheme nightfly
 
 endif
