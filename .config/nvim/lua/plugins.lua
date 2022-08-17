@@ -68,12 +68,22 @@ return require('packer').startup(function(use)
           "markdown",
           "rst",
         },
-        indent = {
-          enable = false
-        },
+        -- Experimental feature, conflicts with the indent_blackline plugin
+        -- indent = {
+        --   enable = true
+        -- },
         highlight = {
           enable = true
-        }
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "gnn",
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+          },
+        },
       }
     end
   }

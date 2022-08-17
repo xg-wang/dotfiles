@@ -25,7 +25,7 @@ set title
 set titlestring=%f%(\ [%M]%)
 
 " Highlight problematic whitespace
-set list listchars=tab:›\ ,trail:·,extends:◣,precedes:◢,nbsp:␣,eol:↴
+set list listchars=tab:›\ ,trail:·,extends:◣,precedes:◢,nbsp:␣
 match errorMsg /\s\+$/
 
 " Tab
