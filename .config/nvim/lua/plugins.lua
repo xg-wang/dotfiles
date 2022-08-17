@@ -69,9 +69,9 @@ return require('packer').startup(function(use)
           "rst",
         },
         -- Experimental feature, conflicts with the indent_blackline plugin
-        -- indent = {
-        --   enable = true
-        -- },
+        indent = {
+          enable = true
+        },
         highlight = {
           enable = true
         },
@@ -138,7 +138,7 @@ return require('packer').startup(function(use)
   use {
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+      require('Comment').setup()
     end
   }
 
@@ -148,11 +148,19 @@ return require('packer').startup(function(use)
 
   use('martinda/Jenkinsfile-vim-syntax')
 
+  -- https://github.com/fgheng/winbar.nvim
+  -- use {
+  --   'fgheng/winbar.nvim',
+  --   config = function ()
+  --     require('winbar').setup({})
+  --   end
+  -- }
+
   -- https://github.com/tpope/vim-sleuth
-  use('tpope/vim-sleuth')
+  use { 'tpope/vim-sleuth' }
 
   -- https://github.com/ellisonleao/gruvbox.nvim
-  use { "ellisonleao/gruvbox.nvim" }
+  use{ 'ellisonleao/gruvbox.nvim' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

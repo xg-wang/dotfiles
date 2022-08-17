@@ -4,8 +4,6 @@ set number relativenumber
 set lazyredraw
 set autowriteall
 "let mapleader = ','
-" Global status line with winbar showing modified & file path
-set laststatus=3
 set autowrite " Automatically :write before running commands
 " set showcmd
 set noshowcmd " Show (partial) command in the last line of the screen. Set
@@ -168,6 +166,8 @@ let g:lightline = {
   \ }
 
 " Winbar
+" Global status line with winbar showing modified & file path
+set laststatus=3
 augroup NicerWinBar
   autocmd!
   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
@@ -320,30 +320,29 @@ set signcolumn=yes
 
 " Suggestion UX
 " https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#improve-completion-experience
- 
 
 "Use <C-n> and <C-p> for navigate completion list like built in completion.
 inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
 inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-n>"
+
+function! s:CheckBackSpace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <Tab>
       \ coc#pum#visible() ? coc#pum#next(1):
       \ <SID>CheckBackSpace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
 "
 " hi CocSearch ctermfg=12 guifg=#18A3FF
 " hi CocMenuSel ctermbg=109 guibg=#13354A
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -372,14 +371,12 @@ nmap <silent> gi <cmd>Telescope coc implementations<CR>
 " nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 

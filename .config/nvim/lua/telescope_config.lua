@@ -25,7 +25,7 @@ require('telescope').setup {
       treesitter = true,
     },
     coc = {
-      theme = 'ivy',
+      -- theme = 'ivy',
       prefer_locations = true,
     }
   },
