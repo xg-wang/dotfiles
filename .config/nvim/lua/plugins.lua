@@ -37,8 +37,8 @@ return require('packer').startup(function(use)
     config = function ()
       require('indent_blankline').setup {
         space_char_blankline = " ",
-        show_current_context = true,
-        show_current_context_start = true,
+        -- show_current_context = true,
+        -- show_current_context_start = true,
         char = "",
         char_highlight_list = {
             "IndentBlanklineIndent1",
@@ -76,15 +76,15 @@ return require('packer').startup(function(use)
         highlight = {
           enable = true
         },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
-        },
+        -- incremental_selection = {
+        --   enable = true,
+        --   keymaps = {
+        --     init_selection = "gnn",
+        --     node_incremental = "grn",
+        --     scope_incremental = "grc",
+        --     node_decremental = "grm",
+        --   },
+        -- },
       }
     end
   }
