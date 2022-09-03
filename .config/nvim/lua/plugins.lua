@@ -93,13 +93,21 @@ return require('packer').startup(function(use)
   -- https://github.com/nvim-telescope/telescope.nvim
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'fannheyward/telescope-coc.nvim'},
+      {'nvim-telescope/telescope-file-browser.nvim'},
+      {'crispgm/telescope-heading.nvim'},
+      {'LinArcX/telescope-env.nvim'},
+    },
+    config = function()
+      require('telescope').load_extension('coc')
+      require('telescope').load_extension('file_browser')
+      require('telescope').load_extension('heading')
+      require('telescope').load_extension('env')
+    end
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-  use {'nvim-telescope/telescope-file-browser.nvim'}
-  use {'fannheyward/telescope-coc.nvim' }
-  use {'crispgm/telescope-heading.nvim'}
-  use { "LinArcX/telescope-env.nvim" }
 
   -- https://github.com/kyazdani42/nvim-tree.lua
   use {
