@@ -16,9 +16,6 @@ mkdir -p ~/.config/
 
 ln -sf $HOME/dotfiles/.config/nvim $HOME/.config
 
-# starship
-ln -sf $HOME/dotfiles/.config/starship.toml $HOME/.config
-
 # Kitty
 ln -sf $HOME/dotfiles/.config/kitty $HOME/.config
 
