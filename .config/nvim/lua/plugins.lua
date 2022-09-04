@@ -127,7 +127,7 @@ return require('packer').startup(function(use)
         indent_markers = {
           enable = true,
           icons = {
-            corner = "└ ",
+            corner = "└",
             edge = "│ ",
             none = "  ",
           },
