@@ -8,11 +8,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
--- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
-vim.opt.termguicolors = true
-vim.cmd(string.format([[highlight IndentBlanklineIndent1 guibg=%s gui=nocombine]], require('gruvbox.palette').dark0_soft))
-vim.cmd(string.format([[highlight IndentBlanklineIndent2 guibg=%s gui=nocombine]], require('gruvbox.palette').dark0_hard))
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -169,7 +164,15 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-sleuth' }
 
   -- https://github.com/ellisonleao/gruvbox.nvim
-  use { 'ellisonleao/gruvbox.nvim' }
+  use {
+    'ellisonleao/gruvbox.nvim',
+    config = function()
+      -- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
+      vim.opt.termguicolors = true
+      vim.cmd(string.format([[highlight IndentBlanklineIndent1 guibg=%s gui=nocombine]], require('gruvbox.palette').dark0_soft))
+      vim.cmd(string.format([[highlight IndentBlanklineIndent2 guibg=%s gui=nocombine]], require('gruvbox.palette').dark0_hard))
+    end
+  }
 
   use { "fladson/vim-kitty" }
 
