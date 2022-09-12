@@ -124,7 +124,7 @@ nnoremap <leader>cP :let @+=expand("%:p")<CR>
 " Copy filename (foo.txt)
 nnoremap <leader>ct :let @+=expand("%:t")<CR>
 " Copy directory name (/something/src)
-nnoremap <leader>cph :let @+=expand("%:p:h")<CR>
+" nnoremap <leader>cd :let @+=expand("%:p:h")<CR>
 
 " Replace current word
 nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
