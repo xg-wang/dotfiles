@@ -387,6 +387,8 @@ nmap <leader>rn <Plug>(coc-rename)
 vmap <leader>fm <Plug>(coc-format-selected)
 nmap <leader>fm <Plug>(coc-format)
 
+function! s:noop()
+endfunction
 augroup CocStuff
   au!
   " Highlight symbol under cursor on CursorHold
@@ -395,7 +397,8 @@ augroup CocStuff
   " Setup formatexpr specified filetype(s).
   " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  " Noop if showSignatureHelp is not found in certain cases
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp', ,<SID>noop())
   " Use autocmd to force lightline update.
   autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 augroup END
