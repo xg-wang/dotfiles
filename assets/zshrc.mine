@@ -108,3 +108,48 @@ fi
 
 # https://sw.kovidgoyal.net/kitty/kittens/diff/
 alias d="kitty +kitten diff"
+
+# Tips
+# https://news.ycombinator.com/item?id=24083753
+function readlines() {
+  ncolors=
+  function command_exists() {
+      [ -n "$1" ] && type "$1" >/dev/null 2>&1
+  }
+  if command_exists tput; then
+      ncolors=$(tput colors)
+  fi
+  if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
+      RED="$(tput setaf 1)"
+      GREEN="$(tput setaf 2)"
+      YELLOW="$(tput setaf 3)"
+      MAGENTA="$(tput setaf 5)"
+      CYAN="$(tput setaf 6)"
+      GRAY="$(tput setaf 8)"
+      BOLD="$(tput bold)"
+      NORMAL="$(tput sgr0)"
+  else
+      RED=""
+      GREEN=""
+      YELLOW=""
+      MAGENTA=""
+      CYAN=""
+      GRAY=""
+      BOLD=""
+      NORMAL=""
+  fi
+  function echo_color() {
+    local color="$1"
+    printf "${color}$2${NORMAL}\n"
+  }
+  echo_color "${CYAN}" "c-f  Move forward"
+  echo_color "${CYAN}" "c-b  Move backward"
+  echo_color "${CYAN}" "c-p  Move up"
+  echo_color "${CYAN}" "c-n  Move down"
+  echo_color "${CYAN}" "c-a  Jump to beginning of line"
+  echo_color "${CYAN}" "c-e  Jump to end of line"
+  echo_color "${CYAN}" "c-d  Delete forward"
+  echo_color "${CYAN}" "c-h  Delete backward"
+  echo_color "${CYAN}" "c-k  Delete forward to end of line"
+  echo_color "${CYAN}" "c-u  Delete entire line"
+}
