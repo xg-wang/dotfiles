@@ -21,8 +21,10 @@ return require('packer').startup(function(use)
     config = function()
       require('auto-session').setup {
         log_level = 'info',
-        auto_session_suppress_dirs = {'~/Code'}
+        auto_session_use_git_branch = true,
+        auto_session_suppress_dirs = {},
       }
+      vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
     end
   }
 
@@ -32,8 +34,8 @@ return require('packer').startup(function(use)
     config = function ()
       require('indent_blankline').setup {
         space_char_blankline = " ",
-        -- show_current_context = true,
-        -- show_current_context_start = true,
+        show_current_context = true,
+        show_current_context_start = true,
         char = "",
         char_highlight_list = {
             "IndentBlanklineIndent1",
