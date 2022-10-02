@@ -148,10 +148,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Speed up neovim startup time qa
-  -- https://github.com/nathom/filetype.nvim
-  -- use("nathom/filetype.nvim")
-
   use('hashivim/vim-terraform')
 
   use('martinda/Jenkinsfile-vim-syntax')
