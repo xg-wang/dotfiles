@@ -1,5 +1,7 @@
+.venv
 # vim
 .vim
+.vscode
 
 #.vscode/
 .git-blame-ignore-revs

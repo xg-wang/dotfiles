@@ -270,10 +270,15 @@ set diffopt=filler,vertical
 "" fzf {{
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+" :command Rg
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!{.git,node_modules,transpiled,build,dist}/*" -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 "" }}
 
 "" Telescope {{
-nnoremap <C-p> <cmd>Telescope find_files hidden=1<cr>
+nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--hidden,--files,--glob=!.git/*<cr>
 nnoremap <leader>ff <cmd>Telescope find_files hidden=1<cr>
 nnoremap <leader>fq <cmd>Telescope quickfix<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>

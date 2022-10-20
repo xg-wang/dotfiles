@@ -114,6 +114,8 @@ return require('packer').startup(function(use)
     },
     config = function() require'nvim-tree'.setup {
       view = {
+        adaptive_size = true,
+        centralize_selection = true,
         mappings = {
           list = {
             { key = "<C-e>", action = "" } -- disable <C-e> to use it as scrolling
