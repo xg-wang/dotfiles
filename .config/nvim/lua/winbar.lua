@@ -1,4 +1,13 @@
-local function status_line()
+local theme = require("gruvbox.groups").setup()
+local bg0 = theme.GruvboxBg0.fg
+local bg1 = theme.GruvboxBg1.fg
+local fg1 = theme.GruvboxFg1.fg
+
+local function get_winbar()
+  -- if excludes() then
+  --   return ""
+  -- end
+
   local mode = "%-5{%v:lua.string.upper(v:lua.vim.fn.mode())%}"
   local file_name = "%-.16t"
   local buf_nr = "[%n]"
@@ -21,5 +30,8 @@ local function status_line()
   )
 end
 
+vim.api.nvim_set_hl(0, "WinBar", { fg = fg1, bg = bg0 })
+vim.api.nvim_set_hl(0, "WinBarNC", { fg = fg1, bg = bg1 })
+
 -- vim.opt.statusline = status_line()
-vim.opt.winbar = status_line()
+vim.opt.winbar = get_winbar()

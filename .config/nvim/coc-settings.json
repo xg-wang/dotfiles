@@ -3,6 +3,7 @@
   "javascript.suggestionActions.enabled": false,
   "eslint.packageManager": "yarn",
   "python.formatting.provider": "black",
+  "Lua.diagnostics.globals": ["vim"],
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
