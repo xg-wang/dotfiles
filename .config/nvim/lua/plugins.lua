@@ -176,6 +176,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  use { "Glench/Vim-Jinja2-Syntax" }
+
   use { "fladson/vim-kitty" }
 
   -- Automatically set up your configuration after cloning packer.nvim
