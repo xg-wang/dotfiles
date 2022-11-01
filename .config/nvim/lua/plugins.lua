@@ -154,14 +154,6 @@ return require('packer').startup(function(use)
 
   use('martinda/Jenkinsfile-vim-syntax')
 
-  -- https://github.com/fgheng/winbar.nvim
-  -- use {
-  --   'fgheng/winbar.nvim',
-  --   config = function ()
-  --     require('winbar').setup({})
-  --   end
-  -- }
-
   -- https://github.com/tpope/vim-sleuth
   use { 'tpope/vim-sleuth' }
 
