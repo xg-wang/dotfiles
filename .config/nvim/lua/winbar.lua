@@ -33,5 +33,4 @@ end
 vim.api.nvim_set_hl(0, "WinBar", { fg = fg1, bg = bg0 })
 vim.api.nvim_set_hl(0, "WinBarNC", { fg = fg1, bg = bg1 })
 
--- vim.opt.statusline = status_line()
 vim.opt.winbar = get_winbar()
