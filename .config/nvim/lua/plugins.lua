@@ -8,6 +8,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
+-- https://github.com/rmagatti/auto-session#recommended-sessionoptions-config
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -22,9 +25,8 @@ return require('packer').startup(function(use)
       require('auto-session').setup {
         log_level = 'info',
         auto_session_use_git_branch = true,
-        auto_session_suppress_dirs = {},
+        auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
       }
-      vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
     end
   }
 
