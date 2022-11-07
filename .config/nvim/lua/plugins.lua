@@ -97,12 +97,6 @@ return require('packer').startup(function(use)
       {'crispgm/telescope-heading.nvim'},
       {'LinArcX/telescope-env.nvim'},
     },
-    config = function()
-      require('telescope').load_extension('coc')
-      require('telescope').load_extension('file_browser')
-      require('telescope').load_extension('heading')
-      require('telescope').load_extension('env')
-    end
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
@@ -114,7 +108,7 @@ return require('packer').startup(function(use)
     },
     config = function() require'nvim-tree'.setup {
       view = {
-        adaptive_size = true,
+        adaptive_size = false,
         centralize_selection = true,
         mappings = {
           list = {
@@ -137,7 +131,7 @@ return require('packer').startup(function(use)
         highlight_git = true,
         group_empty = true,
         add_trailing = true,
-        special_files = { 'README.md', 'package.json', 'Makefile', 'Cargo.toml' },
+        special_files = { 'README.md', 'package.json', 'Makefile', 'Cargo.toml', 'Dockerfile', 'pyproject.toml' },
       },
     } end
   }

@@ -279,11 +279,12 @@ command! -bang -nargs=* Rg
 
 "" Telescope {{
 nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--hidden,--files,--glob=!.git/*<cr>
-nnoremap <leader>ff <cmd>Telescope find_files hidden=1<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files hidden=1<cr>
 nnoremap <leader>fq <cmd>Telescope quickfix<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>Telescope file_browser depth=3<cr>
 " More pickers: https://github.com/nvim-telescope/telescope.nvim#pickers
 " }}
 
