@@ -139,6 +139,13 @@ augroup SetFileTypes
   autocmd BufRead,BufNewFile .babelrc setfiletype jsonc
 augroup END
 
+"" Open doc files in Vim
+augroup OpenDocFiles
+  au!
+  autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt silent %!pandoc "%" -tplain -o /dev/stdout
+augroup END
+"
+
 "" nvim-tree.lua
 " https://github.com/kyazdani42/nvim-tree.lua
 nnoremap <C-n> :NvimTreeToggle<CR>
