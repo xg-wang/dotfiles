@@ -1,3 +1,19 @@
+-- temporary fix file folding
+-- https://github.com/rmagatti/auto-session/issues/109
+-- https://github.com/nvim-telescope/telescope.nvim/issues/559
+local telescope_actions = require("telescope.actions.set")
+local fixfolds = {
+    hidden = true,
+    attach_mappings = function(_)
+        telescope_actions.select:enhance({
+            post = function()
+                vim.cmd(":normal! zx")
+            end,
+        })
+        return true
+    end,
+}
+
 require('telescope').setup {
   defaults = {
     vimgrep_arguments = {
@@ -13,6 +29,14 @@ require('telescope').setup {
       "--hidden",
       "--glob=!.git/*",
     }
+  },
+  pickers = {
+    buffers = fixfolds,
+    find_files = fixfolds,
+    git_files = fixfolds,
+    grep_string = fixfolds,
+    live_grep = fixfolds,
+    oldfiles = fixfolds,
   },
   extensions = {
     fzf = {
