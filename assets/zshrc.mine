@@ -2,11 +2,6 @@
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-#
-# if [[ ! "$PATH" == *"$HOME/$VOLTA_HOME/bin"* ]]; then
-#   export VOLTA_HOME="$HOME/.volta"
-#   export PATH="$VOLTA_HOME/bin:$PATH"
-# fi
 
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
@@ -15,21 +10,10 @@ autoload -Uz compinit
   compinit
 fi
 
-if [[ ! "$PATH" == *"/usr/local/bin"* ]]; then
-  export PATH="/usr/local/bin:$PATH"
-fi
-
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
 export LESS='-g -i -M -R -S -w -z-4'
-
-# neovim
-# alias vim="nvim"
-alias n="nvim"
-
-# node
-#export NODE_OPTIONS="--max-old-space-size=8192"
 
 if [[ $(uname -m) == 'arm64' ]]; then
   test "$HOMEBREW_PREFIX" != '/opt/homebrew' && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -44,6 +28,32 @@ else
   fi
 fi
 
+# bat
+export BAT_THEME=gruvbox-dark # Coldark-Dark
+
+# Python
+# https://github.com/pyenv/pyenv#installation
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Go
+if [[ -x "$(which go)" ]]; then
+  export GOPATH=$(go env GOPATH)
+  if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
+    export PATH=$PATH:$GOPATH/bin
+  fi
+fi
+
+# Volta.sh
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# node
+#export NODE_OPTIONS="--max-old-space-size=8192"
 
 # fzf
 export FZF_EXCLUDE=".git,node_modules,tmp,dist,build,concat-stats-for"
@@ -74,26 +84,6 @@ alias gld='git log --topo-order --stat --patch --full-diff --pretty=format:"${_g
 alias glg='git log --topo-order --all --graph --pretty=format:"${_git_log_oneline_format}"'
 alias glc='git shortlog --summary --numbered'
 
-# bat
-export BAT_THEME=gruvbox-dark # Coldark-Dark
-
-# Python
-# https://github.com/pyenv/pyenv#installation
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# Go
-if [[ -x "$(which go)" ]]; then
-  export GOPATH=$(go env GOPATH)
-  if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
-    export PATH=$PATH:$GOPATH/bin
-  fi
-fi
-
 # Wiki
 alias wiki='cd ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Obsidian && nvim'
 
@@ -108,6 +98,10 @@ fi
 
 # https://sw.kovidgoyal.net/kitty/kittens/diff/
 alias d="kitty +kitten diff"
+
+# neovim
+# alias vim="nvim"
+alias n="nvim"
 
 # Tips
 # https://news.ycombinator.com/item?id=24083753
