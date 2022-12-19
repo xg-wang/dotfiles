@@ -10,7 +10,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 -- https://github.com/rmagatti/auto-session#recommended-sessionoptions-config
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -28,6 +28,14 @@ require('packer').startup(function(use)
         auto_session_use_git_branch = true,
         auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
       }
+    end
+  }
+
+  use {
+    'rmagatti/session-lens',
+    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    config = function()
+      require('session-lens').setup({--[[your custom config--]]})
     end
   }
 
