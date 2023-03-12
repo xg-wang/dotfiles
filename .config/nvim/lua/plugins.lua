@@ -174,6 +174,8 @@ require('packer').startup(function(use)
     end
   }
 
+  use { "psf/black", branch = "stable" }
+
   use { "Glench/Vim-Jinja2-Syntax" }
 
   use { "fladson/vim-kitty" }
