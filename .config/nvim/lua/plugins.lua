@@ -224,6 +224,7 @@ require('packer').startup(function(use)
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function() require'nvim-tree'.setup {
+      on_attach = on_attach,
       view = {
         adaptive_size = false,
         centralize_selection = true,
