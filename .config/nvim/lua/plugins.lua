@@ -45,7 +45,7 @@ local function on_attach(bufnr)
   --
   -- BEGIN_DEFAULT_ON_ATTACH
   vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node,          opts('CD'))
-  vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
+  -- vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
   vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
   vim.keymap.set('n', '<C-r>', api.fs.rename_sub,                     opts('Rename: Omit Filename'))
   vim.keymap.set('n', '<C-t>', api.node.open.tab,                     opts('Open: New Tab'))
@@ -107,8 +107,8 @@ local function on_attach(bufnr)
   -- The dummy set before del is done for safety, in case a default mapping does not exist.
   --
   -- You might tidy things by removing these along with their default mapping.
-  vim.keymap.set('n', '<C-e>', '', { buffer = bufnr })
-  vim.keymap.del('n', '<C-e>', { buffer = bufnr })
+  -- vim.keymap.set('n', '<C-e>', '', { buffer = bufnr })
+  -- vim.keymap.del('n', '<C-e>', { buffer = bufnr })
 
 
   -- Mappings migrated from view.mappings.list
@@ -225,13 +225,16 @@ require('packer').startup(function(use)
     },
     config = function() require'nvim-tree'.setup {
       on_attach = on_attach,
+      git = {
+        ignore = false,
+      },
       view = {
         adaptive_size = false,
         centralize_selection = true,
       },
       sort_by = "case_sensitive",
       filters = {
-        dotfiles = true,
+        dotfiles = false,
       },
       renderer = {
         indent_markers = {

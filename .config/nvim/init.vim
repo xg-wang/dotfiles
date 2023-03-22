@@ -148,11 +148,10 @@ augroup END
 
 "" nvim-tree.lua
 " https://github.com/kyazdani42/nvim-tree.lua
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-" nnoremap <C-a> :NvimTreeFindFile<CR>
-nnoremap <C-m> :NvimTreeFindFile<CR>
+nnoremap <C-n> :NvimTreeFindFileToggle<CR>
+" This is just R
+" nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <C-m> :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 " NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
 " Status bar
