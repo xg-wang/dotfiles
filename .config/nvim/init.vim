@@ -225,6 +225,8 @@ call plug#end()
 lua require('plugins')
 lua require('telescope_config')
 lua require('theme')
+lua require('vim')
+
 augroup packer_user_config
   autocmd!
   autocmd BufWritePost plugins.lua source <afile> | PackerCompile
