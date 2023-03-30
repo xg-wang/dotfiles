@@ -60,7 +60,8 @@
 	process = git-lfs filter-process
 	required = true
 [merge]
-	tool = nvimdiff3
+  tool = nvimdiff3
+  conflictstyle = diff3
 [color]
 	ui = true
 
