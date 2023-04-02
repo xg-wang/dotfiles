@@ -36,6 +36,7 @@ fi
 export BAT_THEME=gruvbox-dark # Coldark-Dark
 
 # Python
+export PATH="/Users/thomas.wang/.local/bin:$PATH"
 # https://github.com/pyenv/pyenv#installation
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
@@ -63,6 +64,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export FZF_EXCLUDE=".git,node_modules,tmp,dist,build,concat-stats-for"
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF_EXCLUDE}/*\" 2> /dev/null"
 export FZF_DEFAULT_OPTS="--inline-info"
+
+# https://sw.kovidgoyal.net/kitty/kittens/hyperlinked_grep/
+alias hg="kitty +kitten hyperlinked_grep"
 
 # Goto icloud address
 alias icloud="cd ~/Library/Mobile\ Documents/com~apple~CloudDocs"
