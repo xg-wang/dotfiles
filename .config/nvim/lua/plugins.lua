@@ -298,6 +298,13 @@ require('packer').startup(function(use)
 
   use { "fladson/vim-kitty" }
 
+  -- https://github.com/ruanyl/vim-gh-line
+  -- Default key mapping for:
+  -- blob view: <leader>gh
+  -- blame view: <leader>gb
+  -- repo view: <leader>go
+  use { "ruanyl/vim-gh-line" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if is_bootstrap then
