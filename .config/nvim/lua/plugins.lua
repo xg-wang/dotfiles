@@ -133,6 +133,14 @@ require('packer').startup(function(use)
         log_level = 'info',
         auto_session_use_git_branch = true,
         auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+        -- Not sure if it's working
+        pre_save_cmds = {
+          function ()
+            local nvim_tree = require('nvim-tree')
+            nvim_tree.change_dir(vim.fn.getcwd())
+            nvim_tree.refresh()
+          end
+        }
       }
     end
   }
