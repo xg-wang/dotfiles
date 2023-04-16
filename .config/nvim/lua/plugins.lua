@@ -117,6 +117,20 @@ local function on_attach(bufnr)
 
 end
 
+-- https://github.com/nvim-pack/nvim-spectre#usage
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>', {
+    desc = "Open Spectre"
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})
+
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -234,7 +248,6 @@ require('packer').startup(function(use)
     },
     config = function() require'nvim-tree'.setup {
       on_attach = on_attach,
-      open_on_setup = false,
       git = {
         ignore = false,
       },
@@ -269,6 +282,26 @@ require('packer').startup(function(use)
         },
       },
     } end
+  }
+
+  use {
+    'nvim-pack/nvim-spectre', config = function()
+      require('spectre').setup({
+          replace_engine={
+            ['sed']={
+                cmd = "gsed",
+                args = nil,
+                options = {
+                  ['ignore-case'] = {
+                    value= "--ignore-case",
+                    icon="[I]",
+                    desc="ignore case"
+                  },
+                }
+            },
+        },
+      })
+    end
   }
 
   -- https://github.com/numToStr/Comment.nvim
