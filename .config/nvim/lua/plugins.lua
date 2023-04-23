@@ -107,8 +107,8 @@ local function on_attach(bufnr)
   -- The dummy set before del is done for safety, in case a default mapping does not exist.
   --
   -- You might tidy things by removing these along with their default mapping.
-  vim.keymap.set('n', '<C-e>', '', { buffer = bufnr })
-  vim.keymap.del('n', '<C-e>', { buffer = bufnr })
+  -- vim.keymap.set('n', '<C-e>', '', { buffer = bufnr })
+  -- vim.keymap.del('n', '<C-e>', { buffer = bufnr })
 
 
   -- Mappings migrated from view.mappings.list

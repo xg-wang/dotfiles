@@ -3,6 +3,14 @@
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
+# pnpm
+export PNPM_HOME="/Users/thomas.wang/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
