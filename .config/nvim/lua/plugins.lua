@@ -334,6 +334,8 @@ require('packer').startup(function(use)
 
   use { "Glench/Vim-Jinja2-Syntax" }
 
+  use { "prisma/vim-prisma" }
+
   use { "fladson/vim-kitty" }
 
   -- https://github.com/ruanyl/vim-gh-line
