@@ -61,6 +61,10 @@ if [[ -x "$(which go)" ]]; then
   fi
 fi
 
+# Java
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/usr/local/opt/openjdk/include"
+
 # Volta.sh
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
