@@ -154,37 +154,6 @@ nnoremap <C-n> :NvimTreeFindFileToggle<CR>
 nnoremap <C-m> :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 " NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
-" Status bar
-" mode is handled by lightline
-set noshowmode
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'relativepath', 'modified', 'gitbranch', 'readonly' ],
-  \             [ 'cocstatus', 'readonly' ]
-  \           ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead',
-  \   'cocstatus': 'coc#status'
-  \ },
-  \ }
-
-" Global status line with winbar showing modified & file path
-set laststatus=3
-" Winbar
-lua require('winbar')
-" augroup NicerWinBar
-"   autocmd!
-"   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
-"   " autocmd WinEnter,BufEnter *.{tsx,ts,js,py,json,yml,yaml,md,sh,lua,jenkinsfile,dockerfile,tf,rb} setlocal winbar=%=%m\ %f
-"   autocmd TermOpen * setlocal winbar=
-"   autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
-"   autocmd WinEnter,BufEnter Coc* setlocal winbar=
-"   autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
-" augroup END
-
 "" Vim-Plug
 call plug#begin()
 
@@ -231,6 +200,37 @@ augroup packer_user_config
   autocmd!
   autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 augroup end
+
+" Status bar
+" mode is handled by lightline
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'relativepath', 'modified', 'gitbranch', 'readonly' ],
+  \             [ 'cocstatus', 'readonly' ]
+  \           ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead',
+  \   'cocstatus': 'coc#status'
+  \ },
+  \ }
+
+" Global status line with winbar showing modified & file path
+set laststatus=3
+" Winbar
+lua require('winbar')
+" augroup NicerWinBar
+"   autocmd!
+"   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
+"   " autocmd WinEnter,BufEnter *.{tsx,ts,js,py,json,yml,yaml,md,sh,lua,jenkinsfile,dockerfile,tf,rb} setlocal winbar=%=%m\ %f
+"   autocmd TermOpen * setlocal winbar=
+"   autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
+"   autocmd WinEnter,BufEnter Coc* setlocal winbar=
+"   autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
+" augroup END
 
 "" Goyo {{
 function! s:goyo_enter()
