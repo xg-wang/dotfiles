@@ -1,4 +1,65 @@
-if !exists('g:vscode')
+" To use `ALT+{h,j,k,l}` to navigate windows from any mode:
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+nnoremap <Space> :
+xnoremap <Space> :
+
+" Use `Ctrl+{h,j,k,l}` to resize windows
+nmap <C-l> :vertical resize +5<CR>
+nmap <C-h> :vertical resize -5<CR>
+nmap <C-j> :resize +5<CR>
+nmap <C-k> :resize -5<CR>
+
+" Window
+set splitright
+
+" Don't use arrow keys
+noremap  <Up>    <NOP>
+noremap  <Down>  <NOP>
+noremap  <Left>  <NOP>
+noremap  <Right> <NOP>
+" CoC rename needs arrow keys
+" inoremap <Up>    <NOP>
+" inoremap <Down>  <NOP>
+" inoremap <Left>  <NOP>
+" inoremap <Right> <NOP>
+
+" Copy relative path (src/foo.txt)
+nnoremap <leader>cp :let @+=expand("%")<CR>
+" Copy absolute path (/something/src/foo.txt)
+nnoremap <leader>cP :let @+=expand("%:p")<CR>
+" Copy filename (foo.txt)
+nnoremap <leader>ct :let @+=expand("%:t")<CR>
+" Copy directory name (/something/src)
+" nnoremap <leader>cd :let @+=expand("%:p:h")<CR>
+
+" Replace current word
+nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
+
+" Avoid touching clipboard history
+nnoremap <leader>x "_x
+xnoremap <leader>x "_x
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+nnoremap <leader>p "_dP
+xnoremap <leader>p "_dP
+
+" VS Code only
+if exists('g:vscode')
+
+" Native vim only
+else
 
 set number relativenumber
 set lazyredraw
@@ -79,55 +140,6 @@ command! -nargs=* VT vsplit | terminal <args>
 nnoremap <C-t> :T<cr>:resize20<cr>
 " To map <Esc> to exit terminal-mode, disable prezto key-binding first
 "tnoremap <Esc> <C-\><C-n>
-
-" To use `ALT+{h,j,k,l}` to navigate windows from any mode:
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-nnoremap <Space> :
-xnoremap <Space> :
-
-" Use `Ctrl+{h,j,k,l}` to resize windows
-nmap <C-l> :vertical resize +5<CR>
-nmap <C-h> :vertical resize -5<CR>
-nmap <C-j> :resize +5<CR>
-nmap <C-k> :resize -5<CR>
-
-" Window
-set splitright
-
-" Don't use arrow keys
-noremap  <Up>    <NOP>
-noremap  <Down>  <NOP>
-noremap  <Left>  <NOP>
-noremap  <Right> <NOP>
-" CoC rename needs arrow keys
-" inoremap <Up>    <NOP>
-" inoremap <Down>  <NOP>
-" inoremap <Left>  <NOP>
-" inoremap <Right> <NOP>
-
-" Copy relative path (src/foo.txt)
-nnoremap <leader>cp :let @+=expand("%")<CR>
-" Copy absolute path (/something/src/foo.txt)
-nnoremap <leader>cP :let @+=expand("%:p")<CR>
-" Copy filename (foo.txt)
-nnoremap <leader>ct :let @+=expand("%:t")<CR>
-" Copy directory name (/something/src)
-" nnoremap <leader>cd :let @+=expand("%:p:h")<CR>
-
-" Replace current word
-nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
 
 "" set file types
 augroup SetFileTypes
@@ -260,13 +272,6 @@ set foldexpr=nvim_treesitter#foldexpr()
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 set foldlevelstart=10
 "" "}}
-
-nnoremap <leader>x "_x
-xnoremap <leader>x "_x
-nnoremap <leader>d "_d
-xnoremap <leader>d "_d
-nnoremap <leader>p "_dP
-xnoremap <leader>p "_dP
 
 "" Git {{
 nnoremap <leader>gd :Gvdiff<CR>
