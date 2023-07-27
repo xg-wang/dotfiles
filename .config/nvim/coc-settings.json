@@ -2,6 +2,7 @@
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "javascript.suggestionActions.enabled": false,
   "eslint.packageManager": "yarn",
+  "tsserver.tsdk": "node_modules/typescript/lib",
   "python.formatting.provider": "black",
   "Lua.diagnostics.globals": ["vim"],
   "languageserver": {
