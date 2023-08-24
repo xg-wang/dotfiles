@@ -15,7 +15,7 @@
   rawdiff = !git --no-pager diff --no-color
   dlast = diff HEAD~1..HEAD
   last = log -1 HEAD
-  count = log --author="Thomas Wang" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+  count = !git log --author="$(git config user.email)" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
   ### change cn » an, prefer author over commiter
   ll = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cblue%ad %C(auto)%h%Creset -%C(auto)%d%Creset %s %Cblue[%an]%Creset %Cblue%G?%Creset'
   lll = log --graph --topo-order --date=iso8601-strict --no-abbrev-commit --decorate --all --boundary --pretty=format:'%Cblue%ad %C(auto)%h%Creset -%C(auto)%d%Creset %s %Cblue[%an <%ce>]%Creset %Cblue%G?%Creset'
@@ -23,7 +23,7 @@
   lg = !git log --graph --all --author $(git config user.email)
   # https://www.erikschierboom.com/2020/02/17/cleaning-up-local-git-branches-deleted-on-a-remote/
   gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
-  who-reviewed-me-this-year = git log --after=2022-01-01 --author="Thomas Wang" | grep 'Reviewed By:' | sort | uniq -c | sort -r
+  who-reviewed-me-this-year = !git log --after=2022-01-01 --author="$(git config user.email)" | grep 'Reviewed By:' | sort | uniq -c | sort -r
 
 [push]
   default = simple
