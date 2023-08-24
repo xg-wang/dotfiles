@@ -2,8 +2,8 @@
 # vim: set filetype=gitconfig:
 
 [user]
-	name = Thomas Wang
-	email = hi@xgwang.me
+  name = Thomas Wang
+  email = hi@xgwang.me
   gpgsign = false
 
 [include]
@@ -20,6 +20,7 @@
   ll = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cblue%ad %C(auto)%h%Creset -%C(auto)%d%Creset %s %Cblue[%an]%Creset %Cblue%G?%Creset'
   lll = log --graph --topo-order --date=iso8601-strict --no-abbrev-commit --decorate --all --boundary --pretty=format:'%Cblue%ad %C(auto)%h%Creset -%C(auto)%d%Creset %s %Cblue[%an <%ce>]%Creset %Cblue%G?%Creset'
   branchauthors = "! for branch in `git branch -r | grep -v /HEAD`;do echo `git show --format=\"%ai %ar by %an\" $branch | head -n 1` \t$branch; done | sort -r"
+  lg = !git log --graph --all --author $(git config user.email)
   # https://www.erikschierboom.com/2020/02/17/cleaning-up-local-git-branches-deleted-on-a-remote/
   gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
   who-reviewed-me-this-year = git log --after=2022-01-01 --author="Thomas Wang" | grep 'Reviewed By:' | sort | uniq -c | sort -r
