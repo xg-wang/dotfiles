@@ -146,11 +146,11 @@ nnoremap <C-t> :T<cr>:resize20<cr>
 "" set file types
 augroup SetFileTypes
   au!
-  autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
+  " autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
   " autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
   " autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
   autocmd BufRead,BufNewFile *.{json,json5,avsc} setfiletype jsonc
-  autocmd BufRead,BufNewFile .babelrc setfiletype jsonc
+  " autocmd BufRead,BufNewFile .babelrc setfiletype jsonc
 augroup END
 
 "" Open doc files in Vim
@@ -266,7 +266,7 @@ nnoremap <silent> <leader> :WhichKey '\'<CR>
 
 let g:user_emmet_leader_key='<C-Z>'
 
-au BufNewFile,BufRead *.hbs set filetype=glimmer
+" au BufNewFile,BufRead *.hbs set filetype=glimmer
 au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
 "" Tree-Sitter {{
 set foldmethod=expr

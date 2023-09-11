@@ -143,18 +143,18 @@ require('packer').startup(function(use)
     'rmagatti/auto-session',
     config = function()
       require('auto-session').setup {
-        auto_session_enabled = true,
-        log_level = 'info',
+        -- auto_session_enabled = true,
+        log_level = 'error',
         auto_session_use_git_branch = true,
         auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
         -- Not sure if it's working
-        pre_save_cmds = {
-          function ()
-            local nvim_tree = require('nvim-tree')
-            nvim_tree.change_dir(vim.fn.getcwd())
-            nvim_tree.refresh()
-          end
-        }
+        -- pre_save_cmds = {
+        --   function ()
+        --     local nvim_tree = require('nvim-tree')
+        --     nvim_tree.change_dir(vim.fn.getcwd())
+        --     nvim_tree.refresh()
+        --   end
+        -- }
       }
     end
   }
