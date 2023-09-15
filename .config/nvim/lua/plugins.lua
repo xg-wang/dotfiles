@@ -159,6 +159,11 @@ require('packer').startup(function(use)
     end
   }
 
+  -- https://github.com/github/copilot.vim
+  -- Fix multiline suggestion: https://github.com/orgs/community/discussions/40522#discussioncomment-6736514
+  -- oneliner: sed -i '.bak' 's/\["\\n"\]/["\\n\\n\\n"]/' ~/.local/share/nvim/site/pack/packer/start/copilot.vim/dist/agent.js
+  use 'github/copilot.vim'
+
   use {
     'rmagatti/session-lens',
     requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
@@ -248,6 +253,10 @@ require('packer').startup(function(use)
     },
     config = function() require'nvim-tree'.setup {
       on_attach = on_attach,
+      -- Seeing: File system watcher failed (EMFILE) for path
+      filesystem_watchers = {
+        enable = false,
+      },
       git = {
         ignore = false,
       },
