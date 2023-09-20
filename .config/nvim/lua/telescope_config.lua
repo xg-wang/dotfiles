@@ -1,18 +1,26 @@
 -- temporary fix file folding
 -- https://github.com/rmagatti/auto-session/issues/109
 -- https://github.com/nvim-telescope/telescope.nvim/issues/559
-local telescope_actions = require("telescope.actions.set")
-local fixfolds = {
-    hidden = true,
-    attach_mappings = function(_)
-        telescope_actions.select:enhance({
-            post = function()
-                vim.cmd(":normal! zx")
-            end,
-        })
-        return true
-    end,
-}
+-- local telescope_actions = require("telescope.actions.set")
+-- local fixfolds = {
+--     hidden = true,
+--     attach_mappings = function(_)
+--         telescope_actions.select:enhance({
+--             post = function()
+--                 vim.cmd(":normal! zx")
+--             end,
+--         })
+--         return true
+--     end,
+-- }
+vim.api.nvim_create_autocmd('BufRead', {
+   callback = function()
+      vim.api.nvim_create_autocmd('BufWinEnter', {
+         once = true,
+         command = 'normal! zx'
+      })
+   end
+})
 
 require('telescope').setup {
   defaults = {
@@ -30,13 +38,18 @@ require('telescope').setup {
       "--glob=!.git/*",
     }
   },
+  -- pickers = {
+  --   buffers = fixfolds,
+  --   find_files = fixfolds,
+  --   git_files = fixfolds,
+  --   grep_string = fixfolds,
+  --   live_grep = fixfolds,
+  --   oldfiles = fixfolds,
+  -- },
   pickers = {
-    buffers = fixfolds,
-    find_files = fixfolds,
-    git_files = fixfolds,
-    grep_string = fixfolds,
-    live_grep = fixfolds,
-    oldfiles = fixfolds,
+    find_files = {
+      theme = "ivy",
+    }
   },
   extensions = {
     fzf = {
@@ -50,7 +63,7 @@ require('telescope').setup {
       treesitter = true,
     },
     coc = {
-      -- theme = 'ivy',
+      theme = 'ivy',
       prefer_locations = true,
     },
   },

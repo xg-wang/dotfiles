@@ -474,6 +474,9 @@ nnoremap <silent><nowait> <leader><space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
 
+" eslint autofix
+nnoremap <silent><nowait> <leader><space>ef  :CocCommand eslint.executeAutofix<CR>
+
 " coc-git
 nmap ]c <Plug>(coc-git-nextchunk)
 nmap [c <Plug>(coc-git-prevchunk)

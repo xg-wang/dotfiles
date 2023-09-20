@@ -107,7 +107,7 @@ local function on_attach(bufnr)
   -- The dummy set before del is done for safety, in case a default mapping does not exist.
   --
   -- You might tidy things by removing these along with their default mapping.
-  -- vim.keymap.set('n', '<C-e>', '', { buffer = bufnr })
+  -- vim.keymap.set('n', '<C-e>', '', opts('suppress default'))
   -- vim.keymap.del('n', '<C-e>', { buffer = bufnr })
 
 
@@ -147,12 +147,12 @@ require('packer').startup(function(use)
         log_level = 'error',
         auto_session_use_git_branch = true,
         auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-        -- Not sure if it's working
         -- pre_save_cmds = {
         --   function ()
         --     local nvim_tree = require('nvim-tree')
-        --     nvim_tree.change_dir(vim.fn.getcwd())
-        --     nvim_tree.refresh()
+        --     -- nvim_tree.change_dir(vim.fn.getcwd())
+        --     -- nvim_tree.refresh()
+        --     nvim_tree.close()
         --   end
         -- }
       }
