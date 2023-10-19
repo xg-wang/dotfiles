@@ -1,5 +1,9 @@
 set textwidth=120
 
+" Use new regular expression engine. The default regular expression engine on MacOS's vim is dog slow and can't handle
+" large typescript files.
+set re=0
+
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
