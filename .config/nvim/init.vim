@@ -221,9 +221,10 @@ augroup end
 
 " Status bar
 " mode is handled by lightline
+" TODO: enable gruvbox
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'one',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'relativepath', 'modified', 'gitbranch', 'readonly' ],

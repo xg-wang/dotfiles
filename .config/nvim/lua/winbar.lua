@@ -1,7 +1,7 @@
-local theme = require("gruvbox.groups").setup()
-local bg1 = theme.GruvboxBg1.fg
-local bg2 = theme.GruvboxBg2.fg
-local fg2 = theme.GruvboxFg2.fg
+local theme = require("gruvbox").palette
+local bg1 = theme.dark1
+local bg2 = theme.dark2
+local fg2 = theme.light2
 
 local function get_winbar()
   -- if excludes() then
