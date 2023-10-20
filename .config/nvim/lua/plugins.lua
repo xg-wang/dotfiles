@@ -347,12 +347,17 @@ require('packer').startup(function(use)
 
   use { "fladson/vim-kitty" }
 
-  -- https://github.com/ruanyl/vim-gh-line
-  -- Default key mapping for:
-  -- blob view: <leader>gh
-  -- blame view: <leader>gb
-  -- repo view: <leader>go
-  use { "ruanyl/vim-gh-line" }
+  -- https://github.com/Almo7aya/openingh.nvim
+  use {
+    "almo7aya/openingh.nvim",
+    config = function()
+      -- for repository page
+      vim.api.nvim_set_keymap("n", "<Leader>gr", ":OpenInGHRepo <CR>", { silent = true, noremap = true })
+      -- for current file page
+      vim.api.nvim_set_keymap("n", "<Leader>gf", ":OpenInGHFile <CR>", { silent = true, noremap = true })
+      vim.api.nvim_set_keymap("v", "<Leader>gf", ":OpenInGHFileLines <CR>", { silent = true, noremap = true })
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
