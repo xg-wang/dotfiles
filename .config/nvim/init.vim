@@ -41,8 +41,8 @@ noremap  <Right> <NOP>
 " inoremap <Left>  <NOP>
 " inoremap <Right> <NOP>
 
-" Copy relative path (src/foo.txt)
-nnoremap <leader>cp :let @+=expand("%")<CR>
+" Copy relative path (src/foo.txt). Always use relative path
+nnoremap <leader>cp :let @+=expand("%.")<CR>
 " Copy absolute path (/something/src/foo.txt)
 nnoremap <leader>cP :let @+=expand("%:p")<CR>
 " Copy filename (foo.txt)
