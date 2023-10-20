@@ -176,20 +176,20 @@ require('packer').startup(function(use)
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      require("indent_blankline").setup({
-        use_treesitter = true,
-        show_current_context = true,
-        show_current_context_start = true,
-        bufname_exclude = { "" }, -- Disables the plugin in hover() popups and new files
-        -- NOTE: alternating indentation highlight
-        -- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
-        char = "",  -- this prints a `>` for tab
-        char_highlight_list = {
-          "MsgSeparator",
-          "Normal",
-        },
-        space_char_highlight_list = { "MsgSeparator", "Normal" },
-        show_trailing_blankline_indent = false,
+      require("ibl").setup({
+        -- use_treesitter = true,
+        -- show_current_context = true,
+        -- show_current_context_start = true,
+        -- bufname_exclude = { "" }, -- Disables the plugin in hover() popups and new files
+        -- -- NOTE: alternating indentation highlight
+        -- -- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
+        -- char = "",  -- this prints a `>` for tab
+        -- char_highlight_list = {
+        --   "MsgSeparator",
+        --   "Normal",
+        -- },
+        -- space_char_highlight_list = { "MsgSeparator", "Normal" },
+        -- show_trailing_blankline_indent = false,
       })
     end,
     requires = "nvim-treesitter/nvim-treesitter",
