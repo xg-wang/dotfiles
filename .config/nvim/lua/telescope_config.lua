@@ -36,6 +36,13 @@ require('telescope').setup {
       "--trim",
       "--hidden",
       "--glob=!.git/*",
+    },
+    path_display = {
+      hidden = false,
+      -- shorten = {
+      --   len = 3, exclude = {1, -1}
+      -- },
+      truncate = 3,
     }
   },
   -- pickers = {
