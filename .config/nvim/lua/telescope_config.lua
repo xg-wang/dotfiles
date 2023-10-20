@@ -13,14 +13,14 @@
 --         return true
 --     end,
 -- }
-vim.api.nvim_create_autocmd('BufRead', {
-   callback = function()
-      vim.api.nvim_create_autocmd('BufWinEnter', {
-         once = true,
-         command = 'normal! zx'
-      })
-   end
-})
+-- vim.api.nvim_create_autocmd('BufRead', {
+--    callback = function()
+--       vim.api.nvim_create_autocmd('BufWinEnter', {
+--          once = true,
+--          command = 'normal! zx'
+--       })
+--    end
+-- })
 
 require('telescope').setup {
   defaults = {
@@ -53,11 +53,6 @@ require('telescope').setup {
   --   live_grep = fixfolds,
   --   oldfiles = fixfolds,
   -- },
-  pickers = {
-    find_files = {
-      theme = "ivy",
-    }
-  },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
@@ -70,7 +65,6 @@ require('telescope').setup {
       treesitter = true,
     },
     coc = {
-      theme = 'ivy',
       prefer_locations = true,
     },
   },
