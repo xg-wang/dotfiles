@@ -161,6 +161,7 @@ require('packer').startup(function(use)
   -- https://github.com/github/copilot.vim
   -- Fix multiline suggestion: https://github.com/orgs/community/discussions/40522#discussioncomment-6736514
   -- oneliner: sed -i '.bak' 's/\["\\n"\]/["\\n\\n\\n"]/' ~/.local/share/nvim/site/pack/packer/start/copilot.vim/dist/agent.js
+  -- 2023-10-24 sed -i '.bak' 's/stop\["\\n"\]/stop["\\n\\n\\n"]/' ~/.local/share/nvim/site/pack/packer/start/copilot.vim/dist/agent.js
   use 'github/copilot.vim'
 
   use {
