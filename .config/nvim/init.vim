@@ -1,5 +1,7 @@
 set textwidth=120
 
+lua require('index')
+
 " Use new regular expression engine. The default regular expression engine on MacOS's vim is dog slow and can't handle
 " large typescript files.
 set re=0
@@ -208,11 +210,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end()
-
-lua require('plugins')
-lua require('telescope_config')
-lua require('theme')
-lua require('vim')
 
 augroup packer_user_config
   autocmd!
