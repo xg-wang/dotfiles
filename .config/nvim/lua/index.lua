@@ -1,0 +1,5 @@
+require('plugins')
+require('telescope_config')
+require('theme')
+require('vim')
+require('winbar')

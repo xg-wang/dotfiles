@@ -4,3 +4,5 @@
 
 -- Vim shortcut for next tab when pressing leader-Tab
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':tabnext<CR>', { noremap = true, silent = true })
+
+vim.o.hidden = true
