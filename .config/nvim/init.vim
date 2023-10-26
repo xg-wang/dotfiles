@@ -358,9 +358,17 @@ endfunction
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <Tab>
+" inoremap <silent><expr> <Tab>
+"       \ coc#pum#visible() ? coc#pum#next(1):
+"       \ <SID>CheckBackSpace() ? "\<Tab>" :
+"       \ coc#refresh()
+" copilot.vim remaps <tab>, it checks pumvisible but not coc#pum#visible, so it does not work well with the custom popup
+" menu. You can disable the overwrite and define the <tab>:
+let g:copilot_no_tab_map = v:true
+inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
-      \ <SID>CheckBackSpace() ? "\<Tab>" :
+      \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
+      \ CheckBackSpace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
