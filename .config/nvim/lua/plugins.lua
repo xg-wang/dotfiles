@@ -237,6 +237,7 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = {
       { 'nvim-lua/plenary.nvim' },
+      { 'fannheyward/telescope-coc.nvim' },
       { 'nvim-telescope/telescope-file-browser.nvim' },
       { 'crispgm/telescope-heading.nvim' },
       { 'LinArcX/telescope-env.nvim' },
