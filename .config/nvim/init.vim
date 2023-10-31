@@ -361,11 +361,12 @@ endfunction
 "       \ coc#refresh()
 " copilot.vim remaps <tab>, it checks pumvisible but not coc#pum#visible, so it does not work well with the custom popup
 " menu. You can disable the overwrite and define the <tab>:
+imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
       \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
-      \ CheckBackSpace() ? "\<Tab>" :
+      \ <SID>CheckBackSpace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 

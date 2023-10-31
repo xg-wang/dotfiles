@@ -13,5 +13,8 @@
       "initializationOptions": {},
       "settings": {}
     }
-  }
+  },
+  "list.floatPreview": true,
+  "list.height": 16,
+  "list.maxPreviewHeight": 24
 }

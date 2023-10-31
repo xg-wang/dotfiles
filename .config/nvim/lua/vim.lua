@@ -6,3 +6,10 @@
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':tabnext<CR>', { noremap = true, silent = true })
 
 vim.o.hidden = true
+
+vim.api.nvim_create_autocmd({ "ExitPre" }, {
+  callback = function(ev)
+    local nvim_tree = require('nvim-tree')
+    nvim_tree.close()
+  end
+})

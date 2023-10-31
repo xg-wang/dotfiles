@@ -147,7 +147,7 @@ require('packer').startup(function(use)
         auto_session_use_git_branch = true,
         auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
         -- pre_save_cmds = {
-        --   function ()
+        --   function()
         --     local nvim_tree = require('nvim-tree')
         --     -- nvim_tree.change_dir(vim.fn.getcwd())
         --     -- nvim_tree.refresh()
@@ -234,7 +234,7 @@ require('packer').startup(function(use)
   -- Telescope
   -- https://github.com/nvim-telescope/telescope.nvim
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'fannheyward/telescope-coc.nvim' },
