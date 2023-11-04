@@ -336,10 +336,6 @@ require('packer').startup(function(use)
     config = function()
       -- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
       vim.opt.termguicolors = true
-      vim.cmd(string.format([[highlight IndentBlanklineIndent1 guibg=%s gui=nocombine]],
-        require('gruvbox').palette.dark0_soft))
-      vim.cmd(string.format([[highlight IndentBlanklineIndent2 guibg=%s gui=nocombine]],
-        require('gruvbox').palette.dark0_hard))
     end
   }
 
