@@ -6,7 +6,6 @@ require("gruvbox").setup({
   bold = true,
   italic = {
     strings = false,
-    emphasis = false,
     comments = false,
     operators = false,
     folds = false,
@@ -17,10 +16,8 @@ require("gruvbox").setup({
   invert_tabline = false,
   invert_intend_guides = false,
   inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "soft", -- can be "hard", "soft" or empty string
+  contrast = "hard", -- can be "hard", "soft" or empty string
   overrides = {},
-  dim_inactive = false,
-  transparent_mode = false,
 })
-vim.opt.background = "light" -- or "light" for light mode
+vim.opt.background = "dark" -- or "light" for light mode
 vim.cmd("colorscheme gruvbox")

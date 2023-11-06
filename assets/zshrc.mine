@@ -41,7 +41,7 @@ else
 fi
 
 # bat
-export BAT_THEME=gruvbox-light # Coldark-Dark
+export BAT_THEME=gruvbox-dark # Coldark-Dark
 
 # Python
 # https://github.com/pyenv/pyenv#installation
