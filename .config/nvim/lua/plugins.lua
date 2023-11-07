@@ -331,6 +331,7 @@ require('packer').startup(function(use)
   use { 'tpope/vim-sleuth' }
 
   -- https://github.com/ellisonleao/gruvbox.nvim
+  -- Tree-Sitter support is missing from https://github.com/gruvbox-community/gruvbox/issues/154
   use {
     'ellisonleao/gruvbox.nvim',
     config = function()

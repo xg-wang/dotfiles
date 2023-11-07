@@ -1,4 +1,4 @@
-set textwidth=120
+set textwidth=100
 
 lua require('index')
 
@@ -186,9 +186,6 @@ Plug 'mhinz/vim-startify'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'romgrk/nvim-treesitter-context'
 " Plug 'rktjmp/lush.nvim'
-" Plug 'bluz71/vim-nightfly-guicolors'
-" Tree-Sitter support? https://github.com/gruvbox-community/gruvbox/issues/154
-"Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
@@ -221,7 +218,7 @@ augroup end
 " TODO: enable gruvbox
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'one',
+  \ 'colorscheme': 'PaperColor',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'relativepath', 'modified', 'gitbranch', 'readonly' ],
@@ -236,17 +233,6 @@ let g:lightline = {
 
 " Global status line with winbar showing modified & file path
 set laststatus=3
-" Winbar
-lua require('winbar')
-" augroup NicerWinBar
-"   autocmd!
-"   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
-"   " autocmd WinEnter,BufEnter *.{tsx,ts,js,py,json,yml,yaml,md,sh,lua,jenkinsfile,dockerfile,tf,rb} setlocal winbar=%=%m\ %f
-"   autocmd TermOpen * setlocal winbar=
-"   autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
-"   autocmd WinEnter,BufEnter Coc* setlocal winbar=
-"   autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
-" augroup END
 
 "" Goyo {{
 function! s:goyo_enter()
@@ -361,7 +347,9 @@ endfunction
 "       \ coc#refresh()
 " copilot.vim remaps <tab>, it checks pumvisible but not coc#pum#visible, so it does not work well with the custom popup
 " menu. You can disable the overwrite and define the <tab>:
-imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
+inoremap <silent><script><expr> <C-j>
+    \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
+    \ "\<C-j>"
 let g:copilot_no_tab_map = v:true
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):

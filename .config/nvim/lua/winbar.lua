@@ -32,3 +32,13 @@ vim.api.nvim_set_hl(0, "WinBar", { fg = fg2, bg = bg1 })
 vim.api.nvim_set_hl(0, "WinBarNC", { fg = fg2, bg = bg2 })
 
 vim.opt.winbar = get_winbar()
+
+-- " augroup NicerWinBar
+-- "   autocmd!
+-- "   " autocmd WinEnter,BufEnter * setlocal winbar=%=%m\ %f
+-- "   " autocmd WinEnter,BufEnter *.{tsx,ts,js,py,json,yml,yaml,md,sh,lua,jenkinsfile,dockerfile,tf,rb} setlocal winbar=%=%m\ %f
+-- "   autocmd TermOpen * setlocal winbar=
+-- "   autocmd WinEnter,BufEnter NvimTree* setlocal winbar=
+-- "   autocmd WinEnter,BufEnter Coc* setlocal winbar=
+-- "   autocmd WinEnter,BufEnter *Prompt* setlocal winbar=
+-- " augroup END
