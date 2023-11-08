@@ -218,7 +218,7 @@ augroup end
 " TODO: enable gruvbox
 set noshowmode
 let g:lightline = {
-  \ 'colorscheme': 'PaperColor',
+  \ 'colorscheme': 'gruvbox_material',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'relativepath', 'modified', 'gitbranch', 'readonly' ],

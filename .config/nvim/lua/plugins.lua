@@ -340,6 +340,8 @@ require('packer').startup(function(use)
     end
   }
 
+  use { 'sainnhe/gruvbox-material' }
+
   use { "psf/black", branch = "stable" }
 
   use { "Glench/Vim-Jinja2-Syntax" }

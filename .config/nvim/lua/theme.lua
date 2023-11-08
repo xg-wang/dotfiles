@@ -20,7 +20,7 @@ require("gruvbox").setup({
   overrides = {},
 })
 vim.opt.background = "dark" -- or "light" for light mode
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme gruvbox-material")
 
 local Theme = {}
 -- shortcut F12 to toggle vim's set background between dark and light, if current is dark, use light, if current is light, use dark
