@@ -340,6 +340,8 @@ require('packer').startup(function(use)
     end
   }
 
+  use { 'aquasecurity/vim-tfsec' }
+
   use { 'sainnhe/gruvbox-material' }
 
   use { "psf/black", branch = "stable" }

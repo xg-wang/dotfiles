@@ -138,6 +138,8 @@ alias d="kitty +kitten diff"
 # alias vim="nvim"
 alias n="nvim"
 
+alias p="pnpm"
+
 # Tips
 # https://news.ycombinator.com/item?id=24083753
 function readlines() {
