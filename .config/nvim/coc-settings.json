@@ -4,7 +4,13 @@
   "eslint.packageManager": "yarn",
   "tsserver.tsdk": "node_modules/typescript/lib",
   "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "120"],
   "Lua.diagnostics.globals": ["vim"],
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**"
+  ],
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
