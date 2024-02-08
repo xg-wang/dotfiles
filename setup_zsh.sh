@@ -28,3 +28,6 @@ cd contrib
 git submodule init
 git submodule update
 
+# fzf https://github.com/junegunn/fzf?tab=readme-ov-file#using-homebrew
+$(brew --prefix)/opt/fzf/install
+

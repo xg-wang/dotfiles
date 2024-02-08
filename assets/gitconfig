@@ -2,8 +2,8 @@
 # vim: set filetype=gitconfig:
 
 [user]
-  name = Thomas Wang
-  email = hi@xgwang.me
+	name = Thomas Wang
+	email = hi@xgwang.me
   gpgsign = false
 
 [include]
@@ -12,6 +12,19 @@
   path = ~/.gitconfig.d/gitconfig-airtable.txt
 
 [alias]
+  s = status
+  d = diff
+  p = pull
+  l = log
+  aa = add --all
+  co = checkout
+  cm = commit --message
+  ca = commit --amend
+  sw = switch
+  rbi = rebase --interactive
+  rbc = rebase --continue
+  pushy = push --force
+  cane = commit --amend --no-edit
   rawdiff = !git --no-pager diff --no-color
   dlast = diff HEAD~1..HEAD
   last = log -1 HEAD
