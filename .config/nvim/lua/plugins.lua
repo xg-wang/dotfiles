@@ -204,6 +204,7 @@ require('packer').startup(function(use)
         -- " https://github.com/nvim-treesitter/nvim-treesitter#available-modules
         ensure_installed = {
           "typescript",
+          "tsx",
           "javascript",
           "python",
           "bash",
