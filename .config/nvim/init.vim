@@ -272,7 +272,7 @@ set diffopt=filler,vertical
 
 "" fzf {{
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 1.0 } }
 " :command Rg
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(

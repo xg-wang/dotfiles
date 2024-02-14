@@ -21,6 +21,7 @@
   cm = commit --message
   ca = commit --amend
   sw = switch
+  ru = remote update
   rbi = rebase --interactive
   rbc = rebase --continue
   pushy = push --force

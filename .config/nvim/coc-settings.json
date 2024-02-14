@@ -3,6 +3,7 @@
   "javascript.suggestionActions.enabled": false,
   "eslint.packageManager": "yarn",
   "tsserver.tsdk": "node_modules/typescript/lib",
+  "tsserver.maxTsServerMemory": 49152,
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--line-length", "120"],
   "Lua.diagnostics.globals": ["vim"],
