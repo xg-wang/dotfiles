@@ -1,6 +1,8 @@
 # -*- mode: gitconfig; -*-
 # vim: set filetype=gitconfig:
 
+# This post has a bunch of useful tips https://jvns.ca/blog/2024/02/16/popular-git-config-options/
+
 [user]
 	name = Thomas Wang
 	email = hi@xgwang.me
@@ -47,6 +49,7 @@
   autocrlf = false
   quotepath = false
   fsmonitor = true
+	pager = delta
 
 [pager]
   diff = delta
@@ -82,3 +85,14 @@
 
 [init]
 	defaultBranch = main
+[diff]
+	algorithm = histogram
+	submodule = log
+[commit]
+	verbose = true
+[rebase]
+	autostash = true
+[status]
+	submoduleSummary = true
+[submodule]
+	recurse = true
