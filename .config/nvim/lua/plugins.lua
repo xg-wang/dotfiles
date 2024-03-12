@@ -334,13 +334,8 @@ require('packer').startup(function(use)
 
   -- https://github.com/ellisonleao/gruvbox.nvim
   -- Tree-Sitter support is missing from https://github.com/gruvbox-community/gruvbox/issues/154
-  use {
-    'ellisonleao/gruvbox.nvim',
-    config = function()
-      -- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
-      vim.opt.termguicolors = true
-    end
-  }
+  -- Additional settings in .config/nvim/lua/theme.lua
+  use { 'ellisonleao/gruvbox.nvim' }
 
   use { 'aquasecurity/vim-tfsec' }
 

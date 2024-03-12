@@ -107,7 +107,7 @@ filetype plugin indent on
 set spelllang=en_us
 set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
 set spellcapcheck=
-set nospell
+set spell
 " https://github.com/neovim/neovim/pull/12955
 if exists('&spelloptions')
   set spelloptions=camel
@@ -272,7 +272,7 @@ set diffopt=filler,vertical
 
 "" fzf {{
 " https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
-let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 1.0 } }
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.9 } }
 " :command Rg
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(

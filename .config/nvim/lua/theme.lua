@@ -1,3 +1,6 @@
+-- https://github.com/lukas-reineke/indent-blankline.nvim#with-custom-background-highlight
+vim.opt.termguicolors = true
+
 -- setup must be called before loading the colorscheme
 -- Default options:
 require("gruvbox").setup({
@@ -18,13 +21,19 @@ require("gruvbox").setup({
   invert_tabline = false,
   invert_intend_guides = false,
   inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "hard", -- can be "hard", "soft" or empty string
+  contrast = "", -- can be "hard", "soft" or empty string
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
   transparent_mode = false,
 })
-vim.opt.background = "dark" -- or "light" for light mode
+
+if os.getenv("BAT_THEME") == "gruvbox-dark" then
+  vim.opt.background = "dark"
+else
+  vim.opt.background = "light"
+end
+
 -- vim.cmd("colorscheme gruvbox-material")
 vim.cmd("colorscheme gruvbox")
 

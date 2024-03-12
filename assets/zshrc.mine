@@ -41,7 +41,16 @@ else
 fi
 
 # bat
-export BAT_THEME=gruvbox-dark # Coldark-Dark
+# grep first line of .config/kitty/current-theme.conf, if "Gruvbox Light" set BAT_THEME to "gruvbox-light"
+if [[ -f ~/.config/kitty/current-theme.conf ]]; then
+  if grep -q "Gruvbox Light" ~/.config/kitty/current-theme.conf; then
+    export BAT_THEME=gruvbox-light
+  else
+    export BAT_THEME=gruvbox-dark
+  fi
+else
+  export BAT_THEME=gruvbox-dark # Coldark-Dark
+fi
 
 # Python
 # https://github.com/pyenv/pyenv#installation

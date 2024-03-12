@@ -4,8 +4,8 @@
 # This post has a bunch of useful tips https://jvns.ca/blog/2024/02/16/popular-git-config-options/
 
 [user]
-	name = Thomas Wang
-	email = hi@xgwang.me
+  name = Thomas Wang
+  email = hi@xgwang.me
   gpgsign = false
 
 [include]
@@ -15,28 +15,35 @@
 
 [alias]
   s = status
+
   d = diff
+  dc = diff --cached
+  dlast = diff HEAD~1..HEAD
+  rawdiff = !git --no-pager diff --no-color
+
   p = pull
-  l = log
+  pushy = push --force
+
   aa = add --all
   co = checkout
   cm = commit --message
   ca = commit --amend
+  cane = commit --amend --no-edit
   sw = switch
+
   ru = remote update
   rbi = rebase --interactive
   rbc = rebase --continue
-  pushy = push --force
-  cane = commit --amend --no-edit
-  rawdiff = !git --no-pager diff --no-color
-  dlast = diff HEAD~1..HEAD
+
+  l = log
   last = log -1 HEAD
   count = !git log --author="$(git config user.email)" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
   ### change cn » an, prefer author over commiter
   ll = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cblue%ad %C(auto)%h%Creset -%C(auto)%d%Creset %s %Cblue[%an]%Creset %Cblue%G?%Creset'
   lll = log --graph --topo-order --date=iso8601-strict --no-abbrev-commit --decorate --all --boundary --pretty=format:'%Cblue%ad %C(auto)%h%Creset -%C(auto)%d%Creset %s %Cblue[%an <%ce>]%Creset %Cblue%G?%Creset'
-  branchauthors = "! for branch in `git branch -r | grep -v /HEAD`;do echo `git show --format=\"%ai %ar by %an\" $branch | head -n 1` \t$branch; done | sort -r"
   lg = !git log --graph --all --author $(git config user.email)
+
+  branchauthors = "! for branch in `git branch -r | grep -v /HEAD`;do echo `git show --format=\"%ai %ar by %an\" $branch | head -n 1` \t$branch; done | sort -r"
   # https://www.erikschierboom.com/2020/02/17/cleaning-up-local-git-branches-deleted-on-a-remote/
   gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
   who-reviewed-me-this-year = !git log --after=2022-01-01 --author="$(git config user.email)" | grep 'Reviewed By:' | sort | uniq -c | sort -r
@@ -49,12 +56,12 @@
   autocrlf = false
   quotepath = false
   fsmonitor = true
-	pager = delta
+  pager = delta
 
 [delta]
-  plus-style = "syntax #012800"
-  minus-style = "syntax #340001"
-  syntax-theme = gruvbox-dark
+  #plus-style = "syntax #012800"
+  #minus-style = "syntax #340001"
+	syntax-theme = gruvbox-light
   navigate = true
   line-numbers = true
   side-by-side = true
@@ -63,30 +70,30 @@
   diffFilter = delta --color-only
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 [pull]
-	ff = only
+  ff = only
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [merge]
   tool = nvimdiff3
   conflictstyle = diff3
 [color]
-	ui = true
+  ui = true
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [diff]
-	algorithm = histogram
-	submodule = log
+  algorithm = histogram
+  submodule = log
 [commit]
-	verbose = true
+  verbose = true
 [rebase]
-	autostash = true
+  autostash = true
 [status]
-	submoduleSummary = true
+  submoduleSummary = true
 [submodule]
-	recurse = true
+  recurse = true
