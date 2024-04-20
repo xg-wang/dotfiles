@@ -9,9 +9,7 @@
   gpgsign = false
 
 [include]
-  path = ~/.gitconfig.d/gitalias.txt
-[includeIf "gitdir:~/h/"]
-  path = ~/.gitconfig.d/gitconfig-airtable.txt
+  ; path = ~/.gitconfig.d/gitalias.txt
 
 [alias]
   s = status
