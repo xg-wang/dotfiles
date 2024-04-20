@@ -1,7 +1,6 @@
 {
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "javascript.suggestionActions.enabled": false,
-  "eslint.packageManager": "yarn",
   "tsserver.tsdk": "node_modules/typescript/lib",
   "tsserver.maxTsServerMemory": 49152,
   "python.formatting.provider": "black",
