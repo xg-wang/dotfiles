@@ -507,8 +507,8 @@ endfunc
 "" Python
 " https://black.readthedocs.io/en/stable/integrations/editors.html#vim
 let g:black_quiet=1
-let g:black_skip_string_normalization = 1
-let g:black_linelength = 120
+" let g:black_skip_string_normalization = 1
+" let g:black_linelength = 120
 augroup black_on_save
   autocmd!
   autocmd BufWritePre *.py Black

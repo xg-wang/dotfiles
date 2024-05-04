@@ -5,7 +5,7 @@
 
 [user]
   name = Thomas Wang
-  email = hi@xgwang.me
+	email = thomas@perplexity.ai
   gpgsign = false
 
 [include]

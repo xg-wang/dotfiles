@@ -4,7 +4,10 @@
   "tsserver.tsdk": "node_modules/typescript/lib",
   "tsserver.maxTsServerMemory": 49152,
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "120"],
+  "python.formatting.blackArgs": [],
+  "python.sortImports.path": "isort",
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.parameterTypes": false,
   "Lua.diagnostics.globals": ["vim"],
   "workspace.ignoredFolders": [
     "$HOME",
