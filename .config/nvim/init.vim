@@ -299,7 +299,6 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-git',
       \ 'coc-tsserver',
-      \ 'coc-tailwindcss',
       \ 'coc-prisma',
       \ 'coc-sql',
       \ 'coc-pyright',

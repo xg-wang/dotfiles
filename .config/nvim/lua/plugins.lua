@@ -349,6 +349,10 @@ require('packer').startup(function(use)
 
   use { "fladson/vim-kitty" }
 
+  use { "NoahTheDuke/vim-just" }
+
+  use { "IndianBoy42/tree-sitter-just" }
+
   -- https://github.com/ruanyl/vim-gh-line
   -- Default key mapping for:
   -- blob view: <leader>gh
