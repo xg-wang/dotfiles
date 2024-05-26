@@ -183,7 +183,6 @@ call plug#begin()
 " (<C-X><C-O>, see :help compl-omni)
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-startify'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'romgrk/nvim-treesitter-context'
 " Plug 'rktjmp/lush.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
@@ -299,7 +298,6 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-git',
       \ 'coc-tsserver',
-      \ 'coc-prisma',
       \ 'coc-sql',
       \ 'coc-pyright',
       \ 'coc-sh',
