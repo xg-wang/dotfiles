@@ -1,5 +1,9 @@
 # vim:fileencoding=utf-8:ft=conf:foldmethod=marker
 
+notify_on_cmd_finish invisible
+
+macos_menubar_title_max_length 3
+
 #: Fonts {{{
 
 #: kitty has very powerful font management. You can configure

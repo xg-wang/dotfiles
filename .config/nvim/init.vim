@@ -378,14 +378,11 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-" nmap <silent> gd <cmd>Telescope coc definitions<CR>
-" nmap <silent> gr <cmd>Telescope coc references<CR>
-" nmap <silent> gy <cmd>Telescope coc type_definitions<CR>
-" nmap <silent> gi <cmd>Telescope coc implementations<CR>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" Implemented in .config/nvim/lua/telescope_config.lua
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -403,7 +400,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 vmap <leader>fm <Plug>(coc-format-selected)
 nmap <leader>fm <Plug>(coc-format)
-
 function! s:noop()
 endfunction
 augroup CocStuff

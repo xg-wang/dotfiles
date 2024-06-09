@@ -64,15 +64,25 @@ require('telescope').setup {
     heading = {
       treesitter = true,
     },
+    -- https://github.com/fannheyward/telescope-coc.nvim
     coc = {
+      -- theme = 'ivy',
       prefer_locations = true,
+      push_cursor_on_edit = true,
+      timeout = 3000,
     },
   },
 }
 
 require('telescope').load_extension('fzf')
--- require('telescope').load_extension('coc')
+require('telescope').load_extension('coc')
 require('telescope').load_extension('file_browser')
 require('telescope').load_extension('heading')
 require('telescope').load_extension('env')
 require("telescope").load_extension("session-lens")
+
+-- GoTo code navigation.
+vim.api.nvim_set_keymap('n', 'gd', '<cmd>Telescope coc definitions<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>Telescope coc references<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', 'gy', '<cmd>Telescope coc type_definitions<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', 'gi', '<cmd>Telescope coc implementations<CR>', {silent = true})
