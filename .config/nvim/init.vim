@@ -299,6 +299,7 @@ let g:coc_global_extensions = [
       \ 'coc-git',
       \ 'coc-tsserver',
       \ 'coc-sql',
+      \ '@yaegassy/coc-ruff',
       \ 'coc-pyright',
       \ 'coc-sh',
       \ 'coc-yaml',
