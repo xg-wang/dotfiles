@@ -1,7 +1,5 @@
 set textwidth=100
 
-lua require('index')
-
 " Use new regular expression engine. The default regular expression engine on MacOS's vim is dog slow and can't handle
 " large typescript files.
 set re=0
@@ -68,6 +66,8 @@ if exists('g:vscode')
 
 " Native vim only
 else
+
+lua require('index')
 
 set number relativenumber
 set lazyredraw
