@@ -1,3 +1,5 @@
+bazel-*
+
 .venv
 # vim
 .vim
@@ -141,3 +143,4 @@ typings/
 
 # Python
 .pytest_cache
+mypy_cache

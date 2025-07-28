@@ -7,7 +7,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
@@ -113,6 +112,22 @@ export FZF_EXCLUDE=".git,node_modules,tmp,dist,build"
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow -g \"!{$FZF_EXCLUDE}/*\" 2> /dev/null"
 export FZF_DEFAULT_OPTS="--inline-info"
 
+# claude code
+alias suclaude="claude --dangerously-skip-permissions"
+
+announce() {
+    exit_code=$?
+    command=$history[$HISTCMD]
+    if [[ $exit_code = 0 ]]; then
+        osascript -e 'display notification "$ '$command'" with title "Command succeeded!"'
+        say success
+    else
+        osascript -e 'display notification "$ '$command'\nFailed with exit code: '$exit_code'" with title "Command failed!"'
+        say failure
+    fi
+}
+
+
 # https://sw.kovidgoyal.net/kitty/kittens/hyperlinked_grep/
 alias hg="kitty +kitten hyperlinked_grep"
 
@@ -206,4 +221,9 @@ function readlines() {
   echo_color "${CYAN}" "c-k  Delete forward to end of line"
   echo_color "${CYAN}" "c-u  Delete entire line"
 }
+
+alias dp="doppler run -- python"
+
+# direnv
+# eval "$(direnv hook zsh)"
 

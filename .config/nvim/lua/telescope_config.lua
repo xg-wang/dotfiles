@@ -39,11 +39,16 @@ require('telescope').setup {
     },
     path_display = {
       hidden = false,
+      smart  = true,
       -- shorten = {
       --   len = 3, exclude = {1, -1}
       -- },
       truncate = 3,
     }
+    -- path_display = function(opts, path)
+    --   local tail = require("telescope.utils").path_tail(path)
+    --   return string.format("%s (%s)", tail, path)
+    -- end,
   },
   -- pickers = {
   --   buffers = fixfolds,

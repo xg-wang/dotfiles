@@ -163,7 +163,7 @@ require('packer').startup(function(use)
   -- oneliner: sed -i '.bak' 's/\["\\n"\]/["\\n\\n\\n"]/' ~/.local/share/nvim/site/pack/packer/start/copilot.vim/dist/agent.js
   -- 2023-10-24 sed -i '.bak' 's/stop\["\\n"\]/stop["\\n\\n\\n"]/' ~/.local/share/nvim/site/pack/packer/start/copilot.vim/dist/agent.js
   --            sed -i '.bak' 's/f\.stop=\[\`/f.stop=[`\n\n/' $(ls ~/.local/share/nvim/site/pack/packer/start/copilot.vim/dist/agent.js)
-  use 'github/copilot.vim'
+  -- use 'github/copilot.vim'
 
   use {
     'rmagatti/session-lens',
