@@ -171,39 +171,6 @@ nnoremap <C-n> :NvimTreeFindFileToggle<CR>
 nnoremap <C-m> :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 " NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
-"" Vim-Plug
-call plug#begin()
-
-" https://github.com/tpope/vim-rhubarb
-" Enables :GBrowse from fugitive.vim to open GitHub URLs. In commit messages,
-" GitHub issues, issue URLs, and collaborators can be omni-completed
-" (<C-X><C-O>, see :help compl-omni)
-Plug 'tpope/vim-rhubarb'
-Plug 'mhinz/vim-startify'
-"Plug 'romgrk/nvim-treesitter-context'
-" Plug 'rktjmp/lush.nvim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'godlygeek/tabular'
-Plug 'jiangmiao/auto-pairs'
-"Plug 'sheerun/vim-polyglot'
-" Plug 'GEverding/vim-hocon'
-" Plug 'pantharshit00/vim-prisma'
-"Plug 'Quramy/vim-js-pretty-template'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mattn/emmet-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
-" Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
-Plug 'junegunn/goyo.vim'
-" On-demand lazy load
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-
-call plug#end()
-
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
 
 " Status bar
 " mode is handled by lightline
@@ -260,6 +227,16 @@ nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gh :diffget //2<CR>
 nnoremap <leader>gl :diffget //3<CR>
 set diffopt=filler,vertical
+"" }}
+
+"" fzf {{
+" https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.9 } }
+" :command Rg
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!{.git,node_modules,transpiled,build,dist}/*" -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 "" }}
 
 "" Telescope {{
