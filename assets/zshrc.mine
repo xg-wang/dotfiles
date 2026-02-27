@@ -127,6 +127,7 @@ announce() {
     fi
 }
 
+alias theme="source ~/dotfiles/theme.sh"
 
 # https://sw.kovidgoyal.net/kitty/kittens/hyperlinked_grep/
 alias hg="kitty +kitten hyperlinked_grep"
@@ -222,8 +223,18 @@ function readlines() {
   echo_color "${CYAN}" "c-u  Delete entire line"
 }
 
-alias dp="doppler run -- python"
+alias dp="doppler run -- uv run python"
 
 # direnv
 # eval "$(direnv hook zsh)"
 
+function auto_activate_venv() {
+  if [[ -f .venv/bin/activate ]]; then
+    source .venv/bin/activate
+  elif [[ -n "$VIRTUAL_ENV" ]]; then
+    deactivate
+  fi
+}
+autoload -U add-zsh-hook
+add-zsh-hook chpwd auto_activate_venv
+auto_activate_venv  # run on shell startup

@@ -4,7 +4,7 @@
 # This post has a bunch of useful tips https://jvns.ca/blog/2024/02/16/popular-git-config-options/
 
 [user]
-  name = Thomas Wang
+	name = Thomas Wang
 	email = thomas@perplexity.ai
   gpgsign = false
 

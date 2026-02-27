@@ -1074,7 +1074,6 @@ clear_all_shortcuts no
 #: Clipboard {{{
 
 map kitty_mod+c copy_to_clipboard
-map ctrl+shift+alt+c copy_ansi_to_clipboard
 
 #: There is also a copy_or_interrupt action that can be optionally
 #: mapped to Ctrl+c. It will copy only if there is a selection and
@@ -1358,7 +1357,6 @@ map kitty_mod+delete clear_terminal reset active
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark
+# Gruvbox Light
 include current-theme.conf
 # END_KITTY_THEME
-map shift+enter send_text all \e\r
