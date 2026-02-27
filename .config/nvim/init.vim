@@ -42,7 +42,7 @@ noremap  <Right> <NOP>
 " inoremap <Right> <NOP>
 
 " Copy relative path (src/foo.txt). Always use relative path
-nnoremap <leader>cp :let @+=expand("%.")<CR>
+nnoremap <leader>cp :let @+=expand("%:.")<CR>
 " Copy absolute path (/something/src/foo.txt)
 nnoremap <leader>cP :let @+=expand("%:p")<CR>
 " Copy filename (foo.txt)
@@ -70,7 +70,6 @@ else
 lua require('index')
 
 set number relativenumber
-set lazyredraw
 set autowriteall
 "let mapleader = ','
 set autowrite " Automatically :write before running commands
@@ -78,11 +77,7 @@ set autowrite " Automatically :write before running commands
 set noshowcmd " Show (partial) command in the last line of the screen. Set
               " this option off if your terminal is slow.
 set clipboard+=unnamedplus
-set incsearch     " do incremental searching
 set conceallevel=0
-if has('mouse')
-  set mouse=a
-endif
 " Shows the effects of a command incrementally, as you type.
 " Also shows partial off-screen results in a preview window.
 set inccommand=split
@@ -95,13 +90,15 @@ set titlestring=%f%(\ [%M]%)
 set list listchars=tab:›\ ,trail:·,extends:◣,precedes:◢,nbsp:␣
 match errorMsg /\s\+$/
 
+" case insensitive search
+set ignorecase smartcase
+
 " Tab
 set tabstop     =4
 set softtabstop =4
 set shiftwidth  =4
 set shiftround
 set expandtab
-filetype plugin indent on
 
 " Spell https://neovim.io/doc/user/spell.html
 set spelllang=en_us
@@ -188,19 +185,15 @@ Plug 'mhinz/vim-startify'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
 "Plug 'sheerun/vim-polyglot'
 " Plug 'GEverding/vim-hocon'
 " Plug 'pantharshit00/vim-prisma'
 "Plug 'Quramy/vim-js-pretty-template'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
+" Plug 'wakatime/vim-wakatime' " API key: https://wakatime.com/vim
 Plug 'junegunn/goyo.vim'
 " On-demand lazy load
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
@@ -269,16 +262,6 @@ nnoremap <leader>gl :diffget //3<CR>
 set diffopt=filler,vertical
 "" }}
 
-"" fzf {{
-" https://github.com/junegunn/fzf.vim/issues/821#issuecomment-581481211
-let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.9 } }
-" :command Rg
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!{.git,node_modules,transpiled,build,dist}/*" -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-"" }}
-
 "" Telescope {{
 nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--hidden,--files,--glob=!.git/*<cr>
 " nnoremap <leader>ff <cmd>Telescope find_files hidden=1<cr>
@@ -343,15 +326,8 @@ endfunction
 "       \ coc#pum#visible() ? coc#pum#next(1):
 "       \ <SID>CheckBackSpace() ? "\<Tab>" :
 "       \ coc#refresh()
-" copilot.vim remaps <tab>, it checks pumvisible but not coc#pum#visible, so it does not work well with the custom popup
-" menu. You can disable the overwrite and define the <tab>:
-inoremap <silent><script><expr> <C-j>
-    \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
-    \ "\<C-j>"
-let g:copilot_no_tab_map = v:true
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
-      \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
       \ <SID>CheckBackSpace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
@@ -363,11 +339,7 @@ inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 " hi CocMenuSel ctermbg=109 guibg=#13354A
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u starts a new undo break, please make your own choice.
@@ -401,8 +373,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 vmap <leader>fm <Plug>(coc-format-selected)
 nmap <leader>fm <Plug>(coc-format)
-function! s:noop()
-endfunction
 augroup CocStuff
   au!
   " Highlight symbol under cursor on CursorHold
@@ -412,7 +382,7 @@ augroup CocStuff
   " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   " Noop if showSignatureHelp is not found in certain cases
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp', ,<SID>noop())
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   " Use autocmd to force lightline update.
   autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 augroup END
@@ -498,17 +468,6 @@ endfunc
 "call EnableTemplateLiteralColors()
 "" }}
 
-"" Python
-" https://black.readthedocs.io/en/stable/integrations/editors.html#vim
-let g:black_quiet=1
-" let g:black_skip_string_normalization = 1
-" let g:black_linelength = 120
-augroup black_on_save
-  autocmd!
-  autocmd BufWritePre *.py Black
-augroup end
-"
-
 "" Markdown
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
@@ -542,7 +501,5 @@ let g:startify_lists = [
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 "
-
-syntax on
 
 endif

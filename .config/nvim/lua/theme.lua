@@ -49,7 +49,7 @@ vim.cmd("colorscheme gruvbox")
 
 local Theme = {}
 -- shortcut F12 to toggle vim's set background between dark and light, if current is dark, use light, if current is light, use dark
-vim.api.nvim_set_keymap('n', '<F12>', ':lua require("theme").toggle_bg()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F12>', ':lua require("theme").toggle_bg()<CR>', { silent = true })
 Theme.toggle_bg = function()
   if vim.o.background == "dark" then
     vim.o.background = "light"

@@ -2,7 +2,7 @@
   "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "javascript.suggestionActions.enabled": false,
   "tsserver.tsdk": "node_modules/typescript/lib",
-  "tsserver.maxTsServerMemory": 49152,
+  "tsserver.maxTsServerMemory": 4096,
   "ruff.enableExperimentalFormatter": true,
   "python.formatting.provider": "none",
   "python.formatting.blackArgs": [],

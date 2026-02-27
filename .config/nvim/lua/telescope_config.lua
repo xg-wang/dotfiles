@@ -34,7 +34,6 @@ require('telescope').setup {
       "--column",
       "--smart-case",
       "--trim",
-      "--hidden",
       "--glob=!.git/*",
     },
     path_display = {
@@ -84,10 +83,8 @@ require('telescope').load_extension('coc')
 require('telescope').load_extension('file_browser')
 require('telescope').load_extension('heading')
 require('telescope').load_extension('env')
-require("telescope").load_extension("session-lens")
-
 -- GoTo code navigation.
-vim.api.nvim_set_keymap('n', 'gd', '<cmd>Telescope coc definitions<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', 'gr', '<cmd>Telescope coc references<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', 'gy', '<cmd>Telescope coc type_definitions<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', 'gi', '<cmd>Telescope coc implementations<CR>', {silent = true})
+vim.keymap.set('n', 'gd', '<cmd>Telescope coc definitions<CR>', {silent = true})
+vim.keymap.set('n', 'gr', '<cmd>Telescope coc references<CR>', {silent = true})
+vim.keymap.set('n', 'gy', '<cmd>Telescope coc type_definitions<CR>', {silent = true})
+vim.keymap.set('n', 'gi', '<cmd>Telescope coc implementations<CR>', {silent = true})

@@ -165,14 +165,6 @@ require('packer').startup(function(use)
   --            sed -i '.bak' 's/f\.stop=\[\`/f.stop=[`\n\n/' $(ls ~/.local/share/nvim/site/pack/packer/start/copilot.vim/dist/agent.js)
   -- use 'github/copilot.vim'
 
-  use {
-    'rmagatti/session-lens',
-    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
-    config = function()
-      require('session-lens').setup({ --[[your custom config--]] })
-    end
-  }
-
   -- https://github.com/lukas-reineke/indent-blankline.nvim
   use {
     'lukas-reineke/indent-blankline.nvim',
@@ -212,6 +204,12 @@ require('packer').startup(function(use)
           "rust",
           "markdown",
           "rst",
+          "json",
+          "html",
+          "css",
+          "toml",
+          "yaml",
+          "hcl",
         },
         -- Experimental feature, conflicts with the indent_blackline plugin
         indent = {
@@ -249,9 +247,9 @@ require('packer').startup(function(use)
 
   -- https://github.com/kyazdani42/nvim-tree.lua
   use {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      'nvim-tree/nvim-web-devicons', -- optional, for file icon
     },
     config = function()
       require 'nvim-tree'.setup {
@@ -340,8 +338,6 @@ require('packer').startup(function(use)
   use { 'aquasecurity/vim-tfsec' }
 
   use { 'sainnhe/gruvbox-material' }
-
-  use { "psf/black", branch = "stable" }
 
   use { "Glench/Vim-Jinja2-Syntax" }
 
