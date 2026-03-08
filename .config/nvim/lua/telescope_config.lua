@@ -1,27 +1,3 @@
--- temporary fix file folding
--- https://github.com/rmagatti/auto-session/issues/109
--- https://github.com/nvim-telescope/telescope.nvim/issues/559
--- local telescope_actions = require("telescope.actions.set")
--- local fixfolds = {
---     hidden = true,
---     attach_mappings = function(_)
---         telescope_actions.select:enhance({
---             post = function()
---                 vim.cmd(":normal! zx")
---             end,
---         })
---         return true
---     end,
--- }
--- vim.api.nvim_create_autocmd('BufRead', {
---    callback = function()
---       vim.api.nvim_create_autocmd('BufWinEnter', {
---          once = true,
---          command = 'normal! zx'
---       })
---    end
--- })
-
 require('telescope').setup {
   defaults = {
     vimgrep_arguments = {
@@ -39,24 +15,9 @@ require('telescope').setup {
     path_display = {
       hidden = false,
       smart  = true,
-      -- shorten = {
-      --   len = 3, exclude = {1, -1}
-      -- },
       truncate = 3,
     }
-    -- path_display = function(opts, path)
-    --   local tail = require("telescope.utils").path_tail(path)
-    --   return string.format("%s (%s)", tail, path)
-    -- end,
   },
-  -- pickers = {
-  --   buffers = fixfolds,
-  --   find_files = fixfolds,
-  --   git_files = fixfolds,
-  --   grep_string = fixfolds,
-  --   live_grep = fixfolds,
-  --   oldfiles = fixfolds,
-  -- },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching

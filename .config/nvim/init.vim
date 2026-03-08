@@ -90,10 +90,7 @@ if filereadable(expand("$HOME/Dropbox/Sync/vim-spell/en.utf-8.add"))
 endif
 set spellcapcheck=
 set spell
-" https://github.com/neovim/neovim/pull/12955
-if exists('&spelloptions')
-  set spelloptions=camel
-endif
+set spelloptions=camel
 autocmd FileType gitcommit setlocal spell
 autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
 " Does this actuallly work?
@@ -163,11 +160,7 @@ function! s:goyo_enter()
   set number relativenumber
 endfunction
 
-function! s:goyo_leave()
-endfunction
-
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "" }}
 
 nnoremap <silent> <leader> :WhichKey '\'<CR>
