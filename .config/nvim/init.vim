@@ -1,9 +1,5 @@
 set textwidth=100
 
-" Use new regular expression engine. The default regular expression engine on MacOS's vim is dog slow and can't handle
-" large typescript files.
-set re=0
-
 " To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -35,21 +31,12 @@ noremap  <Up>    <NOP>
 noremap  <Down>  <NOP>
 noremap  <Left>  <NOP>
 noremap  <Right> <NOP>
-" CoC rename needs arrow keys
-" inoremap <Up>    <NOP>
-" inoremap <Down>  <NOP>
-" inoremap <Left>  <NOP>
-" inoremap <Right> <NOP>
-
 " Copy relative path (src/foo.txt). Always use relative path
 nnoremap <leader>cp :let @+=expand("%:.")<CR>
 " Copy absolute path (/something/src/foo.txt)
 nnoremap <leader>cP :let @+=expand("%:p")<CR>
 " Copy filename (foo.txt)
 nnoremap <leader>ct :let @+=expand("%:t")<CR>
-" Copy directory name (/something/src)
-" nnoremap <leader>cd :let @+=expand("%:p:h")<CR>
-
 " Replace current word
 nnoremap <leader>s :%s/<C-r><C-w>//g<Left><Left>
 
@@ -71,11 +58,7 @@ lua require('index')
 
 set number relativenumber
 set autowriteall
-"let mapleader = ','
-set autowrite " Automatically :write before running commands
-" set showcmd
-set noshowcmd " Show (partial) command in the last line of the screen. Set
-              " this option off if your terminal is slow.
+set noshowcmd
 set clipboard+=unnamedplus
 set conceallevel=0
 " Shows the effects of a command incrementally, as you type.
@@ -102,7 +85,9 @@ set expandtab
 
 " Spell https://neovim.io/doc/user/spell.html
 set spelllang=en_us
-set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
+if filereadable(expand("$HOME/Dropbox/Sync/vim-spell/en.utf-8.add"))
+  set spellfile=$HOME/Dropbox/Sync/vim-spell/en.utf-8.add
+endif
 set spellcapcheck=
 set spell
 " https://github.com/neovim/neovim/pull/12955
@@ -115,11 +100,6 @@ autocmd FileType help if &buftype ==# 'help' | setlocal nospell | endif
 syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell
 syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
 nnoremap <F11> :set spell!<cr>
-
-" " https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
-" map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-" \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-" \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " AutoReload
 augroup AutoReloadStuff
@@ -143,17 +123,11 @@ augroup END
 command! -nargs=* T belowright split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
 nnoremap <C-t> :T<cr>:resize20<cr>
-" To map <Esc> to exit terminal-mode, disable prezto key-binding first
-"tnoremap <Esc> <C-\><C-n>
 
 "" set file types
 augroup SetFileTypes
   au!
-  " autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
-  " autocmd BufNewFile,BufRead *.tsx,*.gts setfiletype typescript.tsx
-  " autocmd BufNewFile,BufRead *.jsx,*.gjs setfiletype typescript.tsx
   autocmd BufRead,BufNewFile *.{json,json5,avsc} setfiletype jsonc
-  " autocmd BufRead,BufNewFile .babelrc setfiletype jsonc
 augroup END
 
 "" Open doc files in Vim
@@ -163,18 +137,9 @@ augroup OpenDocFiles
 augroup END
 "
 
-"" nvim-tree.lua
-" https://github.com/kyazdani42/nvim-tree.lua
 nnoremap <C-n> :NvimTreeFindFileToggle<CR>
-" This is just R
-" nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <C-m> :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
-" NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
-
-
 " Status bar
-" mode is handled by lightline
-" TODO: enable gruvbox
 set noshowmode
 let g:lightline = {
   \ 'colorscheme': 'gruvbox_material',
@@ -207,13 +172,8 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 nnoremap <silent> <leader> :WhichKey '\'<CR>
 
-" let g:vimwiki_list = [{'path': '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian',
-"                      \ 'path_html': '~/.vimwiki/public_html/',
-"                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
 let g:user_emmet_leader_key='<C-Z>'
 
-" au BufNewFile,BufRead *.hbs set filetype=glimmer
 au BufNewFile,BufRead Dockerfile* set filetype=dockerfile
 "" Tree-Sitter {{
 set foldmethod=expr
@@ -241,14 +201,11 @@ command! -bang -nargs=* Rg
 
 "" Telescope {{
 nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--hidden,--files,--glob=!.git/*<cr>
-" nnoremap <leader>ff <cmd>Telescope find_files hidden=1<cr>
 nnoremap <leader>fq <cmd>Telescope quickfix<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ff <cmd>Telescope file_browser depth=3<cr>
-" More pickers: https://github.com/nvim-telescope/telescope.nvim#pickers
-" }}
 
 "" coc.vim {{
 
@@ -290,30 +247,17 @@ set signcolumn=yes
 
 "Use <C-n> and <C-p> for navigate completion list like built in completion.
 inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
-inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-n>"
+inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
 
 function! s:CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-" inoremap <silent><expr> <Tab>
-"       \ coc#pum#visible() ? coc#pum#next(1):
-"       \ <SID>CheckBackSpace() ? "\<Tab>" :
-"       \ coc#refresh()
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
       \ <SID>CheckBackSpace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
-
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
-"
-" hi CocSearch ctermfg=12 guifg=#18A3FF
-" hi CocMenuSel ctermbg=109 guibg=#13354A
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -326,13 +270,6 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-" Implemented in .config/nvim/lua/telescope_config.lua
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -354,11 +291,6 @@ augroup CocStuff
   au!
   " Highlight symbol under cursor on CursorHold
   autocmd CursorHold * silent call CocActionAsync('highlight')
-  " Prefer using vim's built in formatter
-  " Setup formatexpr specified filetype(s).
-  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  " Noop if showSignatureHelp is not found in certain cases
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   " Use autocmd to force lightline update.
   autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
@@ -431,26 +363,9 @@ function! s:select_current_word()
 endfunc
 "" }}
 
-"" vim-js-pretty-template {{
-" Allow for named template literals to be highlighted
-" in a different syntax than the main buffer.
-" https://github.com/Quramy/vim-js-pretty-template
-"
-" function! EnableTemplateLiteralColors()
-"   " list of named template literal tags and their syntax here
-"   call jspretmpl#register_tag('hbs', 'handlebars')
-"   autocmd FileType javascript JsPreTmpl
-"   autocmd FileType typescript JsPreTmpl
-" endfunction
-"call EnableTemplateLiteralColors()
-"" }}
-
 "" Markdown
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
-" https://github.com/iamcco/markdown-preview.nvim
-" nmap <leader>mp <Plug>MarkdownPreview
-" nmap <leader>mps <Plug>MarkdownPreviewStop
 nmap <leader>mp <Plug>MarkdownPreviewToggle
 
 "" Startify

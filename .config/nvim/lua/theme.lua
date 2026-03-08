@@ -34,18 +34,7 @@ else
   vim.opt.background = "light"
 end
 
--- vim.cmd("colorscheme gruvbox-material")
 vim.cmd("colorscheme gruvbox")
-
--- vim.g.gruvbox_material_better_performance = 1
--- vim.g.gruvbox_material_disable_italic_comment = 1
--- vim.g.gruvbox_material_enable_bold = 1
--- vim.g.gruvbox_material_enable_italic = 1
--- vim.g.gruvbox_material_transparent_background = 2 -- more UI components to be transparent
--- vim.g.gruvbox_material_dim_inactive_windows = 1
--- vim.g.gruvbox_material_diagnostic_text_highlight = 1
--- vim.g.gruvbox_material_diagnostic_line_highlight = 1
--- vim.g.gruvbox_material_diagnostic_virtual_text = 'highlighted'
 
 local Theme = {}
 -- shortcut F12 to toggle vim's set background between dark and light, if current is dark, use light, if current is light, use dark

@@ -56,6 +56,8 @@ require("lazy").setup({
           "rust", "markdown", "rst", "json", "html", "css", "toml",
           "yaml", "hcl",
         },
+        sync_install = false,
+        auto_install = false,
         indent = { enable = true },
         highlight = { enable = true },
       }
@@ -78,7 +80,6 @@ require("lazy").setup({
   },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
-  -- https://github.com/kyazdani42/nvim-tree.lua
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -220,10 +221,8 @@ require("lazy").setup({
 
   { 'aquasecurity/vim-tfsec' },
   { 'sainnhe/gruvbox-material' },
-  { 'Glench/Vim-Jinja2-Syntax' },
   { 'prisma/vim-prisma' },
   { 'fladson/vim-kitty' },
-  { 'NoahTheDuke/vim-just' },
   { 'IndianBoy42/tree-sitter-just' },
 
   -- https://github.com/ruanyl/vim-gh-line
