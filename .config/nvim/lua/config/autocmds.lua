@@ -1,6 +1,18 @@
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Defaults: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 
+-- Auto-detect macOS dark/light mode and switch on focus
+vim.api.nvim_create_autocmd("FocusGained", {
+  callback = function()
+    local result = vim.fn.system("defaults read -g AppleInterfaceStyle 2>/dev/null")
+    local is_dark = result:find("Dark") ~= nil
+    local target = is_dark and "dark" or "light"
+    if vim.o.background ~= target then
+      vim.o.background = target
+    end
+  end,
+})
+
 -- Highlight trailing whitespace (skip dashboard and special buffers)
 vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
   callback = function()

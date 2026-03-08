@@ -40,9 +40,8 @@ opt.writebackup = false
 -- Diff
 opt.diffopt = "filler,vertical"
 
--- Light/dark based on terminal theme
-if os.getenv("BAT_THEME") == "gruvbox-dark" then
-  opt.background = "dark"
-else
-  opt.background = "light"
-end
+-- Light/dark based on macOS system appearance
+local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
+local result = handle and handle:read("*a") or ""
+if handle then handle:close() end
+opt.background = result:find("Dark") and "dark" or "light"
