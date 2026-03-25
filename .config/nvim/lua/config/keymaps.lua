@@ -37,9 +37,8 @@ map("n", "<Left>", "<NOP>")
 map("n", "<Right>", "<NOP>")
 
 -- Copy paths
-map("n", "<leader>cp", function() vim.fn.setreg("+", vim.fn.expand("%:.")) end, { desc = "Copy relative path" })
-map("n", "<leader>cP", function() vim.fn.setreg("+", vim.fn.expand("%:p")) end, { desc = "Copy absolute path" })
-map("n", "<leader>ct", function() vim.fn.setreg("+", vim.fn.expand("%:t")) end, { desc = "Copy filename" })
+map("n", "<leader>fy", function() vim.fn.setreg("+", vim.fn.expand("%:.")) end, { desc = "Copy relative path" })
+map("n", "<leader>fY", function() vim.fn.setreg("+", vim.fn.expand("%:p")) end, { desc = "Copy absolute path" })
 
 -- Replace current word (was <leader>s, now <leader>sW to avoid conflict with search group)
 map("n", "<leader>sW", ":%s/<C-r><C-w>//g<Left><Left>", { desc = "Replace word under cursor" })

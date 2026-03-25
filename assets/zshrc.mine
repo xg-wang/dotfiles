@@ -3,9 +3,17 @@
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
+# Lazy-load nvm (saves ~500ms on startup)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function _lazy_load_nvm() {
+  unfunction nvm node npm npx 2>/dev/null
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+}
+nvm()  { _lazy_load_nvm; nvm "$@"; }
+node() { _lazy_load_nvm; node "$@"; }
+npm()  { _lazy_load_nvm; npm "$@"; }
+npx()  { _lazy_load_nvm; npx "$@"; }
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -15,11 +23,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# https://docs.brew.sh/Shell-Completion
+# https://docs.brew.sh/Shell-Completion (compinit already called by prezto)
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  autoload -Uz compinit
-  compinit
 fi
 
 export EDITOR='nvim'
@@ -44,16 +50,12 @@ else
   fi
 fi
 
-# bat
-# grep first line of .config/kitty/current-theme.conf, if "Gruvbox Light" set BAT_THEME to "gruvbox-light"
-if [[ -f ~/.config/kitty/current-theme.conf ]]; then
-  if grep -q "Gruvbox Light" ~/.config/kitty/current-theme.conf; then
-    export BAT_THEME=gruvbox-light
-  else
-    export BAT_THEME=gruvbox-dark
-  fi
+# Set theme based on macOS system appearance (bat + delta)
+# Note: delta.syntax-theme is set via `theme` alias or kitty theme hooks
+if defaults read -g AppleInterfaceStyle &>/dev/null; then
+  export BAT_THEME=gruvbox-dark
 else
-  export BAT_THEME=gruvbox-dark # Coldark-Dark
+  export BAT_THEME=gruvbox-light
 fi
 
 # Python
@@ -64,36 +66,35 @@ fi
 # ~/.zprofile (for login shells)
 # and ~/.zshrc (for interactive shells) :
 
+# Lazy-load pyenv (saves ~120ms on startup)
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
+pyenv() {
+  unfunction pyenv 2>/dev/null
+  eval "$(command pyenv init -)"
+  command pyenv virtualenvwrapper_lazy
+  pyenv "$@"
+}
 
 # poetry
 export PATH="$HOME/.local/bin:$PATH"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/thomas.wang/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/thomas.wang/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/thomas.wang/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/thomas.wang/miniconda3/bin:$PATH"
-    fi
+# conda - lazy load (path uses thomas.wang, may be stale)
+if [ -f "/Users/thomas.wang/miniconda3/etc/profile.d/conda.sh" ]; then
+  conda() {
+    unfunction conda 2>/dev/null
+    . "/Users/thomas.wang/miniconda3/etc/profile.d/conda.sh"
+    conda "$@"
+  }
+elif [ -d "/Users/thomas.wang/miniconda3/bin" ]; then
+  export PATH="/Users/thomas.wang/miniconda3/bin:$PATH"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
-# Go
-if [[ -x "$(which go)" ]]; then
-  export GOPATH=$(go env GOPATH)
-  if [[ ! "$PATH" == *"$GOPATH/bin"* ]]; then
-    export PATH=$PATH:$GOPATH/bin
-  fi
+# Go (use default GOPATH to avoid subprocess)
+if [[ -x "$(whence -p go)" ]]; then
+  export GOPATH="${GOPATH:-$HOME/go}"
+  [[ ":$PATH:" != *":$GOPATH/bin:"* ]] && export PATH="$PATH:$GOPATH/bin"
 fi
 
 # Java

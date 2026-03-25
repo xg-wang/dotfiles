@@ -2,6 +2,7 @@
 -- Defaults: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 local opt = vim.opt
 
+opt.wrap = true
 opt.textwidth = 100
 opt.autowriteall = true
 opt.showcmd = true

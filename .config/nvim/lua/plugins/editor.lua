@@ -1,4 +1,24 @@
 return {
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+
+  -- Show hidden/dot files in snacks explorer
+  {
+    "folke/snacks.nvim",
+    opts = {
+      explorer = {
+        replace_netrw = true,
+      },
+      picker = {
+        sources = {
+          explorer = {
+            hidden = true,
+            ignored = true,
+          },
+        },
+      },
+    },
+  },
+
   -- Git
   { "tpope/vim-fugitive" },
   { "tpope/vim-rhubarb" },
@@ -38,6 +58,16 @@ return {
 
   -- Emmet
   { "mattn/emmet-vim" },
+
+  -- Treesitter context (sticky function/class headers)
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPost",
+    opts = {
+      max_lines = 3,
+      mode = "cursor",
+    },
+  },
 
   -- Detect indent automatically
   { "tpope/vim-sleuth" },

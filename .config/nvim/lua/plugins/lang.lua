@@ -18,7 +18,15 @@ return {
     },
   },
 
-  -- Markdown: autofix lint issues on format
+  -- Markdown: disable linter diagnostics, keep formatter
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        markdown = {},
+      },
+    },
+  },
   {
     "stevearc/conform.nvim",
     opts = {
