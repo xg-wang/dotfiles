@@ -36,7 +36,7 @@ return {
         command! -bang -nargs=* Rg
           \ call fzf#vim#grep(
           \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -g "!{.git,node_modules,transpiled,build,dist}/*" -- '.shellescape(<q-args>), 1,
-          \   fzf#vim#with_preview(), <bang>0)
+          \   fzf#vim#with_preview('down:60%'), <bang>0)
       ]])
     end,
   },
@@ -84,6 +84,16 @@ return {
     branch = "master",
     opts = {
       defaults = {
+        jump_type = "never",
+        layout_strategy = "vertical",
+        layout_config = {
+          vertical = {
+            mirror = true,
+            preview_height = 0.6,
+          },
+          width = 0.95,
+          height = 0.95,
+        },
         vimgrep_arguments = {
           "rg",
           "--color=never",

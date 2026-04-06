@@ -76,6 +76,13 @@ map("n", "<C-t>", "<cmd>belowright split | terminal<cr><cmd>resize20<cr>", { des
 
 -- LSP aliases for old CoC bindings
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename (alias)" })
+
+-- Override LazyVim's gd (which uses Telescope with reuse_win) after LSP attaches
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf, desc = "Go to definition" })
+  end,
+})
 map("n", "<leader>fm", function() LazyVim.format({ force = true }) end, { desc = "Format (alias)" })
 map("n", "<leader>ac", vim.lsp.buf.code_action, { desc = "Code action (alias)" })
 
